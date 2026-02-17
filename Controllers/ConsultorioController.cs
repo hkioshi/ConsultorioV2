@@ -19,6 +19,8 @@ public class ConsultorioController : ControllerBase
     {
         return Ok("API do Consultório funcionando!");
     }
+
+    
 }
 
 /*{

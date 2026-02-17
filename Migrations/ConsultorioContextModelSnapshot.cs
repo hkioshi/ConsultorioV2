@@ -17,7 +17,7 @@ namespace ConsultorioV2.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.24");
 
-            modelBuilder.Entity("ConsultorioV2.Models.ContatoInfo", b =>
+            modelBuilder.Entity("ConsultorioV2.Models.Paciente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,41 +39,7 @@ namespace ConsultorioV2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ContatoInfos");
-                });
-
-            modelBuilder.Entity("ConsultorioV2.Models.Paciente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("ConheceuPor")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ContatoInfoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Convenio")
@@ -87,11 +53,23 @@ namespace ConsultorioV2.Migrations
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("EstadoCivil")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Genero")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Logradouro")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -108,6 +86,10 @@ namespace ConsultorioV2.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NomePai")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Numero")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -130,9 +112,6 @@ namespace ConsultorioV2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ProntuarioId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<bool>("QueroReceberLembretes")
                         .HasColumnType("INTEGER");
 
@@ -143,13 +122,11 @@ namespace ConsultorioV2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
-
-                    b.HasIndex("ContatoInfoId")
-                        .IsUnique();
-
-                    b.HasIndex("ProntuarioId")
-                        .IsUnique();
 
                     b.ToTable("Pacientes");
                 });
@@ -160,39 +137,31 @@ namespace ConsultorioV2.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("PacienteId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PacienteId")
+                        .IsUnique();
 
                     b.ToTable("Prontuarios");
                 });
 
-            modelBuilder.Entity("ConsultorioV2.Models.Paciente", b =>
-                {
-                    b.HasOne("ConsultorioV2.Models.ContatoInfo", "ContatoInfo")
-                        .WithOne("Paciente")
-                        .HasForeignKey("ConsultorioV2.Models.Paciente", "ContatoInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ConsultorioV2.Models.Prontuario", "Prontuario")
-                        .WithOne("Paciente")
-                        .HasForeignKey("ConsultorioV2.Models.Paciente", "ProntuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ContatoInfo");
-
-                    b.Navigation("Prontuario");
-                });
-
-            modelBuilder.Entity("ConsultorioV2.Models.ContatoInfo", b =>
-                {
-                    b.Navigation("Paciente")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ConsultorioV2.Models.Prontuario", b =>
                 {
-                    b.Navigation("Paciente")
+                    b.HasOne("ConsultorioV2.Models.Paciente", "Paciente")
+                        .WithOne("Prontuario")
+                        .HasForeignKey("ConsultorioV2.Models.Prontuario", "PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paciente");
+                });
+
+            modelBuilder.Entity("ConsultorioV2.Models.Paciente", b =>
+                {
+                    b.Navigation("Prontuario")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ConsultorioV2.Models;
 
-namespace ConsultorioV2.Models
+namespace ConsultorioV2.Data.Dtos
 {
-    public class Paciente
+    public class ReadPacienteDto
     {
-        //Infos Pessoais
-        [Key]
-        [Required]
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
@@ -32,7 +29,7 @@ namespace ConsultorioV2.Models
         //Extra
         public string NomePai { get; set; }
         public string NomeMae { get; set; }
-        public string NomeConjuge { get;set; }
+        public string NomeConjuge { get; set; }
         public string Profissao { get; set; }
         public int ConheceuPor { get; set; }
         public string Observacoes { get; set; }
@@ -40,7 +37,5 @@ namespace ConsultorioV2.Models
         public string NumeroConvenio { get; set; }
         public string PreferenciaHorario { get; set; }
         public bool QueroReceberLembretes { get; set; }
-
-
     }
 }
