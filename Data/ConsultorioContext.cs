@@ -7,6 +7,8 @@ namespace ConsultorioV2.Data
         public ConsultorioContext(DbContextOptions<ConsultorioContext> options) : base(options) { }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Prontuario> Prontuarios { get; set; }
+        public DbSet<Tratamento> Tratamentos { get; set; }
+        public DbSet<Pagamentos> Pagamentos { get; set; }
 
     }
 }

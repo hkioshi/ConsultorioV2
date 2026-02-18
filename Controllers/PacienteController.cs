@@ -16,6 +16,7 @@ public class PacienteController: ControllerBase
     {
         _context = context;
         _mapper = mapper;
+       
     }
 
     [HttpGet]
