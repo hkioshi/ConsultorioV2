@@ -11,5 +11,6 @@ namespace ConsultorioV2.Models
         [Required]
         public int PacienteId { get; set; }
         public virtual Paciente Paciente { get; set; }
+        
     }
 }
