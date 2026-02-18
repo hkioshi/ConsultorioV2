@@ -29,28 +29,28 @@ namespace ConsultorioV2.Controllers
                 _context.SaveChanges();
                 return CreatedAtAction(nameof(AdicionarProntuario), new { id = prontuario.Id }, prontuario);
             }
-             catch(Exception e)
+            catch(Exception e)
             {
                 return Problem(e.Message);
             }
             
         }
 
-        //[HttpPost("Tratamento")]
-        //public ActionResult AdicionarTratamento([FromBody] CreateTratamentoDto tratamentoDto )
-        //{
-        //    var tratamento = _mapper.Map<Tratamento>(tratamentoDto);
-        //    _context.Tratamentos.Add(tratamento);
-        //    _context.SaveChanges();
-        //    return CreatedAtAction(nameof(AdicionarTratamento), new { id = tratamento.Id }, tratamento);
-        //}
-
-        //[HttpGet("Tratamento")]
-        //public ActionResult ValorDevido()
-        //{
-        //    var valorDevido = _context.Tratamentos.Sum(t => t.Valor) - _context.Pagamentos.Sum(p => p.Valor);
-        //    return Ok(new { ValorDevido = valorDevido });
-        //}
+        [HttpPost("Tratamento")]
+        public ActionResult AdicionarTratamento([FromBody] CreateTratamentoDto tratamentoDto)
+        {
+            var tratamento = _mapper.Map<Tratamento>(tratamentoDto);
+            _context.Tratamentos.Add(tratamento);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(AdicionarTratamento), new { id = tratamento.Id }, tratamento);
+        }
+         
+        [HttpGet("Tratamento")]
+        public ActionResult ExibirTratamentos()
+        {
+            var tratamentos = _mapper.Map<List<ReadTratamentosDto>>(_context.Tratamentos.ToList());
+            return Ok(tratamentos);
+        }
 
 
     }

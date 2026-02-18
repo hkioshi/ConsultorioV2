@@ -8,6 +8,7 @@ namespace ConsultorioV2.Profiles
         public TratamentoProfile()
         {
             CreateMap<CreateTratamentoDto, Tratamento>();
+            CreateMap<Tratamento, ReadTratamentosDto>();
         }
 
 
