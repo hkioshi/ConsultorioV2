@@ -1,8 +1,6 @@
-﻿using ConsultorioV2.Models;
-
-namespace ConsultorioV2.Data.Dtos
+﻿namespace ConsultorioV2.Data.Dtos
 {
-    public class ReadPacienteDto
+    public class ReadPacienteResumoDto
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -24,18 +22,5 @@ namespace ConsultorioV2.Data.Dtos
         public string Estado { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        //Prontuario
-        public virtual ReadProntuarioDto Prontuario { get; set; }
-        //Extra
-        public string NomePai { get; set; }
-        public string NomeMae { get; set; }
-        public string NomeConjuge { get; set; }
-        public string Profissao { get; set; }
-        public int ConheceuPor { get; set; }
-        public string Observacoes { get; set; }
-        public string Convenio { get; set; }
-        public string NumeroConvenio { get; set; }
-        public string PreferenciaHorario { get; set; }
-        public bool QueroReceberLembretes { get; set; }
     }
 }

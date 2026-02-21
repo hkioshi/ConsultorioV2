@@ -11,14 +11,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioV2.Migrations
 {
     [DbContext(typeof(ConsultorioContext))]
-    [Migration("20260217191127_CriandoPacienteEProntuario")]
-    partial class CriandoPacienteEProntuario
+    [Migration("20260218163106_Tabela")]
+    partial class Tabela
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.24");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.24")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true);
 
             modelBuilder.Entity("ConsultorioV2.Models.Paciente", b =>
                 {
@@ -134,6 +138,39 @@ namespace ConsultorioV2.Migrations
                     b.ToTable("Pacientes");
                 });
 
+            modelBuilder.Entity("ConsultorioV2.Models.Pagamentos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DataPagamento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Observacoes")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProntuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Tipo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProntuarioId");
+
+                    b.ToTable("Pagamentos");
+                });
+
             modelBuilder.Entity("ConsultorioV2.Models.Prontuario", b =>
                 {
                     b.Property<int>("Id")
@@ -151,6 +188,69 @@ namespace ConsultorioV2.Migrations
                     b.ToTable("Prontuarios");
                 });
 
+            modelBuilder.Entity("ConsultorioV2.Models.Tratamento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Dente")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Distal")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("LingualPalatina")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Mesial")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Observacoes")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("OclusalIncisal")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Procedimento")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProntuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("Vestibular")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProntuarioId");
+
+                    b.ToTable("Tratamentos");
+                });
+
+            modelBuilder.Entity("ConsultorioV2.Models.Pagamentos", b =>
+                {
+                    b.HasOne("ConsultorioV2.Models.Prontuario", "Prontuario")
+                        .WithMany("Pagamentos")
+                        .HasForeignKey("ProntuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Prontuario");
+                });
+
             modelBuilder.Entity("ConsultorioV2.Models.Prontuario", b =>
                 {
                     b.HasOne("ConsultorioV2.Models.Paciente", "Paciente")
@@ -162,10 +262,28 @@ namespace ConsultorioV2.Migrations
                     b.Navigation("Paciente");
                 });
 
+            modelBuilder.Entity("ConsultorioV2.Models.Tratamento", b =>
+                {
+                    b.HasOne("ConsultorioV2.Models.Prontuario", "Prontuario")
+                        .WithMany("Tratamentos")
+                        .HasForeignKey("ProntuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Prontuario");
+                });
+
             modelBuilder.Entity("ConsultorioV2.Models.Paciente", b =>
                 {
                     b.Navigation("Prontuario")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ConsultorioV2.Models.Prontuario", b =>
+                {
+                    b.Navigation("Pagamentos");
+
+                    b.Navigation("Tratamentos");
                 });
 #pragma warning restore 612, 618
         }

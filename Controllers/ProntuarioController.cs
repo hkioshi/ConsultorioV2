@@ -29,11 +29,25 @@ namespace ConsultorioV2.Controllers
                 _context.SaveChanges();
                 return CreatedAtAction(nameof(AdicionarProntuario), new { id = prontuario.Id }, prontuario);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return Problem(e.Message);
             }
-            
+
+        }
+
+        [HttpGet]
+        public IActionResult ExibirProntuario()
+        {
+            var Prontuario = _mapper.Map<List<ReadProntuarioDto>>(_context.Prontuarios.ToList());
+            return Ok(Prontuario);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult ExibirProntuarioPorId(int id)
+        {
+            var Prontuario = _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(id)));
+            return Ok(Prontuario);
         }
 
         [HttpPost("Tratamento")]

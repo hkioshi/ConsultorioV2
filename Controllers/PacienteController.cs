@@ -3,6 +3,7 @@ using ConsultorioV2.Data;
 using ConsultorioV2.Data.Dtos;
 using ConsultorioV2.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConsultorioV2.Controllers;
 
@@ -24,6 +25,7 @@ public class PacienteController: ControllerBase
     {
         return _mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.ToList());
     }
+
     [HttpPost]
     public IActionResult AdicionarPaciente([FromBody] CreatePacienteDto pacienteDto)
     {

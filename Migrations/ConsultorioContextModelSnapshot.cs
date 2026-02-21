@@ -15,7 +15,11 @@ namespace ConsultorioV2.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.24");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.24")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true);
 
             modelBuilder.Entity("ConsultorioV2.Models.Paciente", b =>
                 {
@@ -154,6 +158,9 @@ namespace ConsultorioV2.Migrations
                     b.Property<int>("Tipo")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("Valor")
+                        .HasColumnType("REAL");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProntuarioId");
@@ -217,7 +224,7 @@ namespace ConsultorioV2.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float>("Valor")
+                    b.Property<double>("Valor")
                         .HasColumnType("REAL");
 
                     b.Property<bool>("Vestibular")
