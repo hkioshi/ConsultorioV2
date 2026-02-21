@@ -1,4 +1,5 @@
 ﻿using ConsultorioV2.Data;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -8,20 +9,22 @@ namespace ConsultorioV2.Controllers;
 [Route("[controller]")]
 public class ConsultorioController : ControllerBase
 {
-    private ConsultorioContext _contexto;
-    public ConsultorioController(ConsultorioContext contexto)
-    {
-        _contexto = contexto;
-    }
-
     [HttpGet]
-    public IActionResult Get()
+    public IActionResult Infos()
     {
-        return Ok("API do Consultório funcionando!");
+        return Ok(new
+        {
+            DentistaResponsavel = "Celia Akemi Watanabe Yamauchi",
+            CRO = 55179,
+            Endereco = "Avenida Cupecê, 2899",
+            Telefone = "(11) 97848-8334",
+            TempoDeAtendimentoPadrao = "60 minutos",
+            Email = "celiakemi2004@gmail.com"
+        });
     }
-
 
     
+     
 }
 
 /*{

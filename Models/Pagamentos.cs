@@ -20,7 +20,6 @@ namespace ConsultorioV2.Models
         public string Observacoes { get; set; }
         public int Tipo { get; set; }
         public DateTime DataPagamento { get; set; }
-
         public int ProntuarioId { get; set; }
         public virtual Prontuario Prontuario { get; set; }
 

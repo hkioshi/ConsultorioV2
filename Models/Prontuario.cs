@@ -11,7 +11,6 @@ namespace ConsultorioV2.Models
         [Required]
         public int PacienteId { get; set; }
         public virtual Paciente Paciente { get; set; }
-        
         public virtual ICollection<Tratamento> Tratamentos { get; set; }    
         public virtual ICollection<Pagamentos> Pagamentos { get; set; }
     }

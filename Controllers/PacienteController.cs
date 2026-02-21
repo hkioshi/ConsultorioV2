@@ -21,18 +21,38 @@ public class PacienteController: ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<ReadPacienteDto> ExibirTodosPacientes()
+    public IActionResult ExibirTodosPacientes()
     {
-        return _mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.ToList());
+        try
+        {
+            return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.ToList()));
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
     }
 
     [HttpPost]
     public IActionResult AdicionarPaciente([FromBody] CreatePacienteDto pacienteDto)
     {
-        var paciente = _mapper.Map<Paciente>(pacienteDto);
-        _context.Pacientes.Add(paciente);
-        _context.SaveChanges();
-        return CreatedAtAction(nameof(ExibirTodosPacientes), new { id = paciente.Id }, paciente);
+        try
+        {
+            var paciente = _mapper.Map<Paciente>(pacienteDto);
+            _context.Pacientes.Add(paciente);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(ExibirTodosPacientes), new { id = paciente.Id }, paciente);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+
     }
 
+    
 }
