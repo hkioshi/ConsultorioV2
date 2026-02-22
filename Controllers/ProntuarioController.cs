@@ -79,42 +79,4 @@ public class ProntuarioController : ControllerBase
         return NoContent();
     }
 
-    [HttpPost("Pagamento")]
-    public ActionResult AdicionarPagamento([FromBody] CreatePagamentoDto pagamentoDto)
-    {
-        try
-        {
-            var pagamento = _mapper.Map<Pagamentos>(pagamentoDto);
-            _context.Pagamentos.Add(pagamento);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarPagamento), new { id = pagamento.Id }, pagamento);
-
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-
-    [HttpGet("Pagamento")]
-    public ActionResult ExibirPagamento()
-    {
-
-        try
-        {
-            var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.ToList());
-            return Ok(pagamento);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-
-
-
 }
