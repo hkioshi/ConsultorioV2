@@ -68,6 +68,16 @@ public class ProntuarioController : ControllerBase
         
     }
 
+    [HttpDelete("{id}")]
+    public IActionResult DeletaProntuario(int id)
+    {
+        var prontuario = _context.Prontuarios.FirstOrDefault(
+           prontuario => prontuario.Id == id);
+        if (prontuario == null) return NotFound();
+        _context.Remove(prontuario);
+        _context.SaveChanges();
+        return NoContent();
+    }
 
     [HttpPost("Pagamento")]
     public ActionResult AdicionarPagamento([FromBody] CreatePagamentoDto pagamentoDto)
