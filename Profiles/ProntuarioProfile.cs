@@ -10,7 +10,7 @@ namespace ConsultorioV2.Profiles
         {
             CreateMap<CreateProntuarioDto, Prontuario>();
             CreateMap<Prontuario, ReadProntuarioDto>();
-            CreateMap<ReadProntuarioDto, Prontuario>();
+
             
 
         }

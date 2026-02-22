@@ -65,7 +65,7 @@ public class ProntuarioController : ControllerBase
             Console.WriteLine($"O erro foi: {e.Message}");
             return Problem(e.Message);
         }
-        
+
     }
 
     [HttpDelete("{id}")]
@@ -77,6 +77,31 @@ public class ProntuarioController : ControllerBase
         _context.Remove(prontuario);
         _context.SaveChanges();
         return NoContent();
+    }
+
+    [HttpGet("{id}/Devido")]
+    public IActionResult ExibirValorDevido(int id)
+    {
+        try
+        {
+            var prontuario = _context.Prontuarios.FirstOrDefault(
+            prontuario => prontuario.Id == id);
+            if (prontuario == null) return NotFound();
+
+
+            var devido = prontuario.Tratamentos.Sum(d => d.Valor)  ;
+            var pago = prontuario.Pagamentos.Sum(p => p.Valor);
+
+            double valordevido = devido - pago;
+
+            return Ok(new { ValorDevido = valordevido });
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
     }
 
 }

@@ -11,6 +11,8 @@ namespace ConsultorioV2.Profiles
             CreateMap<CreatePagamentoDto, Pagamentos>();
             CreateMap<Pagamentos, ReadPagamentosDto>();
             CreateMap<UpdatePagamentoDto, Pagamentos>();
+            CreateMap<Pagamentos, ReadValorDto>();
+                
 
         }
     }

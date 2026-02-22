@@ -12,7 +12,7 @@
         public string Procedimento { get; set; }
         public string Observacoes { get; set; }
         public string Status { get; set; }
-        public float Valor { get; set; }
+        public double Valor { get; set; }
         public int ProntuarioId { get; set; }
     }
 }
