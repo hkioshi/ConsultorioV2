@@ -9,6 +9,10 @@ namespace ConsultorioV2.Profiles
         {
             CreateMap<CreatePacienteDto, Paciente>();
             CreateMap<Paciente, ReadPacienteDto>();
+            CreateMap<Paciente, UpdatePacienteDto>();
+            CreateMap<UpdatePacienteDto, Paciente>();
+
+
         }
     }
 }

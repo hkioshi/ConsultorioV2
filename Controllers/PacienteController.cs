@@ -4,6 +4,8 @@ using ConsultorioV2.Data.Dtos;
 using ConsultorioV2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.JsonPatch;
+
 
 namespace ConsultorioV2.Controllers;
 
@@ -54,5 +56,29 @@ public class PacienteController: ControllerBase
 
     }
 
-    
+    [HttpPut("{id}")]
+    public IActionResult AtualizaPaciente(int id,
+    [FromBody] UpdatePacienteDto pacienteDto)
+    {
+        var paciente = _context.Pacientes.FirstOrDefault(
+            paciente => paciente.Id == id);
+        if (paciente == null) return NotFound();
+        _mapper.Map(pacienteDto, paciente);
+        _context.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeletaFilme(int id)
+    {
+        var paciente = _context.Pacientes.FirstOrDefault(
+           paciente => paciente.Id == id);
+        if (paciente == null) return NotFound();
+        _context.Remove(paciente);
+        _context.SaveChanges();
+        return NoContent();
+    }
 }
+
+
+
