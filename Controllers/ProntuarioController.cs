@@ -68,41 +68,6 @@ public class ProntuarioController : ControllerBase
         
     }
 
-    [HttpPost("Tratamento")]
-    public ActionResult AdicionarTratamento([FromBody] CreateTratamentoDto tratamentoDto)
-    {
-        try
-        {
-            var tratamento = _mapper.Map<Tratamento>(tratamentoDto);
-            _context.Tratamentos.Add(tratamento);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarTratamento), new { id = tratamento.Id }, tratamento);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-     
-    [HttpGet("Tratamento")]
-    public ActionResult ExibirTratamentos()
-    {
-        
-        try
-        {
-            var tratamentos = _mapper.Map<List<ReadTratamentosDto>>(_context.Tratamentos.ToList());
-            return Ok(tratamentos);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-
 
     [HttpPost("Pagamento")]
     public ActionResult AdicionarPagamento([FromBody] CreatePagamentoDto pagamentoDto)
@@ -112,7 +77,7 @@ public class ProntuarioController : ControllerBase
             var pagamento = _mapper.Map<Pagamentos>(pagamentoDto);
             _context.Pagamentos.Add(pagamento);
             _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarTratamento), new { id = pagamento.Id }, pagamento);
+            return CreatedAtAction(nameof(AdicionarPagamento), new { id = pagamento.Id }, pagamento);
 
         }
         catch (Exception e)
