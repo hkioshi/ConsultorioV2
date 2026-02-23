@@ -51,12 +51,29 @@ public class ProntuarioController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("porId/{id}")]
     public IActionResult ExibirProntuarioPorId(int id)
     {
         try
         {
             var Prontuario = _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(id)));
+            return Ok(Prontuario);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
+
+    }
+
+    [HttpGet("porNome/{nome}")]
+    public IActionResult ExibirProntuarioPorNome(string nome)
+    {
+        try
+        {
+            var Prontuario = _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(nome)));
             return Ok(Prontuario);
         }
         catch (Exception e)
@@ -79,7 +96,7 @@ public class ProntuarioController : ControllerBase
         return NoContent();
     }
 
-    [HttpGet("{id}/Devido")]
+    [HttpGet("valorDevido/{id}")]
     public IActionResult ExibirValorDevido(int id)
     {
         try
