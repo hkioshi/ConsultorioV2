@@ -44,7 +44,7 @@ public class PacienteController: ControllerBase
             CreatedAtAction(
                 nameof(ExibirTodosPacientesAsync), 
                 new {
-                    id = paciente.Id 
+                    id = paciente.Id
                 }, 
                 paciente);
     }
