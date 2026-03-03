@@ -2,78 +2,58 @@
 using ConsultorioV2.Data;
 using ConsultorioV2.Data.Dtos;
 using ConsultorioV2.Models;
+using ConsultorioV2.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConsultorioV2.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class PagamentoController : ControllerBase
 {
-    private ConsultorioContext _context;
-    private IMapper _mapper;
-    public PagamentoController(ConsultorioContext context, IMapper mapper)
+    private readonly PagamentoService _service;
+
+    public PagamentoController(PagamentoService service)
     {
-        _context = context;
-        _mapper = mapper;
+        _service = service;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult> ExibirPagamentos()
+    {
+        var pagamentos = await _service.GetAllPagamentos();
+
+        return pagamentos == null || !pagamentos.Any() ?
+            NotFound("Nenhum paciente encontrado") :
+            Ok(pagamentos);            
     }
 
     [HttpPost]
     public ActionResult AdicionarPagamento([FromBody] CreatePagamentoDto pagamentoDto)
     {
-        try
-        {
-            var pagamento = _mapper.Map<Pagamentos>(pagamentoDto);
-            _context.Pagamentos.Add(pagamento);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarPagamento), new { id = pagamento.Id }, pagamento);
-
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-
-    [HttpGet]
-    public ActionResult ExibirPagamento()
-    {
-
-        try
-        {
-            var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.ToList());
-            return Ok(pagamento);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
+        var pagamento = _service.AddPagamentosAsync(pagamentoDto);
+        return pagamento is null ?
+        NotFound("Nenhum paciente encontrado") :
+        CreatedAtAction(
+            nameof(AdicionarPagamento),
+            new
+            {
+                id = pagamento.Id
+            },
+            pagamento);
     }
 
     [HttpPut("{id}")]
-    public IActionResult AtualizaPagamento(int id,
-    [FromBody] UpdatePagamentoDto pagamentoDto)
-    {
-        var pagamento = _context.Pagamentos.FirstOrDefault(
-            pagamento => pagamento.Id == id);
-        if (pagamento == null) return NotFound();
-        _mapper.Map(pagamentoDto, pagamento);
-        _context.SaveChanges();
-        return NoContent();
-    }
+    public async Task<IActionResult> AtualizaPagamento(int id,
+    [FromBody] UpdatePagamentoDto pagamentoDto) =>
+        await _service.UpdatePagamentosAsync(id, pagamentoDto) ? 
+            NoContent() :
+            NotFound();
 
     [HttpDelete("{id}")]
-    public IActionResult DeletaPagamento(int id)
-    {
-        var pagamento = _context.Pagamentos.FirstOrDefault(
-           pagamento => pagamento.Id == id);
-        if (pagamento == null) return NotFound();
-        _context.Remove(pagamento);
-        _context.SaveChanges();
-        return NoContent();
-    }
+    public async Task<IActionResult> DeletaPagamento(int id) =>
+        await _service.DeletePagamentosAsync(id) ?
+            NoContent() :
+            NotFound();
 
 }

@@ -24,12 +24,12 @@ public class PacienteService
         return _mapper.Map<List<ReadPacienteDto>>(lista);          
     }
 
-    public async Task<ReadPacienteDto> AddPacienteAsync(CreatePacienteDto pacienteDto)
+    public async Task<Paciente> AddPacienteAsync(CreatePacienteDto pacienteDto)
     {
         var paciente = _mapper.Map<Paciente>(pacienteDto);
         _context.Pacientes.Add(paciente);
         await _context.SaveChangesAsync();
-        return _mapper.Map<ReadPacienteDto>(paciente);
+        return paciente;
     }
 
     public async Task<bool> UpdatePacienteAsync(int id, UpdatePacienteDto pacienteDto)
