@@ -1,8 +1,9 @@
-using ConsultorioV2.Data;
 using AutoMapper;
+using ConsultorioV2.Data;
+using ConsultorioV2.Services;
+using Google.Apis.Calendar.v3;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Google.Apis.Calendar.v3;
 
 
 
@@ -18,6 +19,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ConsultorioContext>(options =>
     options.UseLazyLoadingProxies().UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<PacienteService>();
 
 var app = builder.Build();
 

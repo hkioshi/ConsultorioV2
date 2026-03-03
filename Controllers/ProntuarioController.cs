@@ -35,6 +35,48 @@ public class ProntuarioController : ControllerBase
 
     }
 
+    [HttpGet("{id}/Pagamentos")]
+    public IActionResult ExibirPagamentosPorId(int id)
+    {
+        try
+        {
+            var Prontuario = _mapper.Map<List<ReadPagamentosDto>>(
+                _context.Pagamentos.Where(
+                    p => p.ProntuarioId
+                    .Equals(id))
+                    .ToList());
+
+            return Ok(Prontuario);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
+    }
+
+    [HttpGet("{id}/Tratamentos")]
+    public IActionResult ExibirTratamentosPorId(int id)
+    {
+        try
+        {
+            var Prontuario = _mapper.Map<List<ReadTratamentosDto>>(
+                _context.Tratamentos.Where(
+                    p => p.ProntuarioId
+                    .Equals(id))
+                    .ToList());
+
+            return Ok(Prontuario);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
+    }
+
     [HttpGet]
     public IActionResult ExibirProntuario()
     {
@@ -51,7 +93,7 @@ public class ProntuarioController : ControllerBase
         }
     }
 
-    [HttpGet("porId/{id}")]
+    [HttpGet("{id}")]
     public IActionResult ExibirProntuarioPorId(int id)
     {
         try
@@ -96,7 +138,7 @@ public class ProntuarioController : ControllerBase
         return NoContent();
     }
 
-    [HttpGet("valorDevido/{id}")]
+    [HttpGet("{id}/valorDevido")]
     public IActionResult ExibirValorDevido(int id)
     {
         try
