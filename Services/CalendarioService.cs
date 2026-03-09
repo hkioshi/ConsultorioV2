@@ -1,7 +1,7 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Services;
-
+namespace ConsultorioV2.Services;
 public class CalendarioService
 {
     private readonly CalendarService _service;

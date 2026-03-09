@@ -2,165 +2,97 @@
 using ConsultorioV2.Data;
 using ConsultorioV2.Data.Dtos;
 using ConsultorioV2.Models;
+using ConsultorioV2.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace ConsultorioV2.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class ProntuarioController : ControllerBase
+public class  ProntuarioController : ControllerBase
 {
-    private ConsultorioContext _context;
-    private IMapper _mapper;
-    public ProntuarioController(ConsultorioContext context, IMapper mapper)
-    {
-        _context = context;
-        _mapper = mapper;
-    }
-
+    private readonly ProntuarioService _service;
+    public ProntuarioController(ProntuarioService service) => _service = service;
 
     [HttpPost]
-    public IActionResult AdicionarProntuario([FromBody] CreateProntuarioDto ProntuarioDto)
+    public async Task<IActionResult> AdicionarProntuarioAsync([FromBody] CreateProntuarioDto ProntuarioDto)
     {
-        try
-        {
-            var prontuario = _mapper.Map<Prontuario>(ProntuarioDto);
-            _context.Prontuarios.Add(prontuario);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarProntuario), new { id = prontuario.Id }, prontuario);
-        }
-        catch (Exception e)
-        {
-            return Problem(e.Message);
-        }
+        var paciente = await _service.AdicionarProntuarioServiceAsync(ProntuarioDto);
+
+        return paciente is null ?
+            BadRequest("Nenhum paciente encontrado") :
+            CreatedAtAction(
+                nameof(ExibirPagamentosPorId),
+                new
+                {
+                    id = paciente.Id
+                },
+                paciente);
 
     }
 
     [HttpGet("{id}/Pagamentos")]
-    public IActionResult ExibirPagamentosPorId(int id)
+    public async Task<IActionResult> ExibirPagamentosPorId(int id)
     {
-        try
-        {
-            var Prontuario = _mapper.Map<List<ReadPagamentosDto>>(
-                _context.Pagamentos.Where(
-                    p => p.ProntuarioId
-                    .Equals(id))
-                    .ToList());
-
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
+       var pagamentos = await _service.ExibirPagamentosPorIdServiceAsync(id);
+       return pagamentos is null ?
+            BadRequest("Nenhum Pagamento encontrado") :
+            Ok(pagamentos);    
+    }   
 
     [HttpGet("{id}/Tratamentos")]
-    public IActionResult ExibirTratamentosPorId(int id)
+    public async Task<IActionResult> ExibirTratamentosPorId(int id)
     {
-        try
-        {
-            var Prontuario = _mapper.Map<List<ReadTratamentosDto>>(
-                _context.Tratamentos.Where(
-                    p => p.ProntuarioId
-                    .Equals(id))
-                    .ToList());
-
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
+        var tratamentos = await _service.ExibirTratamentosPorIdServiceAsync(id);
+        return tratamentos is null ?
+             BadRequest("Nenhum Pagamento encontrado") :
+             Ok(tratamentos);
     }
 
     [HttpGet]
-    public IActionResult ExibirProntuario()
+    public async Task<IActionResult> ExibirProntuario()
     {
-        try
-        {
-            var Prontuario = _mapper.Map<List<ReadProntuarioDto>>(_context.Prontuarios.ToList());
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
+
+        var prontuario = await _service.ExibirProntuariosServiceAsync();
+        return prontuario is null ?
+             BadRequest("Nenhum Prontuario encontrado") :
+             Ok(prontuario);
     }
 
     [HttpGet("{id}")]
-    public IActionResult ExibirProntuarioPorId(int id)
+    public async Task<IActionResult> ExibirProntuarioPorId(int id)
     {
-        try
-        {
-            var Prontuario = _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(id)));
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
+        var prontuario = await _service.ExibirProntuarioPorIdServiceAsync(id);
+        return prontuario is null ?
+             BadRequest("Nenhum Prontuario encontrado neste id") :
+             Ok(prontuario);
 
-    }
+    }       
 
     [HttpGet("porNome/{nome}")]
-    public IActionResult ExibirProntuarioPorNome(string nome)
+    public async Task<IActionResult> ExibirProntuarioPorNome(string nome)
     {
-        try
-        {
-            var Prontuario = _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(nome)));
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-
+        var prontuario = await _service.ExibirProntuarioPorNomeServiceAsync(nome);
+        return prontuario is null ?
+             BadRequest("Nenhum Prontuario encontrado neste nome") :
+             Ok(prontuario);
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeletaProntuario(int id)
-    {
-        var prontuario = _context.Prontuarios.FirstOrDefault(
-           prontuario => prontuario.Id == id);
-        if (prontuario == null) return NotFound();
-        _context.Remove(prontuario);
-        _context.SaveChanges();
-        return NoContent();
-    }
+    public async Task<IActionResult> DeletaProntuario(int id) =>
+        await _service.DeletarProntuarioServiceAsync(id) ?
+            NoContent() :
+            BadRequest(); 
+            
 
     [HttpGet("{id}/valorDevido")]
-    public IActionResult ExibirValorDevido(int id)
-    {
-        try
-        {
-            var prontuario = _context.Prontuarios.FirstOrDefault(
-            prontuario => prontuario.Id == id);
-            if (prontuario == null) return NotFound();
+    public async Task<IActionResult> ExibirValorDevido(int id)
+    {           
+        double? valorDevido = await _service.ExibirValoresServiceAsync(id);
+        return valorDevido is null ?
+            BadRequest("Nenhum Prontuario encontrado neste nome") :
+            Ok(new { ValorDevido = valorDevido});
 
-
-            var devido = prontuario.Tratamentos.Sum(d => d.Valor)  ;
-            var pago = prontuario.Pagamentos.Sum(p => p.Valor);
-
-            double valordevido = devido - pago;
-
-            return Ok(new { ValorDevido = valordevido });
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
     }
-
 }

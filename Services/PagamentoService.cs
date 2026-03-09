@@ -16,13 +16,18 @@ namespace ConsultorioV2.Services
             _mapper = mapper;
         }
 
-        public async Task<List<ReadPagamentosDto>> GetAllPagamentos()
+        public async Task<List<ReadPagamentosDto>> ExibirPagamentosServiceAsync() =>
+              _mapper.Map<List<ReadPagamentosDto>>(await _context.Pagamentos.ToListAsync());
+        
+        public async Task<ReadPagamentosDto?> ExibirPagamentoPorIdServiceAsync(int id)
         {
-            var lista = await _context.Pagamentos.ToListAsync();
-            return  _mapper.Map<List<ReadPagamentosDto>>(lista);
+            var pagamento = await _context.Pagamentos.FirstOrDefaultAsync(
+            p => p.Id.Equals(id));
+            return pagamento is null ?
+                null :
+                _mapper.Map<ReadPagamentosDto>(pagamento);
         }
-
-        public async Task<Pagamentos> AddPagamentosAsync(CreatePagamentoDto pagamentoDto)
+        public async Task<Pagamentos> AdicionarPagamentosServiceAsync(CreatePagamentoDto pagamentoDto)
         {
             var pagamentos = _mapper.Map<Pagamentos>(pagamentoDto);
             _context.Pagamentos.Add(pagamentos);
@@ -30,7 +35,7 @@ namespace ConsultorioV2.Services
             return pagamentos;
         }
 
-        public async Task<bool> UpdatePagamentosAsync(int id, UpdatePagamentoDto pagamentoDto)
+        public async Task<bool> AtualizarPagamentoServiceAsync(int id, UpdatePagamentoDto pagamentoDto)
         {
             var pagamentos = await _context.Pagamentos.FirstOrDefaultAsync(
             pagamentos => pagamentos.Id == id);
@@ -40,7 +45,7 @@ namespace ConsultorioV2.Services
             return true;
         }
 
-        public async Task<bool> DeletePagamentosAsync(int id)
+        public async Task<bool> DeletarPagamentosServiceAsync(int id)
         {
             var pagamento = await _context.Pagamentos.FirstOrDefaultAsync(
             pagamento => pagamento.Id == id);

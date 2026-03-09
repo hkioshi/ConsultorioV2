@@ -18,13 +18,10 @@ public class PacienteService
 
     }
 
-    public async Task<List<ReadPacienteDto>> GetAllPacientesAsync()
-    {
-        var lista = await _context.Pacientes.ToListAsync();
-        return _mapper.Map<List<ReadPacienteDto>>(lista);          
-    }
-
-    public async Task<Paciente> AddPacienteAsync(CreatePacienteDto pacienteDto)
+    public async Task<List<ReadPacienteDto>> ExibirPacientesServiceAsync() =>
+        _mapper.Map<List<ReadPacienteDto>>(await _context.Pacientes.ToListAsync());          
+    
+    public async Task<Paciente> AdicionarPacienteServiceAsync(CreatePacienteDto pacienteDto)
     {
         var paciente = _mapper.Map<Paciente>(pacienteDto);
         _context.Pacientes.Add(paciente);
@@ -32,17 +29,17 @@ public class PacienteService
         return paciente;
     }
 
-    public async Task<bool> UpdatePacienteAsync(int id, UpdatePacienteDto pacienteDto)
+    public async Task<bool> AtualizarPacienteServiceAsync(int id, UpdatePacienteDto pacienteDto)
     {
         var paciente = await _context.Pacientes.FirstOrDefaultAsync(
-        paciente => paciente.Id == id);
-        if (paciente == null) return false;
+        paciente => paciente.Id.Equals(id));
+        if (paciente is null) return false;
         _mapper.Map(pacienteDto, paciente);
         await _context.SaveChangesAsync();
         return true;
     }
 
-    public async Task<bool> DeletePacienteAsync(int id)
+    public async Task<bool> DeletarPacienteServiceAsync(int id)
     {
         var paciente = await _context.Pacientes.FirstOrDefaultAsync(
         paciente => paciente.Id == id);
@@ -52,10 +49,10 @@ public class PacienteService
         return true;
     }
 
-    public async Task<ReadPacienteDto?> GetPacienteByIdAsync(int id)
+    public async Task<ReadPacienteDto?> ExibirPacientePorIdServiceAsync(int id)
     {
         var paciente = await _context.Pacientes.FirstOrDefaultAsync(
-        paciente => paciente.Id == id);
+        paciente => paciente.Id.Equals(id));
         return paciente is null ? 
             null : 
             _mapper.Map<ReadPacienteDto>(paciente);
