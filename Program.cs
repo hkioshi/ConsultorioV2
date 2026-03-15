@@ -14,6 +14,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ConsultorioContext>(options =>
     options.UseLazyLoadingProxies().UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 
 builder.Services.AddSingleton<CalendarioService>();
 builder.Services.AddScoped<PacienteService>();
@@ -23,6 +31,8 @@ builder.Services.AddScoped<TratamentoService>();
 
 
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -41,7 +41,7 @@ public class PagamentoController : ControllerBase
         {
             var pagamento = await _service.AdicionarPagamentosServiceAsync(pagamentoDto);
 
-            return Created();  // ← sem o "Pagamento" como controllerName
+            return Created();  
         }
         catch (Exception ex)
         {

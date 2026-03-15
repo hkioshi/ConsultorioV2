@@ -8,6 +8,9 @@ public class CalendarioService
 
     public CalendarioService()
     {
+        Console.WriteLine(File.Exists("credentials.json"));
+        string json = File.ReadAllText("credentials.json");
+        Console.WriteLine(json);
         var credential = GoogleCredential
             .FromFile("credentials.json")
             .CreateScoped(CalendarService.Scope.CalendarReadonly);
