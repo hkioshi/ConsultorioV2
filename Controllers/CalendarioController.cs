@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ConsultorioV2.Services;
 
 namespace ConsultorioV2.Controllers
 {

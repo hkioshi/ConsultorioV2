@@ -1,12 +1,16 @@
-using ConsultorioV2.Controllers;
 using ConsultorioV2.Data;
-using ConsultorioV2.Services;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Google.Apis.Calendar.v3;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddSingleton<CalendarioService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -14,25 +18,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ConsultorioContext>(options =>
     options.UseLazyLoadingProxies().UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        policy => policy
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
-});
-
-builder.Services.AddSingleton<CalendarioService>();
-builder.Services.AddScoped<PacienteService>();
-builder.Services.AddScoped<PagamentoService>();
-builder.Services.AddScoped<ProntuarioService>();
-builder.Services.AddScoped<TratamentoService>();
-
 
 var app = builder.Build();
 
-app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

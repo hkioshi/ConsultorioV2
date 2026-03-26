@@ -1,16 +1,13 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
 using Google.Apis.Services;
-namespace ConsultorioV2.Services;
+
 public class CalendarioService
 {
     private readonly CalendarService _service;
 
     public CalendarioService()
     {
-        Console.WriteLine(File.Exists("credentials.json"));
-        string json = File.ReadAllText("credentials.json");
-        Console.WriteLine(json);
         var credential = GoogleCredential
             .FromFile("credentials.json")
             .CreateScoped(CalendarService.Scope.CalendarReadonly);

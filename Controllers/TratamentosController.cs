@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using ConsultorioV2.Services;
 using ConsultorioV2.Data;
 using ConsultorioV2.Data.Dtos;
 using ConsultorioV2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 namespace ConsultorioV2.Controllers;
 
@@ -13,16 +11,22 @@ namespace ConsultorioV2.Controllers;
 [Route("[controller]")]
 public class TratamentosController : ControllerBase
 {
-    private readonly TratamentoService _service;
-    public TratamentosController(TratamentoService service) => _service = service;
-
+    private ConsultorioContext _context;
+    private IMapper _mapper;
+    public TratamentosController(ConsultorioContext context, IMapper mapper)
+    {
+        _context = context;
+        _mapper = mapper;
+    }
 
     [HttpPost]
-    public async Task<IActionResult> AdicionarTratamento([FromBody] CreateTratamentoDto tratamentoDto)
+    public ActionResult AdicionarTratamento([FromBody] CreateTratamentoDto tratamentoDto)
     {
         try
         {
-            var tratamento = await _service.AdicionarTratamentoServiceAsync(tratamentoDto);
+            var tratamento = _mapper.Map<Tratamento>(tratamentoDto);
+            _context.Tratamentos.Add(tratamento);
+            _context.SaveChanges();
             return CreatedAtAction(nameof(AdicionarTratamento), new { id = tratamento.Id }, tratamento);
         }
         catch (Exception e)
@@ -33,34 +37,44 @@ public class TratamentosController : ControllerBase
         }
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> ExibirTratamentoPorIdAsync(int id)
+    [HttpGet]
+    public ActionResult ExibirTratamentos()
     {
-        var tratamento = await _service.ExibirTratamentoPorIdServiceAsync(id);
 
-        return tratamento is null ?
-            NotFound() :
-            Ok(tratamento);
+        try
+        {
+            var tratamentos = _mapper.Map<List<ReadTratamentosDto>>(_context.Tratamentos.ToList());
+            return Ok(tratamentos);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
     }
 
-
-    [HttpGet]
-    public async Task<IActionResult> ExibirTratamentos() =>
-        Ok( await _service.ExibirTratamentosServiceAsync());
-
-
     [HttpPut("{id}")]
-    public async Task<IActionResult> AtualizaTratamentoAsync(int id, [FromBody] UpdateTratamentoDto tratamentoDto) =>
-        await _service.AtualizarTratamentoServiceAsync(id, tratamentoDto) ?
-            NoContent() :
-            NotFound();
-
- 
+    public IActionResult AtualizaTratamento(int id,
+    [FromBody] UpdateTratamentoDto tratamentoDto)
+    {
+        var tratamento = _context.Tratamentos.FirstOrDefault(
+            tratamento => tratamento.Id == id);
+        if (tratamento == null) return NotFound();
+        _mapper.Map(tratamentoDto, tratamento);
+        _context.SaveChanges();
+        return NoContent();
+    }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletaTratamento(int id) =>
-        await _service.DeletarTratamentoServiceAsync(id) ?
-            NoContent() :
-            NotFound();
-}
+    public IActionResult DeletaTratamento(int id)
+    {
+        var paciente = _context.Pacientes.FirstOrDefault(
+           paciente => paciente.Id == id);
+        if (paciente == null) return NotFound();
+        _context.Remove(paciente);
+        _context.SaveChanges();
+        return NoContent();
+    }
 
+}

@@ -1,5 +1,7 @@
-﻿using ConsultorioV2.Data.Dtos;
-using ConsultorioV2.Services;
+﻿using AutoMapper;
+using ConsultorioV2.Data;
+using ConsultorioV2.Data.Dtos;
+using ConsultorioV2.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioV2.Controllers;
@@ -7,63 +9,71 @@ namespace ConsultorioV2.Controllers;
 [Route("[controller]")]
 public class PagamentoController : ControllerBase
 {
-    private readonly PagamentoService _service;
-
-    public PagamentoController(PagamentoService service)
+    private ConsultorioContext _context;
+    private IMapper _mapper;
+    public PagamentoController(ConsultorioContext context, IMapper mapper)
     {
-        _service = service;
-    }
-
-    [HttpGet]
-    public async Task<ActionResult> ExibirPagamentosAsync()
-    {
-        var pagamentos = await _service.ExibirPagamentosServiceAsync();
-        return pagamentos is not null ?
-            Ok(pagamentos) :
-            BadRequest();
-    }
-
-    [HttpGet("{id}")]
-    [ActionName("ExibirPagamentosPorId")]
-    public async Task<IActionResult> ExibirPagamentosPorIdAsync(int id)
-    {
-        var pagamentosDto = await _service.ExibirPagamentoPorIdServiceAsync(id);
-
-        return pagamentosDto is null ?
-            BadRequest() :
-            Ok(pagamentosDto);
+        _context = context;
+        _mapper = mapper;
     }
 
     [HttpPost]
-    public async Task<IActionResult> AdicionarPagamentoAsync([FromBody] CreatePagamentoDto pagamentoDto)
+    public ActionResult AdicionarPagamento([FromBody] CreatePagamentoDto pagamentoDto)
     {
         try
         {
-            var pagamento = await _service.AdicionarPagamentosServiceAsync(pagamentoDto);
+            var pagamento = _mapper.Map<Pagamentos>(pagamentoDto);
+            _context.Pagamentos.Add(pagamento);
+            _context.SaveChanges();
+            return CreatedAtAction(nameof(AdicionarPagamento), new { id = pagamento.Id }, pagamento);
 
-            return Created();  
         }
-        catch (Exception ex)
+        catch (Exception e)
         {
-            return BadRequest(new
-            {
-                erro = ex.Message,
-                inner = ex.InnerException?.Message
-            });
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
+    }
+
+    [HttpGet]
+    public ActionResult ExibirPagamento()
+    {
+
+        try
+        {
+            var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.ToList());
+            return Ok(pagamento);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
         }
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> AtualizaPagamentoAsync(int id,
-    [FromBody] UpdatePagamentoDto pagamentoDto) =>
-        await _service.AtualizarPagamentoServiceAsync(id, pagamentoDto) ? 
-            NoContent() :
-            NotFound();
+    public IActionResult AtualizaPagamento(int id,
+    [FromBody] UpdatePagamentoDto pagamentoDto)
+    {
+        var pagamento = _context.Pagamentos.FirstOrDefault(
+            pagamento => pagamento.Id == id);
+        if (pagamento == null) return NotFound();
+        _mapper.Map(pagamentoDto, pagamento);
+        _context.SaveChanges();
+        return NoContent();
+    }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletaPagamentoAsync(int id) =>
-        await _service.DeletarPagamentosServiceAsync(id) ?
-            NoContent() :
-            NotFound();
+    public IActionResult DeletaPagamento(int id)
+    {
+        var pagamento = _context.Pagamentos.FirstOrDefault(
+           pagamento => pagamento.Id == id);
+        if (pagamento == null) return NotFound();
+        _context.Remove(pagamento);
+        _context.SaveChanges();
+        return NoContent();
+    }
 
 }
