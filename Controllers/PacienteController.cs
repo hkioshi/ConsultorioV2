@@ -1,83 +1,68 @@
-﻿using AutoMapper;
-using ConsultorioV2.Data;
-using ConsultorioV2.Data.Dtos;
-using ConsultorioV2.Models;
+﻿using ConsultorioV2.Data.Dtos;
+using ConsultorioV2.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.JsonPatch;
-
-
 namespace ConsultorioV2.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class PacienteController: ControllerBase
 {
-    private ConsultorioContext _context;
-    private IMapper _mapper;
-    public PacienteController(ConsultorioContext context, IMapper mapper)
-    {
-        _context = context;
-        _mapper = mapper;
-       
-    }
+    private readonly PacienteService _service;
+    public PacienteController(PacienteService service) => _service = service;
 
     [HttpGet]
-    public IActionResult ExibirTodosPacientes()
+    public async Task<IActionResult> ExibirTodosPacientesAsync()
     {
-        try
-        {
-            return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.ToList()));
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
+        var pacientes = await _service.ExibirPacientesServiceAsync();
+
+        return pacientes == null || !pacientes.Any() ?
+            NotFound("Nenhum paciente encontrado"):
+            Ok(pacientes);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> ExibirPacientePorId(int id)
+    {
+        var paciente = await _service.ExibirPacientePorIdServiceAsync(id);
+
+        return paciente is null ?
+            NotFound() :
+            Ok(paciente);
     }
 
     [HttpPost]
-    public IActionResult AdicionarPaciente([FromBody] CreatePacienteDto pacienteDto)
+    public  async Task<IActionResult> AdicionarPacienteAsync ([FromBody] CreatePacienteDto pacienteDto)
     {
         try
         {
-            var paciente = _mapper.Map<Paciente>(pacienteDto);
-            _context.Pacientes.Add(paciente);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(ExibirTodosPacientes), new { id = paciente.Id }, paciente);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
+            var paciente = await _service.AdicionarPacienteServiceAsync(pacienteDto);
 
+            return CreatedAtAction(
+               nameof(ExibirPacientePorId),
+                new { 
+                    id = paciente.Id 
+                },
+                paciente
+            );
+        }
+        catch
+        {
+            return BadRequest("Nenhum paciente encontrado");
+        } 
     }
 
     [HttpPut("{id}")]
-    public IActionResult AtualizaPaciente(int id,
-    [FromBody] UpdatePacienteDto pacienteDto)
-    {
-        var paciente = _context.Pacientes.FirstOrDefault(
-            paciente => paciente.Id == id);
-        if (paciente == null) return NotFound();
-        _mapper.Map(pacienteDto, paciente);
-        _context.SaveChanges();
-        return NoContent();
-    }
-
+    public async Task<IActionResult> AtualizarPacienteAsync(int id, [FromBody] UpdatePacienteDto pacienteDto) => 
+        await _service.AtualizarPacienteServiceAsync(id, pacienteDto) ? 
+            NoContent() : 
+            NotFound();
+    
     [HttpDelete("{id}")]
-    public IActionResult DeletaPaciente(int id)
-    {
-        var paciente = _context.Pacientes.FirstOrDefault(
-           paciente => paciente.Id == id);
-        if (paciente == null) return NotFound();
-        _context.Remove(paciente);
-        _context.SaveChanges();
-        return NoContent();
-    }
+    public async Task<IActionResult> DeletarPacienteAsync(int id) =>
+        await _service.DeletarPacienteServiceAsync(id) ?
+            NoContent() : 
+            NotFound();
+
 }
 
 

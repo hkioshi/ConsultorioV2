@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36401.2 d17.14
+VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultorioV2", "ConsultorioV2.csproj", "{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultorioWPF", "..\ConsultorioWPF\ConsultorioWPF.csproj", "{53AB6A63-E723-4C21-B30B-6417E714F24A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53AB6A63-E723-4C21-B30B-6417E714F24A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53AB6A63-E723-4C21-B30B-6417E714F24A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53AB6A63-E723-4C21-B30B-6417E714F24A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53AB6A63-E723-4C21-B30B-6417E714F24A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
