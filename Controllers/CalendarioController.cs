@@ -1,32 +1,39 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Services;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioV2.Controllers
 {
     [ApiController]
-    [Route("api/calendar")]
+    [Route("api/calendario")]
     public class CalendarioController : ControllerBase
     {
-        private readonly CalendarioService _calendarService;
-
-        public CalendarioController(CalendarioService calendarService)
+        [Authorize]
+        [HttpGet("hoje")]
+        public async Task<IActionResult> Hoje()
         {
-            _calendarService = calendarService;
-        }
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var events = _calendarService.ExibirProximosTratamentos();
-
-            var result = events.Select(e => new
+            var service = new CalendarService(new BaseClientService.Initializer()
             {
-                e.Summary,
-                Start = e.Start.DateTimeDateTimeOffset,
-                End = e.End.DateTimeDateTimeOffset,
-                Color = e.ColorId
+                HttpClientInitializer = GoogleCredential
+                    .FromAccessToken(accessToken),
+                ApplicationName = "ConsultorioCli"
             });
 
-            return Ok(result);
+            var request = service.Events.List("primary");
+            request.TimeMin = DateTime.Today;
+            request.TimeMax = DateTime.Today.AddDays(7);
+            request.MaxResults = 30;
+            request.SingleEvents = true;
+            request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
+            request.Fields = "items(id,summary,start,end)";
+            var events = await request.ExecuteAsync();
+
+            return Ok(events.Items);
         }
     }
 }
