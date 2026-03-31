@@ -25,6 +25,7 @@ namespace ConsultorioApp
                 case "Pacientes":
                     MainContent.Content = new PacientesView();
                     break;
+                
 
             }
         }

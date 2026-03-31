@@ -13,7 +13,12 @@ public partial class PacientesView : UserControl
     private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e)
     {
         // TODO: Abrir janela/dialog de cadastro de novo paciente
-        MessageBox.Show("Abrir formulário de novo paciente.");
+        var dialog = new NovoPacienteDialog { Owner = Window.GetWindow(this) };
+        if (dialog.ShowDialog() == true)
+        {
+            var paciente = dialog.PacienteSalvo;
+            // salvar no banco, atualizar lista...
+        }
     }
 
     private void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
