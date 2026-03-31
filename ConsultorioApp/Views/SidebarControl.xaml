@@ -167,7 +167,7 @@
                     <RadioButton x:Name="NavConfiguracoes"
                         Content="Configurações"
                         Style="{StaticResource NavItemStyle}"
-                        Click="NavConfiguracoes_Click" Checked="NavConfiguracoes_Checked_1">
+                        Click="NavConfiguracoes_Click">
                         <RadioButton.Tag>
                             <Viewbox Width="16" Height="16" Stretch="Uniform">
                                 <Path

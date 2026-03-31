@@ -1,24 +1,32 @@
-﻿using System.Text;
+﻿using ConsultorioApp.Views;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ConsultorioApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            Sidebar.OnNavigate += Sidebar_OnNavigate;
+
+            MainContent.Content = new InicioView();
+        }
+
+        private void Sidebar_OnNavigate(string view)
+        {
+            switch (view)
+            {
+                case "Inicio":
+                    MainContent.Content = new InicioView();
+                    break;
+
+                case "Pacientes":
+                    MainContent.Content = new PacientesView();
+                    break;
+
+            }
         }
     }
 }

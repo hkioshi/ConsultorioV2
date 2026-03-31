@@ -3,12 +3,18 @@ C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\bin\D
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\bin\Debug\net8.0-windows\ConsultorioApp.runtimeconfig.json
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\bin\Debug\net8.0-windows\ConsultorioApp.dll
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\bin\Debug\net8.0-windows\ConsultorioApp.pdb
+C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\PacientesView.baml
+C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\SidebarControl.baml
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\InicioView.g.cs
+C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\PacientesView.g.cs
+C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\SidebarControl.g.cs
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ConsultorioApp_MarkupCompile.cache
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ConsultorioApp_MarkupCompile.lref
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\InicioView.baml
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ConsultorioApp.g.resources
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ConsultorioApp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ConsultorioApp.AssemblyInfoInputs.cache
@@ -20,5 +26,3 @@ C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\D
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ConsultorioApp.pdb
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ConsultorioApp.genruntimeconfig.cache
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\ref\ConsultorioApp.dll
-C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\SidebarControl.baml
-C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\obj\Debug\net8.0-windows\Views\SidebarControl.g.cs

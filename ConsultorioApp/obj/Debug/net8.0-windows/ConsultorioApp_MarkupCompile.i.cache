@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\App.xaml
-2920463982
+5-1264668471
 
-7-82406483
+101721341815
 198-1154622056
-MainWindow.xaml;Views\SidebarControl.xaml;
+MainWindow.xaml;Views\AdicionarPaciente.xaml;Views\InicioView.xaml;Views\PacientesView.xaml;Views\SidebarControl.xaml;
 
-False
+True
 
