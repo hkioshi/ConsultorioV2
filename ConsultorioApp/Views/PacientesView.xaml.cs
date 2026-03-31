@@ -5,11 +5,7 @@ namespace ConsultorioApp.Views;
 
 public partial class PacientesView : UserControl
 {
-    public PacientesView()
-    {
-        InitializeComponent();
-    }
-
+    public PacientesView() => InitializeComponent();
     private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e)
     {
         // TODO: Abrir janela/dialog de cadastro de novo paciente

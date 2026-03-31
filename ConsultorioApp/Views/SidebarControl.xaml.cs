@@ -7,10 +7,7 @@ namespace ConsultorioApp.Views
     {
         public event Action<string> OnNavigate;
 
-        public SidebarControl()
-        {
-            InitializeComponent();
-        }
+        public SidebarControl() => InitializeComponent();
 
         private void NavInicio_Click(object sender, RoutedEventArgs e)
         {
