@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\hkios\source\repos\Projetos Pessoais\ConsultorioV2\ConsultorioApp\App.xaml
-2-495954105
+2920463982
 
-7272451904
+7-82406483
 198-1154622056
-Controls\SidebarControl.xaml;MainWindow.xaml;
+MainWindow.xaml;Views\SidebarControl.xaml;
 
 False
 

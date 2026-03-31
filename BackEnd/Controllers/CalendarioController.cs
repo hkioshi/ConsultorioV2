@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioV2.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/calendario")]
     public class CalendarioController : ControllerBase
     {
         [Authorize]
         [HttpGet("hoje/{calendario}")]
-        public async Task<IActionResult> Hoje(string calendario)
+        public async Task<IActionResult> HojeNoCalendario(string calendario)
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
@@ -44,7 +45,7 @@ namespace ConsultorioV2.Controllers
 
         [Authorize]
         [HttpGet("hoje")]
-        public async Task<IActionResult> Hoje()
+        public async Task<IActionResult> HojeNoCalendarioPrincipal()
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
@@ -68,8 +69,8 @@ namespace ConsultorioV2.Controllers
             {
                 Id = e.Id,
                 Titulo = e.Summary,
-                Inicio = e.Start.DateTime,
-                Fim = e.End.DateTime
+                Inicio = e.Start.DateTimeDateTimeOffset,
+                Fim = e.End.DateTimeDateTimeOffset
             }));
         }
 

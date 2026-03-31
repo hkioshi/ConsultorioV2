@@ -4,10 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConsultorioApp"
-        xmlns:local1="clr-namespace:ConsultorioApp.Controls"
+        xmlns:local1="clr-namespace:ConsultorioApp.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <local1:SidebarControl HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="200"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <local1:SidebarControl Grid.Column="0"/>
+
+        <TextBlock Grid.Column="1">teste</TextBlock>
+
     </Grid>
 </Window>

@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ConsultorioApp.Controls
+namespace ConsultorioApp.Views
 {
     public partial class SidebarControl : UserControl
     {
