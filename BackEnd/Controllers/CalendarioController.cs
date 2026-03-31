@@ -12,8 +12,8 @@ namespace ConsultorioV2.Controllers
     public class CalendarioController : ControllerBase
     {
         [Authorize]
-        [HttpGet("hoje")]
-        public async Task<IActionResult> Hoje([FromBody] string calendario)
+        [HttpGet("hoje/{calendario}")]
+        public async Task<IActionResult> Hoje(string calendario)
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
@@ -25,15 +25,21 @@ namespace ConsultorioV2.Controllers
             });
 
             var request = service.Events.List(calendario);
-            request.TimeMin = DateTime.Today;
-            request.TimeMax = DateTime.Today.AddDays(7);
+            //request.TimeMaxDateTimeOffset = DateTime.Today;
+            //request.TimeMinDateTimeOffset = DateTime.Today.AddDays(7);
             request.MaxResults = 30;
             request.SingleEvents = true;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
             request.Fields = "items(id,summary,start,end)";
             var events = await request.ExecuteAsync();
 
-            return Ok(events.Items);
+            return Ok(events.Items.Select(e => new
+            {
+                Id = e.Id,
+                Titulo = e.Summary, 
+                Inicio = e.Start.DateTimeDateTimeOffset,
+                Fim = e.End.DateTimeDateTimeOffset
+            }));
         }
 
         [Authorize]
@@ -50,15 +56,43 @@ namespace ConsultorioV2.Controllers
             });
 
             var request = service.Events.List("primary");
-            request.TimeMin = DateTime.Today;
-            request.TimeMax = DateTime.Today.AddDays(7);
+            request.TimeMaxDateTimeOffset = DateTime.Today;
+            request.TimeMinDateTimeOffset = DateTime.Today.AddDays(7);
             request.MaxResults = 30;
             request.SingleEvents = true;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
             request.Fields = "items(id,summary,start,end)";
             var events = await request.ExecuteAsync();
 
-            return Ok(events.Items);
+            return Ok(events.Items.Select(e => new
+            {
+                Id = e.Id,
+                Titulo = e.Summary,
+                Inicio = e.Start.DateTime,
+                Fim = e.End.DateTime
+            }));
+        }
+
+        [Authorize]
+        [HttpGet()]
+        public async Task<IActionResult> Calendarios()
+        {
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+            var service = new CalendarService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = GoogleCredential.FromAccessToken(accessToken),
+                ApplicationName = "ConsultorioCli"
+            });
+
+            var request = service.CalendarList.List();
+            var result = await request.ExecuteAsync();
+
+            return Ok(result.Items.Select(c => new
+            {
+                Nome = c.Summary,
+                Id = c.Id
+            }));
         }
     }
 }

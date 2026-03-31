@@ -3,34 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|c:\\users\\hkios\\source\\repos\\projetos pessoais\\consultoriov2\\controllers\\calendariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|solutionrelative:controllers\\calendariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|c:\\users\\hkios\\source\\repos\\projetos pessoais\\consultoriov2\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|c:\\users\\hkios\\source\\repos\\projetos pessoais\\consultoriov2\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|c:\\users\\hkios\\source\\repos\\projetos pessoais\\consultoriov2\\profiles\\prontuarioprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|solutionrelative:profiles\\prontuarioprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|c:\\users\\hkios\\source\\repos\\projetos pessoais\\consultoriov2\\profiles\\tratamentoprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|solutionrelative:profiles\\tratamentoprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|c:\\users\\hkios\\source\\repos\\projetos pessoais\\consultoriov2\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|c:\\users\\hkios\\source\\repos\\projetos pessoais\\consultoriov2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C73A1C8C-14AF-4C84-AE5C-F0606D2FB2A7}|ConsultorioV2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hkios\\Downloads\\client_secret_782343125559-ueb7ppgscfsm3prikmlgkqsc4ksrfh9c.apps.googleusercontent.com.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
@@ -53,97 +25,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CalendarioController.cs",
-              "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Controllers\\CalendarioController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CalendarioController.cs",
-              "ToolTip": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Controllers\\CalendarioController.cs",
-              "RelativeToolTip": "Controllers\\CalendarioController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T19:15:37.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-26T18:52:49.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAFMBAAAAAAAAAAAowGcBAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-03-26T18:51:49.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProntuarioProfile.cs",
-              "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Profiles\\ProntuarioProfile.cs",
-              "RelativeDocumentMoniker": "Profiles\\ProntuarioProfile.cs",
-              "ToolTip": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Profiles\\ProntuarioProfile.cs",
-              "RelativeToolTip": "Profiles\\ProntuarioProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T18:51:41.581Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TratamentoProfile.cs",
-              "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Profiles\\TratamentoProfile.cs",
-              "RelativeDocumentMoniker": "Profiles\\TratamentoProfile.cs",
-              "ToolTip": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Profiles\\TratamentoProfile.cs",
-              "RelativeToolTip": "Profiles\\TratamentoProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T18:51:40.272Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "appsettings.Development.json",
-              "ToolTip": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\appsettings.Development.json",
-              "RelativeToolTip": "appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-26T18:47:31.337Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioV2\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T18:45:50.972Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "client_secret_782343125559-ueb7ppgscfsm3prikmlgkqsc4ksrfh9c.apps.googleusercontent.com.json",
               "DocumentMoniker": "C:\\Users\\hkios\\Downloads\\client_secret_782343125559-ueb7ppgscfsm3prikmlgkqsc4ksrfh9c.apps.googleusercontent.com.json",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Downloads\\client_secret_782343125559-ueb7ppgscfsm3prikmlgkqsc4ksrfh9c.apps.googleusercontent.com.json",
@@ -156,7 +37,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "ConsultorioWPF.csproj",
               "DocumentMoniker": "C:\\Users\\hkios\\source\\repos\\Projetos Pessoais\\ConsultorioWPF\\ConsultorioWPF.csproj",
               "RelativeDocumentMoniker": "..\\ConsultorioWPF\\ConsultorioWPF.csproj",
@@ -164,8 +45,7 @@
               "RelativeToolTip": "..\\ConsultorioWPF\\ConsultorioWPF.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-26T05:48:20.078Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T05:48:20.078Z"
             }
           ]
         }
