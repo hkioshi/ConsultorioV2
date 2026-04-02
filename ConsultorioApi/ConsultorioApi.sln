@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultorioApi", "ConsultorioApi.csproj", "{46BDA4AD-C46E-439E-B7B0-3DAF6187005B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsultorioWPF", "..\ConsultorioWPF\ConsultorioWPF.csproj", "{53C919DE-D248-4CC7-8006-3CDCBDB2151A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46BDA4AD-C46E-439E-B7B0-3DAF6187005B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46BDA4AD-C46E-439E-B7B0-3DAF6187005B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46BDA4AD-C46E-439E-B7B0-3DAF6187005B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46BDA4AD-C46E-439E-B7B0-3DAF6187005B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C919DE-D248-4CC7-8006-3CDCBDB2151A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C919DE-D248-4CC7-8006-3CDCBDB2151A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C919DE-D248-4CC7-8006-3CDCBDB2151A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C919DE-D248-4CC7-8006-3CDCBDB2151A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A1E54DB-48B0-4FF8-A1D6-396BB072533F}
+	EndGlobalSection
+EndGlobal
