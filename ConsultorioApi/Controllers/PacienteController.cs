@@ -41,6 +41,8 @@ public class PacienteController: ControllerBase
         {
             var paciente = _mapper.Map<Paciente>(pacienteDto);
             _context.Pacientes.Add(paciente);
+            Console.WriteLine(paciente.Id);
+
             _context.SaveChanges();
             return CreatedAtAction(nameof(ExibirTodosPacientes), new { id = paciente.Id }, paciente);
         }

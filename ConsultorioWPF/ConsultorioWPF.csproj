@@ -8,4 +8,18 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Page Remove="Views\WindowResources_DraCelia.xaml" />
+    <Page Remove="WindowResources_DraCelia.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\WindowResources_DraCelia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="WindowResources_DraCelia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
 </Project>

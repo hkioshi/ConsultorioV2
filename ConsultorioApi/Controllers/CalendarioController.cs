@@ -75,7 +75,7 @@ public class CalendarioController : ControllerBase
     }
 
     [Authorize]
-    [HttpGet()]
+    [HttpGet]
     public async Task<IActionResult> Calendarios()
     {
         var accessToken = await HttpContext.GetTokenAsync("access_token");

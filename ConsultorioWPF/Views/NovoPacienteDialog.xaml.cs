@@ -1,8 +1,13 @@
+using ConsultorioWPF.Models; // ajuste para o namespace do seu projeto
 using System;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
+
 using System.Windows.Controls;
-using ConsultorioWPF.Models; // ajuste para o namespace do seu projeto
 
 namespace ConsultorioWPF.Views;
 
@@ -159,46 +164,64 @@ public partial class NovoPacienteDialog : Window
     // ══════════════════════════════════════════
     // VALIDAÇÃO E SALVAR
     // ══════════════════════════════════════════
-    private void BtnSalvar_Click(object sender, RoutedEventArgs e)
+    private async void BtnSalvar_Click(object sender, RoutedEventArgs e)
     {
         if (!Validar()) return;
-
-        PacienteSalvo = new Paciente
+        Console.Beep();
+        var PacienteSalvo = new Paciente
         {
-            Nome              = TxtNome.Text.Trim(),
-            Cpf               = TxtCpf.Text.Trim(),
-            Rg                = TxtRg.Text.Trim(),
-            DataNascimento    = DtNascimento.SelectedDate ?? DateTime.MinValue,
-            Genero            = (CmbGenero.SelectedItem as ComboBoxItem)?.Content?.ToString(),
-            EstadoCivil       = (CmbEstadoCivil.SelectedItem as ComboBoxItem)?.Content?.ToString(),
+            Nome = TxtNome.Text.Trim(),
+            Cpf = TxtCpf.Text.Trim(),
+            Rg = TxtRg.Text.Trim(),
+            DataNascimento = DtNascimento.SelectedDate ?? DateTime.MinValue,
+            Genero = (CmbGenero.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "",
+            EstadoCivil = (CmbEstadoCivil.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "",
 
             // IDs viriam de um ViewModel/binding real
             PessoaResponsavelId = 0,
-            RecomendadoPorId    = 0,
+            RecomendadoPorId = 0,
 
-            Cep               = TxtCep.Text.Trim(),
-            Logradouro        = TxtLogradouro.Text.Trim(),
-            Numero            = TxtNumero.Text.Trim(),
-            Complemento       = TxtComplemento.Text.Trim(),
-            Bairro            = TxtBairro.Text.Trim(),
-            Cidade            = TxtCidade.Text.Trim(),
-            Estado            = (CmbEstado.SelectedItem as ComboBoxItem)?.Content?.ToString(),
-            Telefone          = TxtTelefone.Text.Trim(),
-            Email             = TxtEmail.Text.Trim(),
+            Cep = TxtCep.Text.Trim(),
+            Logradouro = TxtLogradouro.Text.Trim(),
+            Numero = TxtNumero.Text.Trim(),
+            Complemento = TxtComplemento.Text.Trim(),
+            Bairro = TxtBairro.Text.Trim(),
+            Cidade = TxtCidade.Text.Trim(),
+            Estado = (CmbEstado.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "",
+            Telefone = TxtTelefone.Text.Trim(),
+            Email = TxtEmail.Text.Trim(),
 
-            NomePai           = TxtNomePai.Text.Trim(),
-            NomeMae           = TxtNomeMae.Text.Trim(),
-            NomeConjuge       = TxtNomeConjuge.Text.Trim(),
-            Profissao         = TxtProfissao.Text.Trim(),
-            ConheceuPor       = CmbConheceuPor.SelectedIndex,
-            Observacoes       = TxtObservacoes.Text.Trim(),
-            Convenio          = TxtConvenio.Text.Trim(),
-            NumeroConvenio    = TxtNumeroConvenio.Text.Trim(),
-            PreferenciaHorario = (CmbPreferenciaHorario.SelectedItem as ComboBoxItem)?.Content?.ToString(),
+            NomePai = TxtNomePai.Text.Trim(),
+            NomeMae = TxtNomeMae.Text.Trim(),
+            NomeConjuge = TxtNomeConjuge.Text.Trim(),
+            Profissao = TxtProfissao.Text.Trim(),
+            ConheceuPor = CmbConheceuPor.SelectedIndex,
+            Observacoes = TxtObservacoes.Text.Trim(),
+            Convenio = TxtConvenio.Text.Trim(),
+            NumeroConvenio = TxtNumeroConvenio.Text.Trim(),
+            PreferenciaHorario = (CmbPreferenciaHorario.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "",
             QueroReceberLembretes = ChkReceberLembretes.IsChecked ?? false,
         };
 
-        DialogResult = true;
+        string urlPaciente = "https://localhost:7256/Paciente";
+        string urlProntuario = "https://localhost:7256/Prontuario";
+        HttpClient client = new();
+        var response = await client.PostAsync(
+            urlPaciente, 
+            new StringContent(
+                JsonSerializer.Serialize(PacienteSalvo), 
+                Encoding.UTF8, "application/json"));
+
+        var pacienteCriado = await response.Content.ReadFromJsonAsync<Paciente>();
+
+        var contentProntuario = new StringContent(JsonSerializer.Serialize(
+            new ProntuarioId { PacienteId = pacienteCriado.Id }), 
+            Encoding.UTF8, "application/json");
+
+        var responseProntuario = await client.PostAsync(urlProntuario, contentProntuario);
+
+        
+
         Close();
     }
 
