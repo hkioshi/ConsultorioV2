@@ -283,9 +283,7 @@
             <Grid Grid.Column="0">
 
                 <TextBox x:Name="TxtBusca"
-                         Style="{StaticResource SearchBox}" 
-                        
-                        Text=""
+                         Style="{StaticResource SearchBox}"
                          TextChanged="TxtBusca_TextChanged">
                     <TextBox.Resources>
                         <Style TargetType="Border" BasedOn="{x:Null}"/>
@@ -323,9 +321,9 @@
 
             <!-- Filter chips -->
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <RadioButton Content="ID"   Style="{StaticResource FilterChip}" IsChecked="True" Margin="0,0,6,0" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Nome"  Style="{StaticResource FilterChip}" Margin="0,0,6,0"/>
-                <RadioButton Content="CPF" Style="{StaticResource FilterChip}" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbId" Content="ID"   Style="{StaticResource FilterChip}" IsChecked="True" Margin="0,0,6,0" Checked="RadioButton_Checked"/>
+                <RadioButton x:Name="rdbNome" Content="Nome"  Style="{StaticResource FilterChip}" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbCPF" Content="CPF" Style="{StaticResource FilterChip}" Margin="0,0,6,0"/>
             </StackPanel>
         </Grid>
 
@@ -349,7 +347,8 @@
                         Background="#142C3F"
                         BorderBrush="#243F52"
                         BorderThickness="0,0,0,1"
-                        Padding="16,10">
+                        Padding="16,10"
+                        CornerRadius="8,8,0,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="20"/>
@@ -385,8 +384,51 @@
                            Style="{StaticResource ColHeader}" />    
                     </Grid>
                 </Border>
-            </Grid>
-        </Border>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Pacientes}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource TableRow}">
+                                    <Grid Height="56">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20"/>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
 
+                                        <TextBlock Grid.Column="0"
+       Text="{Binding Id}"
+       Style="{StaticResource CellPrimary}"/>
+
+                                        <TextBlock Grid.Column="1"
+       Text="{Binding Nome}"
+       Style="{StaticResource CellPrimary}"/>
+
+                                        <TextBlock Grid.Column="2"
+       Text="{Binding Telefone}"
+       Style="{StaticResource CellMuted}"/>
+
+                                        <TextBlock Grid.Column="3"
+       Text="{Binding CPF}"
+       Style="{StaticResource CellMuted}"/>
+
+                                        <Border Grid.Column="4"
+    Style="{StaticResource TagAtivo}">
+                                            <TextBlock Text="Ativo"
+           Foreground="#6EE7A8"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+            
+        </Border>
+        
     </Grid>
 </UserControl>

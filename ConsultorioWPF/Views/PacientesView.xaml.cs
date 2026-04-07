@@ -1,11 +1,20 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-
+using ConsultorioWPF.Models;
+using ConsultorioWPF.ViewModels;
+using System.Text.Json;
 namespace ConsultorioWPF.Views;
 
 public partial class PacientesView : UserControl
 {
-    public PacientesView() => InitializeComponent();
+    PacienteViewModel _PacienteVM;
+    public PacientesView()
+    {
+        InitializeComponent();
+        _PacienteVM = new();
+        DataContext = _PacienteVM;
+    }
+
     private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e)
     {
         // TODO: Abrir janela/dialog de cadastro de novo paciente
@@ -17,12 +26,65 @@ public partial class PacientesView : UserControl
         }
     }
 
-    private void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
+    private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
     {
         // TODO: Filtrar lista de pacientes conforme o texto digitado
-        // Exemplo com binding/ViewModel: ViewModel.FiltrarPacientes(TxtBusca.Text);
-    }
+        if (TxtBusca.Text == "") return;
 
+
+
+        if (rdbCPF.IsChecked == true)
+        {
+            try
+            {
+                // Filtrar por CPF
+                var response = await _PacienteVM.BuscarPacientePorCPF(TxtBusca.Text);
+                if (response is null) return;
+                MessageBox.Show(response.Nome);
+                _PacienteVM.Pacientes.Clear();
+                _PacienteVM.Pacientes.Add(response);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+        else if (rdbId.IsChecked == true)
+        {
+            try
+            {
+                // Filtrar por ID
+                var response = await _PacienteVM.BuscarPacientePorId(TxtBusca.Text);
+                if (response is null) return;
+                _PacienteVM.Pacientes.Clear();
+                _PacienteVM.Pacientes.Add(response);
+            }
+            catch (JsonException ex) 
+            {
+                _PacienteVM.Pacientes.Clear();
+            }
+            catch (Exception ex)
+            {
+                _PacienteVM.Pacientes.Clear();
+                MessageBox.Show(ex.Message);
+                TxtBusca.Text = "";
+            }
+           
+            
+        }
+        else if (rdbNome.IsChecked == true)
+        {
+            // Filtrar por Nome
+            var response = await _PacienteVM.BuscarPacientePorNome(TxtBusca.Text);
+            if (response is null) return;
+            _PacienteVM.Pacientes.Clear();
+
+
+            foreach (Paciente i in response) _PacienteVM.Pacientes.Add(i);    
+            
+        }
+    }
     private void BtnEditar_Click(object sender, RoutedEventArgs e)
     {
         var btn = sender as Button;

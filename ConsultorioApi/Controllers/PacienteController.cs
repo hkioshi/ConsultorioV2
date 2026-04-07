@@ -8,7 +8,7 @@ namespace ConsultorioApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PacienteController: ControllerBase
+public class PacienteController : ControllerBase
 {
     private ConsultorioContext _context;
     private IMapper _mapper;
@@ -16,7 +16,7 @@ public class PacienteController: ControllerBase
     {
         _context = context;
         _mapper = mapper;
-       
+
     }
 
     [HttpGet]
@@ -25,6 +25,53 @@ public class PacienteController: ControllerBase
         try
         {
             return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.ToList()));
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpGet("BuscarPorId/{id}")]
+    public IActionResult PacientePorId(int id)
+    {
+        try
+        {
+            return Ok(_mapper.Map<ReadPacienteDto>(_context.Pacientes.FirstOrDefault(i => i.Id.Equals(id))));
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+
+
+    }
+
+    [HttpGet("BuscarPorNome/{Nome}")]
+    public IActionResult AcharPorNome(string Nome)
+    {
+        try
+        {
+            return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.Where(i => i.Nome.Contains(Nome))));
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpGet("BuscarPorCPF/{CPF}")]
+    public IActionResult AcharPorCPF(string CPF)
+    {
+        try
+        {
+            return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.Where(i => i.Cpf.Contains(CPF))));
         }
         catch (Exception e)
         {

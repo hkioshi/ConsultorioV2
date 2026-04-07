@@ -1,5 +1,4 @@
-using ConsultorioWPF.Models; // ajuste para o namespace do seu projeto
-using System;
+using ConsultorioWPF.Models; 
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
@@ -219,8 +218,6 @@ public partial class NovoPacienteDialog : Window
             Encoding.UTF8, "application/json");
 
         var responseProntuario = await client.PostAsync(urlProntuario, contentProntuario);
-
-        
 
         Close();
     }
