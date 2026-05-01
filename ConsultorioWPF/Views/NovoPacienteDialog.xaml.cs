@@ -262,4 +262,9 @@ public partial class NovoPacienteDialog : Window
         DialogResult = false;
         Close();
     }
+
+    private void CmbRecomendadoPor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
 }

@@ -105,8 +105,8 @@
 
             <!-- Filter chips -->
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <RadioButton x:Name="rdbId" Content="ID"   Style="{StaticResource rdbFiltro}" IsChecked="True" Margin="0,0,6,0"/>
-                <RadioButton x:Name="rdbNome" Content="Nome"  Style="{StaticResource rdbFiltro}" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbNome" Content="Nome"   Style="{StaticResource rdbFiltro}" IsChecked="True" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbId" Content="ID"  Style="{StaticResource rdbFiltro}" Margin="0,0,6,0"/>
                 <RadioButton x:Name="rdbCPF" Content="CPF" Style="{StaticResource rdbFiltro}" Margin="0,0,6,0"/>
             </StackPanel>
         </Grid>
