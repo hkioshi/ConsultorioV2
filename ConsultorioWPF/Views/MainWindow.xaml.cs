@@ -8,26 +8,19 @@ namespace ConsultorioWPF
         public MainWindow()
         {
             InitializeComponent();
-
             Sidebar.OnNavigate += Sidebar_OnNavigate;
-
             MainContent.Content = new InicioView();
         }
 
         private void Sidebar_OnNavigate(string view)
         {
-            switch (view)
+            MainContent.Content = view switch
             {
-                case "Inicio":
-                    MainContent.Content = new InicioView();
-                    break;
-
-                case "Pacientes":
-                    MainContent.Content = new PacientesView();
-                    break;
-                
-
-            }
+                "Inicio" => new InicioView(),
+                "Pacientes" => new PacientesView(),
+                _ => MainContent.Content 
+            };
+            
         }
     }
 }
