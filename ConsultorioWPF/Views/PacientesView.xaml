@@ -179,8 +179,8 @@
 
                                         <!-- AÇÕES -->
                                         <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Content="✏" ToolTip="Editar" Style="{StaticResource BtnAction}"/>
-                                            <Button Content="👤" ToolTip="Perfil Completo" Style="{StaticResource BtnAction}"/>
+                                            <Button Content="✏"  ToolTip="Editar" Style="{StaticResource BtnAction}"/>
+                                            <Button Content="👤" Click="Perfil_Click" ToolTip="Perfil Completo" Style="{StaticResource BtnAction}"/>
                                             <Button Content="📄" ToolTip="Prontuario"  Style="{StaticResource BtnAction}"/>
 
                                         </StackPanel>

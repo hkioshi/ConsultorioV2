@@ -106,5 +106,8 @@ public partial class PacientesView : UserControl
 
     }
 
-   
+    private void Perfil_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
 }
