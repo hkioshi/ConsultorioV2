@@ -17,21 +17,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/AdicionarPacienteStyle.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/Colors.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/MostrarPerfilStyle.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/PacientesStyle.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/App.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AdicionarPacienteStyle.xaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/Colors.xaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/MostrarPerfilStyle.xaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacientesStyle.xaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/MessageBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/MessageBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +46,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/81e33ee0b8b6475bb0fa155aabe69274198e00/9c/079cc63a/HttpConnectionPool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" root0="FORCE_HIGHLIGHTING" />
@@ -72,61 +62,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000124801949852" />
-      <entry key="MS500" value="1.104530799989258" />
-      <entry key="S2" value="1.5686055161292123" />
-      <entry key="S5" value="1.7978688630604365" />
-      <entry key="S10" value="1.896836726868273" />
-      <entry key="S30" value="2.1165679691581634" />
-      <entry key="S60" value="2.3994009255950344" />
-      <entry key="M2" value="3.1504002636868225" />
-      <entry key="M5" value="6.8446996053155695" />
-      <entry key="M10" value="12.23887758799222" />
-      <entry key="M15" value="17.148546451960474" />
-      <entry key="M30" value="36.00734204561795" />
-      <entry key="H1" value="79.18939434157252" />
-      <entry key="H2" value="139.5016490338031" />
-      <entry key="H4" value="194.78992620746078" />
-      <entry key="D1" value="264.4559973097695" />
-      <entry key="W1" value="279.40645244206814" />
+      <entry key="MS100" value="1.0066589600105438" />
+      <entry key="MS500" value="1.5508411430540097" />
+      <entry key="S2" value="2.4340230823587348" />
+      <entry key="S5" value="2.7493412124092935" />
+      <entry key="S10" value="2.8702134833204167" />
+      <entry key="S30" value="2.964287458115108" />
+      <entry key="S60" value="3.2864793832763293" />
+      <entry key="M2" value="4.996417094282767" />
+      <entry key="M5" value="11.498165616130459" />
+      <entry key="M10" value="20.553332929680888" />
+      <entry key="M15" value="27.66702836805284" />
+      <entry key="M30" value="48.3239706028196" />
+      <entry key="H1" value="91.83863895657817" />
+      <entry key="H2" value="154.21772938487786" />
+      <entry key="H4" value="213.00547477667016" />
+      <entry key="D1" value="288.7036491087069" />
+      <entry key="W1" value="305.14208525686774" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.3261397037762537E-261" />
-      <entry key="S2" value="6.058407420178767E-66" />
-      <entry key="S5" value="9.425372343615067E-27" />
-      <entry key="S10" value="1.473848321501176E-13" />
-      <entry key="S30" value="1.3044574729417763E-4" />
-      <entry key="S60" value="0.027710480996092125" />
-      <entry key="M2" value="0.46384105128779124" />
-      <entry key="M5" value="2.7911829488309547" />
-      <entry key="M10" value="5.522443939945684" />
-      <entry key="M15" value="7.4492398200264125" />
-      <entry key="M30" value="13.038482513572315" />
-      <entry key="H1" value="23.375600595157863" />
-      <entry key="H2" value="35.79896663547766" />
-      <entry key="H4" value="46.087967874025075" />
-      <entry key="D1" value="58.102076336037214" />
-      <entry key="W1" value="60.57441087160493" />
+      <entry key="MS500" value="4.4582633487302003E-188" />
+      <entry key="S2" value="1.453086371850098E-47" />
+      <entry key="S5" value="1.8404184224052884E-19" />
+      <entry key="S10" value="4.2900098163119483E-10" />
+      <entry key="S30" value="7.541992503906598E-4" />
+      <entry key="S60" value="0.027466054589514115" />
+      <entry key="M2" value="0.17083108215943968" />
+      <entry key="M5" value="0.947174394697197" />
+      <entry key="M10" value="2.9397541460107592" />
+      <entry key="M15" value="4.870832008134974" />
+      <entry key="M30" value="10.54114489283908" />
+      <entry key="H1" value="21.05612807411943" />
+      <entry key="H2" value="34.17838479213103" />
+      <entry key="H4" value="45.37389232760592" />
+      <entry key="D1" value="58.736945759215125" />
+      <entry key="W1" value="61.51989955184085" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7526345437929355" />
-      <entry key="MS500" value="1.0469847983169287" />
-      <entry key="S2" value="1.5513521850405814" />
-      <entry key="S5" value="1.7904331037149417" />
-      <entry key="S10" value="1.8929620617344438" />
-      <entry key="S30" value="2.1147251164222753" />
-      <entry key="S60" value="2.4250174515788303" />
-      <entry key="M2" value="3.6083618220658" />
-      <entry key="M5" value="9.623405838545679" />
-      <entry key="M10" value="17.748503669793745" />
-      <entry key="M15" value="24.585696807674367" />
-      <entry key="M30" value="49.03366772128236" />
-      <entry key="H1" value="102.55251815590908" />
-      <entry key="H2" value="175.29032935259218" />
-      <entry key="H4" value="240.87104034133318" />
-      <entry key="D1" value="322.5565951622402" />
-      <entry key="W1" value="339.9806421776554" />
+      <entry key="MS100" value="0.7628028689500742" />
+      <entry key="MS500" value="1.3386341473156087" />
+      <entry key="S2" value="2.218137656478797" />
+      <entry key="S5" value="2.629939294302123" />
+      <entry key="S10" value="2.803551109971609" />
+      <entry key="S30" value="2.941061821983669" />
+      <entry key="S60" value="3.300835754166925" />
+      <entry key="M2" value="5.158183051321117" />
+      <entry key="M5" value="12.437181797730222" />
+      <entry key="M10" value="23.48387449174141" />
+      <entry key="M15" value="32.52826350446918" />
+      <entry key="M30" value="58.85445242347593" />
+      <entry key="H1" value="112.88314916373864" />
+      <entry key="H2" value="188.3861177833202" />
+      <entry key="H4" value="258.37253521783117" />
+      <entry key="D1" value="347.4390866362515" />
+      <entry key="W1" value="366.6617582899344" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -164,7 +154,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "project.propDebugger",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -258,6 +248,7 @@
       <workItem from="1781028168714" duration="195000" />
       <workItem from="1781028399192" duration="126000" />
       <workItem from="1781028705839" duration="12567000" />
+      <workItem from="1781042104469" duration="1750000" />
     </task>
     <servers />
   </component>
@@ -266,6 +257,17 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -284,6 +286,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs</url>
+          <line>24</line>
+          <properties documentPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" containingFunctionPresentation="Method 'BuscarPacientePorId'">
+            <startOffsets>
+              <option value="649" />
+            </startOffsets>
+            <endOffsets>
+              <option value="650" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
