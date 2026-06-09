@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c7e93c44-0568-4b60-91e8-7727c9e606dd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.http" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/WeatherForecastController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/WeatherForecast.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/App.axaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/App.axaml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Assets/avalonia-logo.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ConsultorioInterface.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ViewLocator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ViewModels/MainWindowViewModel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ViewModels/ViewModelBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Views/MainWindow.axaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Views/MainWindow.axaml.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/app.manifest" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "hkioshi"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:hkioshi/ConsultorioV2.git",
+    "accountId": "9763f34c-250a-4a6e-875a-efa11dc08831"
+  }
+}]]></component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="3EuVdS2QKs8Tbrs2bHSEpPShI57" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "Desenvolvimento",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/henrique/repos/Projetos Pessoais/ConsultorioV2",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7e93c44-0568-4b60-91e8-7727c9e606dd" name="Changes" comment="" />
+      <created>1781028529678</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1781028529678</updated>
+      <workItem from="1781028530642" duration="169000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
