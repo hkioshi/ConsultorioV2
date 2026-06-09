@@ -4,7 +4,9 @@
     <option name="projectPerEditor">
       <map>
         <entry key="ConsultorioFront/Views/MainWindow.axaml" value="ConsultorioFront/ConsultorioFront.csproj" />
+        <entry key="ConsultorioUI/App.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/MainWindow.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Views/PacientesView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/SidebarControl.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/teste.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
       </map>

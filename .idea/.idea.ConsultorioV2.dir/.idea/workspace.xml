@@ -17,34 +17,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Models/Paciente.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Models/ProntuarioId.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AdicionarPacienteStyle.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/Colors.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/MostrarPerfilStyle.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacientesStyle.xaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/InicioView.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/InicioView.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.http" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/WeatherForecastController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/WeatherForecast.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/App.axaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/App.axaml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Assets/avalonia-logo.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ConsultorioInterface.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ViewLocator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ViewModels/MainWindowViewModel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/ViewModels/ViewModelBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Views/MainWindow.axaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/Views/MainWindow.axaml.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioInterface/app.manifest" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/AdicionarPacienteStyle.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/Colors.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/MostrarPerfilStyle.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/PacientesStyle.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/App.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/App.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AdicionarPacienteStyle.xaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/Colors.xaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/MostrarPerfilStyle.xaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacientesStyle.xaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +57,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///usr/lib/dotnet/sdk/10.0.108/Sdks/Microsoft.NET.Sdk.Web/Sdk/Sdk.props" root0="FORCE_HIGHLIGHTING" />
@@ -82,61 +72,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000008956165" />
-      <entry key="S10" value="1.0000299268508475" />
-      <entry key="S30" value="1.0310470499028501" />
-      <entry key="S60" value="1.1762018182280758" />
-      <entry key="M2" value="1.4203151293317164" />
-      <entry key="M5" value="1.9231315495686958" />
-      <entry key="M10" value="4.3423862356835725" />
-      <entry key="M15" value="8.544862520129596" />
-      <entry key="M30" value="22.927477352918494" />
-      <entry key="H1" value="43.39811598593669" />
-      <entry key="H2" value="62.45777777886093" />
-      <entry key="H4" value="75.87762035165521" />
-      <entry key="D1" value="89.8426647881571" />
-      <entry key="W1" value="92.5408150397594" />
+      <entry key="MS100" value="1.0000124801949852" />
+      <entry key="MS500" value="1.104530799989258" />
+      <entry key="S2" value="1.5686055161292123" />
+      <entry key="S5" value="1.7978688630604365" />
+      <entry key="S10" value="1.896836726868273" />
+      <entry key="S30" value="2.1165679691581634" />
+      <entry key="S60" value="2.3994009255950344" />
+      <entry key="M2" value="3.1504002636868225" />
+      <entry key="M5" value="6.8446996053155695" />
+      <entry key="M10" value="12.23887758799222" />
+      <entry key="M15" value="17.148546451960474" />
+      <entry key="M30" value="36.00734204561795" />
+      <entry key="H1" value="79.18939434157252" />
+      <entry key="H2" value="139.5016490338031" />
+      <entry key="H4" value="194.78992620746078" />
+      <entry key="D1" value="264.4559973097695" />
+      <entry key="W1" value="279.40645244206814" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="9.464086805847818E-77" />
-      <entry key="S2" value="9.86324176961325E-20" />
-      <entry key="S5" value="2.4980887956854677E-8" />
-      <entry key="S10" value="1.5805343386606527E-4" />
-      <entry key="S30" value="0.05406729537234003" />
-      <entry key="S60" value="0.2325237523615295" />
-      <entry key="M2" value="0.48223097666967607" />
-      <entry key="M5" value="0.7982104185804896" />
-      <entry key="M10" value="1.5653971800604614" />
-      <entry key="M15" value="2.6225139121050045" />
-      <entry key="M30" value="5.284132132091108" />
-      <entry key="H1" value="8.047206725843933" />
-      <entry key="H2" value="10.140053383507736" />
-      <entry key="H4" value="11.453986710443885" />
-      <entry key="D1" value="12.724052969684024" />
-      <entry key="W1" value="12.960099388082307" />
+      <entry key="MS500" value="1.3261397037762537E-261" />
+      <entry key="S2" value="6.058407420178767E-66" />
+      <entry key="S5" value="9.425372343615067E-27" />
+      <entry key="S10" value="1.473848321501176E-13" />
+      <entry key="S30" value="1.3044574729417763E-4" />
+      <entry key="S60" value="0.027710480996092125" />
+      <entry key="M2" value="0.46384105128779124" />
+      <entry key="M5" value="2.7911829488309547" />
+      <entry key="M10" value="5.522443939945684" />
+      <entry key="M15" value="7.4492398200264125" />
+      <entry key="M30" value="13.038482513572315" />
+      <entry key="H1" value="23.375600595157863" />
+      <entry key="H2" value="35.79896663547766" />
+      <entry key="H4" value="46.087967874025075" />
+      <entry key="D1" value="58.102076336037214" />
+      <entry key="W1" value="60.57441087160493" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.008728805766189219" />
-      <entry key="MS500" value="0.3874279654795857" />
-      <entry key="S2" value="0.7889468408524652" />
-      <entry key="S5" value="0.9095343540233618" />
-      <entry key="S10" value="0.9538727486805612" />
-      <entry key="S30" value="1.0682200538131315" />
-      <entry key="S60" value="1.398216929275754" />
-      <entry key="M2" value="1.8958496078542033" />
-      <entry key="M5" value="2.717455837484748" />
-      <entry key="M10" value="5.902711611014405" />
-      <entry key="M15" value="11.161003288946757" />
-      <entry key="M30" value="28.204679534818442" />
-      <entry key="H1" value="51.439948063975" />
-      <entry key="H2" value="72.59443368046996" />
-      <entry key="H4" value="87.32968829320174" />
-      <entry key="D1" value="102.56636285920929" />
-      <entry key="W1" value="105.50086280117556" />
+      <entry key="MS100" value="0.7526345437929355" />
+      <entry key="MS500" value="1.0469847983169287" />
+      <entry key="S2" value="1.5513521850405814" />
+      <entry key="S5" value="1.7904331037149417" />
+      <entry key="S10" value="1.8929620617344438" />
+      <entry key="S30" value="2.1147251164222753" />
+      <entry key="S60" value="2.4250174515788303" />
+      <entry key="M2" value="3.6083618220658" />
+      <entry key="M5" value="9.623405838545679" />
+      <entry key="M10" value="17.748503669793745" />
+      <entry key="M15" value="24.585696807674367" />
+      <entry key="M30" value="49.03366772128236" />
+      <entry key="H1" value="102.55251815590908" />
+      <entry key="H2" value="175.29032935259218" />
+      <entry key="H4" value="240.87104034133318" />
+      <entry key="D1" value="322.5565951622402" />
+      <entry key="W1" value="339.9806421776554" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -267,7 +257,7 @@
       <workItem from="1781023062368" duration="5066000" />
       <workItem from="1781028168714" duration="195000" />
       <workItem from="1781028399192" duration="126000" />
-      <workItem from="1781028705839" duration="4336000" />
+      <workItem from="1781028705839" duration="12567000" />
     </task>
     <servers />
   </component>

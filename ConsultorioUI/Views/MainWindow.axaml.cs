@@ -23,7 +23,9 @@ public partial class MainWindow : Window
         _mainContent.Content = view switch
         {
             "Inicio" => new InicioView(),
+            "Pacientes" => new PacientesView(),
             _ => _mainContent.Content
+            
         };
     }
 }
