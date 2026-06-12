@@ -5,11 +5,13 @@
     <SolidColorBrush x:Key="PageBg"       Color="#F4F9FB"/>
     <SolidColorBrush x:Key="CardBg"       Color="#FFFFFF"/>
     <SolidColorBrush x:Key="CardBorder"   Color="#DCE9EF"/>
+    <SolidColorBrush x:Key="TableBg" Color="#DAE2E6"/>
 
+    
     <!-- Interação -->
     <SolidColorBrush x:Key="RowHover"     Color="#EAF6FB"/>
     <SolidColorBrush x:Key="RowSeparator" Color="#E1EEF4"/>
-
+    
     <!-- Destaques -->
     <SolidColorBrush x:Key="AccentBlue"   Color="#3A8DDE"/>
     <SolidColorBrush x:Key="AccentMint"   Color="#5EC6B8"/>
@@ -25,5 +27,12 @@
     <SolidColorBrush x:Key="InputBorder"  Color="#CFE3EC"/>
     <SolidColorBrush x:Key="InputFocus"   Color="#3A8DDE"/>
     <SolidColorBrush x:Key="AccentPurple" Color="#A855C8"/>
+    
+    
+    <SolidColorBrush x:Key="InputPlaceholder" Color="#2E5566"/>
 
+    <SolidColorBrush x:Key="ComboHoverBorder"    Color="#4A90B8"/>
+    <SolidColorBrush x:Key="ComboItemForeground" Color="#2E6E99"/>
+    <SolidColorBrush x:Key="ComboItemSelected"   Color="#EAF4FA"/>
+    
 </ResourceDictionary>

@@ -1,0 +1,369 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ConsultorioUI.Views.NovoPacienteDialog"
+        Title="Novo Paciente"
+        Width="780" Height="700"
+        MinWidth="680" MinHeight="580"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource PageBg}"
+        FontFamily="Segoe UI"
+        CanResize="True">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- ══ HEADER ══ -->
+        <Border Grid.Row="0"
+                BorderBrush="{DynamicResource CardBorder}"
+                BorderThickness="0,0,0,1"
+                Padding="28,20">
+            <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Cadastro de Paciente"
+                               Foreground="{DynamicResource TextPrimary}"
+                               FontSize="16"
+                               FontWeight="SemiBold"/>
+                    <TextBlock Text="Preencha os dados abaixo para adicionar um novo paciente"
+                               Foreground="{DynamicResource TextPrimary}"
+                               FontSize="11"
+                               Margin="0,3,0,0"/>
+                </StackPanel>
+                <Button Grid.Column="1"
+                        Content="✕"
+                        Foreground="{DynamicResource TextPrimary}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="16"
+                        Cursor="Hand"
+                        VerticalAlignment="Center"
+                        Click="BtnFechar_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- ══ TABS ══ -->
+        <Border Grid.Row="1"
+                Background="{DynamicResource AccentBlue}"
+                BorderBrush="{DynamicResource AccentSoft}"
+                BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" Margin="12,0">
+                <RadioButton Content="Dados Pessoais"
+                             GroupName="Tabs"
+                             Theme="{DynamicResource TabBtn}"
+                             IsChecked="True"
+                             Tag="TabPessoal"
+                             IsCheckedChanged="Tab_Checked"/>
+                <RadioButton Content="Endereço e Contato"
+                             GroupName="Tabs"
+                             Theme="{DynamicResource TabBtn}"
+                             Tag="TabContato"
+                             IsCheckedChanged="Tab_Checked"/>
+                <RadioButton Content="Informações Extras"
+                             GroupName="Tabs"
+                             Theme="{DynamicResource TabBtn}"
+                             Tag="TabExtra"
+                             IsCheckedChanged="Tab_Checked"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ══ CONTEÚDO DAS TABS ══ -->
+        <ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Padding="28,24,28,8">
+            <StackPanel>
+
+                <!-- ════ TAB 1: DADOS PESSOAIS ════ -->
+                <StackPanel x:Name="TabPessoal" IsVisible="True">
+
+                    <TextBlock Theme="{DynamicResource SectionTitle}" Text="IDENTIFICAÇÃO"/>
+
+                    <!-- Nome -->
+                    <StackPanel Margin="0,0,0,14">
+                        <TextBlock Theme="{DynamicResource FieldLabel}" Text="Nome completo *"/>
+                        <TextBox x:Name="TxtNome" Theme="{DynamicResource FormInput}"/>
+                    </StackPanel>
+
+                    <!-- CPF / RG -->
+                    <Grid ColumnDefinitions="*,16,*" Margin="0,0,0,14">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="CPF *"/>
+                            <TextBox x:Name="TxtCpf"
+                                     Theme="{DynamicResource FormInput}"
+                                     MaxLength="14"
+                                     TextChanging="TxtCpf_TextChanging"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="RG"/>
+                            <TextBox x:Name="TxtRg"
+                                     Theme="{DynamicResource FormInput}"
+                                     MaxLength="15"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Data Nasc / Gênero / Estado Civil -->
+                    <Grid ColumnDefinitions="*,16,*,16,*" Margin="0,0,0,14">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Data de nascimento *"/>
+                            <!-- Avalonia: DatePicker não usa Language; configure CultureInfo no code-behind -->
+                            <DatePicker x:Name="DtNascimento"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Gênero"/>
+                            <ComboBox x:Name="CmbGenero" Theme="{DynamicResource FormCombo}">
+                                <ComboBoxItem Content="Feminino"/>
+                                <ComboBoxItem Content="Masculino"/>
+                                <ComboBoxItem Content="Não binário"/>
+                                <ComboBoxItem Content="Prefiro não informar"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Estado civil"/>
+                            <ComboBox x:Name="CmbEstadoCivil" Theme="{DynamicResource FormCombo}">
+                                <ComboBoxItem Content="Solteiro(a)"/>
+                                <ComboBoxItem Content="Casado(a)"/>
+                                <ComboBoxItem Content="Divorciado(a)"/>
+                                <ComboBoxItem Content="Viúvo(a)"/>
+                                <ComboBoxItem Content="União estável"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Responsável / Recomendado por -->
+                    <Grid ColumnDefinitions="*,16,*" Margin="0,0,0,4">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Pessoa responsável"/>
+                            <ComboBox x:Name="CmbResponsavel" Theme="{DynamicResource FormCombo}">
+                                <ComboBoxItem Content="— Selecione —"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Recomendado por"/>
+                            <ComboBox x:Name="CmbRecomendadoPor"
+                                      Theme="{DynamicResource FormCombo}"
+                                      SelectionChanged="CmbRecomendadoPor_SelectionChanged">
+                                <ComboBoxItem Content="— Selecione —"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+
+                </StackPanel>
+
+                <!-- ════ TAB 2: ENDEREÇO E CONTATO ════ -->
+                <StackPanel x:Name="TabContato" IsVisible="False">
+
+                    <TextBlock Theme="{DynamicResource SectionTitle}" Text="ENDEREÇO"/>
+
+                    <!-- CEP -->
+                    <Grid ColumnDefinitions="180,16,*" Margin="0,0,0,14">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="CEP"/>
+                            <Panel>
+                                <TextBox x:Name="TxtCep"
+                                         Theme="{DynamicResource FormInput}"
+                                         MaxLength="9"
+                                         TextChanging="TxtCep_TextChanging"/>
+                                <Button x:Name="BtnBuscarCep"
+                                        Content="Buscar"
+                                        Foreground="#7ECFEE"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        FontSize="11"
+                                        FontWeight="SemiBold"
+                                        Cursor="Hand"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Margin="0,0,8,0"
+                                        Click="BtnBuscarCep_Click"/>
+                            </Panel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Logradouro"/>
+                            <TextBox x:Name="TxtLogradouro" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Número / Complemento -->
+                    <Grid ColumnDefinitions="140,16,*" Margin="0,0,0,14">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Número"/>
+                            <TextBox x:Name="TxtNumero"
+                                     Theme="{DynamicResource FormInput}"
+                                     MaxLength="10"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Complemento"/>
+                            <TextBox x:Name="TxtComplemento" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Bairro / Cidade / Estado -->
+                    <Grid ColumnDefinitions="*,16,*,16,100" Margin="0,0,0,20">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Bairro"/>
+                            <TextBox x:Name="TxtBairro" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Cidade"/>
+                            <TextBox x:Name="TxtCidade" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="UF"/>
+                            <ComboBox x:Name="CmbEstado" Theme="{DynamicResource FormCombo}">
+                                <ComboBoxItem Content="SP"/>
+                                <ComboBoxItem Content="RJ"/>
+                                <ComboBoxItem Content="MG"/>
+                                <ComboBoxItem Content="RS"/>
+                                <ComboBoxItem Content="PR"/>
+                                <ComboBoxItem Content="SC"/>
+                                <ComboBoxItem Content="BA"/>
+                                <ComboBoxItem Content="GO"/>
+                                <ComboBoxItem Content="DF"/>
+                                <ComboBoxItem Content="PE"/>
+                                <ComboBoxItem Content="CE"/>
+                                <ComboBoxItem Content="AM"/>
+                                <ComboBoxItem Content="PA"/>
+                                <ComboBoxItem Content="MT"/>
+                                <ComboBoxItem Content="MS"/>
+                                <ComboBoxItem Content="ES"/>
+                                <ComboBoxItem Content="RN"/>
+                                <ComboBoxItem Content="PB"/>
+                                <ComboBoxItem Content="AL"/>
+                                <ComboBoxItem Content="PI"/>
+                                <ComboBoxItem Content="SE"/>
+                                <ComboBoxItem Content="MA"/>
+                                <ComboBoxItem Content="TO"/>
+                                <ComboBoxItem Content="RO"/>
+                                <ComboBoxItem Content="AC"/>
+                                <ComboBoxItem Content="AP"/>
+                                <ComboBoxItem Content="RR"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+
+                    <Border Background="#1E3D52" Height="1" Margin="0,0,0,20"/>
+
+                    <TextBlock Theme="{DynamicResource SectionTitle}" Text="CONTATO"/>
+
+                    <!-- Telefone / Email -->
+                    <Grid ColumnDefinitions="*,16,*" Margin="0,0,0,14">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Telefone / WhatsApp *"/>
+                            <TextBox x:Name="TxtTelefone"
+                                     Theme="{DynamicResource FormInput}"
+                                     MaxLength="15"
+                                     TextChanging="TxtTelefone_TextChanging"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="E-mail"/>
+                            <TextBox x:Name="TxtEmail" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                    </Grid>
+
+                </StackPanel>
+
+                <!-- ════ TAB 3: INFORMAÇÕES EXTRAS ════ -->
+                <StackPanel x:Name="TabExtra" IsVisible="False">
+
+                    <TextBlock Theme="{DynamicResource SectionTitle}" Text="FAMÍLIA"/>
+
+                    <Grid ColumnDefinitions="*,16,*" Margin="0,0,0,14">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Nome do pai"/>
+                            <TextBox x:Name="TxtNomePai" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Nome da mãe"/>
+                            <TextBox x:Name="TxtNomeMae" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,16,*" Margin="0,0,0,20">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Nome do cônjuge"/>
+                            <TextBox x:Name="TxtNomeConjuge" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Profissão"/>
+                            <TextBox x:Name="TxtProfissao" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Border Background="#1E3D52" Height="1" Margin="0,0,0,20"/>
+                    <TextBlock Theme="{DynamicResource SectionTitle}" Text="CONVÊNIO"/>
+
+                    <Grid ColumnDefinitions="*,16,*" Margin="0,0,0,20">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Convênio"/>
+                            <TextBox x:Name="TxtConvenio" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Número do convênio"/>
+                            <TextBox x:Name="TxtNumeroConvenio" Theme="{DynamicResource FormInput}"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <Border Background="#1E3D52" Height="1" Margin="0,0,0,20"/>
+                    <TextBlock Theme="{DynamicResource SectionTitle}" Text="PREFERÊNCIAS"/>
+
+                    <Grid ColumnDefinitions="*,16,*" Margin="0,0,0,14">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Como nos conheceu"/>
+                            <ComboBox x:Name="CmbConheceuPor" Theme="{DynamicResource FormCombo}">
+                                <ComboBoxItem Content="Indicação de paciente"/>
+                                <ComboBoxItem Content="Redes sociais"/>
+                                <ComboBoxItem Content="Google"/>
+                                <ComboBoxItem Content="Plano de saúde"/>
+                                <ComboBoxItem Content="Outro"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Theme="{DynamicResource FieldLabel}" Text="Preferência de horário"/>
+                            <ComboBox x:Name="CmbPreferenciaHorario" Theme="{DynamicResource FormCombo}">
+                                <ComboBoxItem Content="Manhã"/>
+                                <ComboBoxItem Content="Tarde"/>
+                                <ComboBoxItem Content="Qualquer horário"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel Margin="0,0,0,14">
+                        <TextBlock Theme="{DynamicResource FieldLabel}" Text="Observações"/>
+                        <TextBox x:Name="TxtObservacoes" Theme="{DynamicResource FormTextArea}"/>
+                    </StackPanel>
+
+                    <CheckBox x:Name="ChkReceberLembretes"
+                              Theme="{DynamicResource ToggleCheck}"
+                              Content="Quero receber lembretes de consultas"
+                              IsChecked="True"
+                              Margin="0,4,0,0"/>
+
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- ══ FOOTER ══ -->
+        <Border Grid.Row="3"
+                Background="{DynamicResource PageBg}"
+                BorderBrush="{DynamicResource CardBorder}"
+                BorderThickness="0,1,0,0"
+                Padding="28,16">
+            <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Grid.Column="0"
+                           Text="* Campos obrigatórios"
+                           Foreground="{DynamicResource TextPrimary}"
+                           FontSize="11"
+                           VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="Cancelar"
+                            Theme="{DynamicResource BtnPrimary}"
+                            Margin="0,0,10,0"
+                            Click="BtnFechar_Click"/>
+                    <Button Content="Salvar Paciente"
+                            Theme="{DynamicResource BtnPrimary}"
+                            Click="BtnSalvar_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

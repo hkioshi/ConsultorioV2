@@ -16,11 +16,17 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" afterDir="false" />
+    <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="Botao ok no MessageBox">
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/NovoPacienteDialog.axaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/NovoPacienteDialog.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/MessageBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/MessageBox.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Models/Paciente.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Models/Paciente.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,61 +68,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0066589600105438" />
-      <entry key="MS500" value="1.5508411430540097" />
-      <entry key="S2" value="2.4340230823587348" />
-      <entry key="S5" value="2.7493412124092935" />
-      <entry key="S10" value="2.8702134833204167" />
-      <entry key="S30" value="2.964287458115108" />
-      <entry key="S60" value="3.2864793832763293" />
-      <entry key="M2" value="4.996417094282767" />
-      <entry key="M5" value="11.498165616130459" />
-      <entry key="M10" value="20.553332929680888" />
-      <entry key="M15" value="27.66702836805284" />
-      <entry key="M30" value="48.3239706028196" />
-      <entry key="H1" value="91.83863895657817" />
-      <entry key="H2" value="154.21772938487786" />
-      <entry key="H4" value="213.00547477667016" />
-      <entry key="D1" value="288.7036491087069" />
-      <entry key="W1" value="305.14208525686774" />
+      <entry key="MS100" value="1.2609787938507426" />
+      <entry key="MS500" value="2.316734328224702" />
+      <entry key="S2" value="2.8012596787323893" />
+      <entry key="S5" value="3.0824170820400187" />
+      <entry key="S10" value="4.248908739016359" />
+      <entry key="S30" value="9.139118792246583" />
+      <entry key="S60" value="12.675549113992927" />
+      <entry key="M2" value="17.617963301910013" />
+      <entry key="M5" value="36.49342503372159" />
+      <entry key="M10" value="61.0585602924172" />
+      <entry key="M15" value="77.28473692880797" />
+      <entry key="M30" value="109.77775360640298" />
+      <entry key="H1" value="160.1006508969873" />
+      <entry key="H2" value="227.99112126906866" />
+      <entry key="H4" value="292.097231129226" />
+      <entry key="D1" value="375.5566359542358" />
+      <entry key="W1" value="393.8199284686701" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="4.4582633487302003E-188" />
-      <entry key="S2" value="1.453086371850098E-47" />
-      <entry key="S5" value="1.8404184224052884E-19" />
-      <entry key="S10" value="4.2900098163119483E-10" />
-      <entry key="S30" value="7.541992503906598E-4" />
-      <entry key="S60" value="0.027466054589514115" />
-      <entry key="M2" value="0.17083108215943968" />
-      <entry key="M5" value="0.947174394697197" />
-      <entry key="M10" value="2.9397541460107592" />
-      <entry key="M15" value="4.870832008134974" />
-      <entry key="M30" value="10.54114489283908" />
-      <entry key="H1" value="21.05612807411943" />
-      <entry key="H2" value="34.17838479213103" />
-      <entry key="H4" value="45.37389232760592" />
-      <entry key="D1" value="58.736945759215125" />
-      <entry key="W1" value="61.51989955184085" />
+      <entry key="MS100" value="2.4795249652734912E-166" />
+      <entry key="MS500" value="7.56612822434448E-34" />
+      <entry key="S2" value="5.24467310520873E-9" />
+      <entry key="S5" value="4.874020704524563E-4" />
+      <entry key="S10" value="0.02207718438688365" />
+      <entry key="S30" value="0.28053890805070997" />
+      <entry key="S60" value="0.5348032459134935" />
+      <entry key="M2" value="0.8702001169292952" />
+      <entry key="M5" value="2.080101210045725" />
+      <entry key="M10" value="4.175553869125916" />
+      <entry key="M15" value="6.187231331442891" />
+      <entry key="M30" value="11.98713428718053" />
+      <entry key="H1" value="22.691947692107032" />
+      <entry key="H2" value="36.488770279833936" />
+      <entry key="H4" value="48.59304720886848" />
+      <entry key="D1" value="63.352439709299404" />
+      <entry key="W1" value="66.46234529098358" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.7628028689500742" />
-      <entry key="MS500" value="1.3386341473156087" />
-      <entry key="S2" value="2.218137656478797" />
-      <entry key="S5" value="2.629939294302123" />
-      <entry key="S10" value="2.803551109971609" />
-      <entry key="S30" value="2.941061821983669" />
-      <entry key="S60" value="3.300835754166925" />
-      <entry key="M2" value="5.158183051321117" />
-      <entry key="M5" value="12.437181797730222" />
-      <entry key="M10" value="23.48387449174141" />
-      <entry key="M15" value="32.52826350446918" />
-      <entry key="M30" value="58.85445242347593" />
-      <entry key="H1" value="112.88314916373864" />
-      <entry key="H2" value="188.3861177833202" />
-      <entry key="H4" value="258.37253521783117" />
-      <entry key="D1" value="347.4390866362515" />
-      <entry key="W1" value="366.6617582899344" />
+      <entry key="MS100" value="1.0357491123402225" />
+      <entry key="MS500" value="1.8693659577459032" />
+      <entry key="S2" value="2.5853937428561036" />
+      <entry key="S5" value="2.9732771379563108" />
+      <entry key="S10" value="4.171809796064426" />
+      <entry key="S30" value="9.318047017436966" />
+      <entry key="S60" value="13.134529900518201" />
+      <entry key="M2" value="18.438236645166562" />
+      <entry key="M5" value="38.54176693266944" />
+      <entry key="M10" value="65.21026567461969" />
+      <entry key="M15" value="83.45166398644895" />
+      <entry key="M30" value="121.74845406259992" />
+      <entry key="H1" value="182.77803288603135" />
+      <entry key="H2" value="264.46825350029434" />
+      <entry key="H4" value="340.6824949821415" />
+      <entry key="D1" value="438.90737338644686" />
+      <entry key="W1" value="460.2820183070138" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -131,77 +137,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.ConsultorioApi: https.executor": "Run",
-    ".NET Project.ConsultorioUI.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Desenvolvimento",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/henrique/repos/Projetos Pessoais/ConsultorioV2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propDebugger",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.ConsultorioApi: https.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.ConsultorioUI.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Desenvolvimento&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/henrique/repos/Projetos Pessoais/ConsultorioV2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Project.ConsultorioUI">
-    <configuration name="ConsultorioFront" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/ConsultorioWPF/ConsultorioWPF.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="ConsultorioUI" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/ConsultorioUI/ConsultorioUI.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
+}</component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.ConsultorioApi: https">
     <configuration name="ConsultorioApi: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
@@ -218,7 +182,7 @@
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="ConsultorioApi: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+    <configuration name="ConsultorioApi: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net10.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
@@ -234,6 +198,11 @@
         <option name="Build" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Launch Settings Profile.ConsultorioApi: https" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -248,7 +217,11 @@
       <workItem from="1781028168714" duration="195000" />
       <workItem from="1781028399192" duration="126000" />
       <workItem from="1781028705839" duration="12567000" />
-      <workItem from="1781042104469" duration="1750000" />
+      <workItem from="1781042104469" duration="1948000" />
+      <workItem from="1781045396884" duration="13000" />
+      <workItem from="1781136783183" duration="2260000" />
+      <workItem from="1781208772103" duration="2829000" />
+      <workItem from="1781290338994" duration="5421000" />
     </task>
     <servers />
   </component>
@@ -270,6 +243,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Botao ok no MessageBox" />
+    <option name="LAST_COMMIT_MESSAGE" value="Botao ok no MessageBox" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -286,19 +261,6 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs</url>
-          <line>24</line>
-          <properties documentPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" containingFunctionPresentation="Method 'BuscarPacientePorId'">
-            <startOffsets>
-              <option value="649" />
-            </startOffsets>
-            <endOffsets>
-              <option value="650" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

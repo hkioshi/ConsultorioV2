@@ -13,28 +13,28 @@ namespace ConsultorioUI.ViewModels
 {
     public class PacienteViewModel
     {
-        private HttpClient httpClient;
+        private readonly HttpClient _httpClient;
         public ObservableCollection<Paciente> Pacientes { get; set; }
 
         public PacienteViewModel()
         {
-            httpClient = new();
+            _httpClient = new();
             Pacientes = [];
         }
         public async Task<Paciente?> BuscarPacientePorId(string txt)
         {
             if (!int.TryParse(txt, out _)) throw new Exception("Não é um numero");
-            var response = await httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorId/{txt}");
+            var response = await _httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorId/{txt}");
           
             return response;
 
         }
 
         public async Task<IEnumerable<Paciente>?> BuscarPacientePorNome(string txt) =>
-            await httpClient.GetFromJsonAsync<List<Paciente>>($"https://localhost:7256/Paciente/BuscarPorNome/{txt}");
+            await _httpClient.GetFromJsonAsync<List<Paciente>>($"https://localhost:7256/Paciente/BuscarPorNome/{txt}");
 
-        public async Task<Paciente?> BuscarPacientePorCPF(string txt) =>
-            await httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorCPF/{txt}");
+        public async Task<Paciente?> BuscarPacientePorCpf(string txt) =>
+            await _httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorCPF/{txt}");
 
 
 

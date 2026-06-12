@@ -25,12 +25,15 @@ public partial class PacientesView : UserControl
     {
         // TODO: Abrir janela/dialog de cadastro de novo paciente
         MessageBox.Show(this, "ainda nao implentado");
-        // var dialog = new NovoPacienteDialog { Owner = Window.GetWindow(this) };
-        // if (dialog.ShowDialog() == true)
-        // {
-        //     var paciente = dialog.PacienteSalvo;
-        //     // salvar no banco, atualizar lista...
-        // }
+        var dialog = new NovoPacienteDialog();
+        dialog.ShowDialog( TopLevel.GetTopLevel(this) as Window);
+
+        // PacienteSalvo será null se o usuário cancelou
+        if (dialog.PacienteSalvo != null)
+        {
+            var paciente = dialog.PacienteSalvo;
+            // salvar no banco, atualizar lista...
+        }
     }
 
     private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
@@ -45,7 +48,7 @@ public partial class PacientesView : UserControl
             try
             {
                 // Filtrar por CPF
-                var response = await _PacienteVM.BuscarPacientePorCPF(TxtBusca.Text);
+                var response = await _PacienteVM.BuscarPacientePorCpf(TxtBusca.Text);
                 if (response is null) return;
                 MessageBox.Show(this,response.Nome);
                 _PacienteVM.Pacientes.Clear();
@@ -116,6 +119,6 @@ public partial class PacientesView : UserControl
 
     private void Perfil_Click(object sender, RoutedEventArgs e)
     {
-
+        
     }
 }

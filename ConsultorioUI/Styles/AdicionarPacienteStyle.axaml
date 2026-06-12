@@ -4,7 +4,7 @@
     <!-- ABA DE SEÇÃO -->
     <Style Selector="RadioButton.TabBtn">
         <Setter Property="Background"      Value="Transparent"/>
-        <Setter Property="Foreground"      Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
         <Setter Property="FontFamily"      Value="Segoe UI"/>
         <Setter Property="FontSize"        Value="12"/>
         <Setter Property="FontWeight"      Value="SemiBold"/>
@@ -19,7 +19,7 @@
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Border x:Name="Underline"
                                 Height="2" CornerRadius="1"
-                                Background="{StaticResource TextPrimary}"
+                                Background="{DynamicResource TextPrimary}"
                                 VerticalAlignment="Bottom"
                                 IsVisible="False"/>
                     </Grid>
@@ -31,15 +31,15 @@
         <Setter Property="IsVisible" Value="True"/>
     </Style>
     <Style Selector="RadioButton.TabBtn:checked">
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
     </Style>
     <Style Selector="RadioButton.TabBtn:pointerover">
-        <Setter Property="Foreground" Value="{StaticResource TextOnAccent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextOnAccent}"/>
     </Style>
 
     <!-- LABEL -->
     <Style Selector="TextBlock.FieldLabel">
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="FontSize"   Value="11"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Margin"     Value="0,0,0,5"/>
@@ -47,7 +47,7 @@
 
     <!-- SEÇÃO TÍTULO -->
     <Style Selector="TextBlock.SectionTitle">
-        <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
         <Setter Property="FontSize"   Value="11"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Margin"     Value="0,0,0,12"/>
@@ -55,12 +55,12 @@
 
     <!-- TEXTBOX BASE -->
     <Style Selector="TextBox.FormInput">
-        <Setter Property="Background"               Value="{StaticResource InputBg}"/>
-        <Setter Property="Foreground"               Value="{StaticResource TextPrimary}"/>
-        <Setter Property="CaretBrush"               Value="{StaticResource InputFocus}"/>
+        <Setter Property="Background"               Value="{DynamicResource InputBg}"/>
+        <Setter Property="Foreground"               Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="CaretBrush"               Value="{DynamicResource InputFocus}"/>
         <Setter Property="FontFamily"               Value="Segoe UI"/>
         <Setter Property="FontSize"                 Value="15"/>
-        <Setter Property="BorderBrush"              Value="{StaticResource InputBorder}"/>
+        <Setter Property="BorderBrush"              Value="{DynamicResource InputBorder}"/>
         <Setter Property="BorderThickness"          Value="1"/>
         <Setter Property="Height"                   Value="36"/>
         <Setter Property="Padding"                  Value="10,0"/>
@@ -68,10 +68,10 @@
         <Setter Property="CornerRadius"             Value="8"/>
     </Style>
     <Style Selector="TextBox.FormInput:pointerover /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="{StaticResource InputFocus}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource InputFocus}"/>
     </Style>
     <Style Selector="TextBox.FormInput:focus /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="{StaticResource InputFocus}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource InputFocus}"/>
     </Style>
 
     <!-- TEXTAREA -->
@@ -87,24 +87,24 @@
 
     <!-- COMBOBOX -->
     <Style Selector="ComboBox.FormCombo">
-        <Setter Property="Background"      Value="{StaticResource InputBg}"/>
-        <Setter Property="Foreground"      Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Background"      Value="{DynamicResource InputBg}"/>
+        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
         <Setter Property="FontFamily"      Value="Segoe UI"/>
         <Setter Property="FontSize"        Value="13"/>
-        <Setter Property="BorderBrush"     Value="{StaticResource InputBorder}"/>
+        <Setter Property="BorderBrush"     Value="{DynamicResource InputBorder}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height"          Value="36"/>
         <Setter Property="Padding"         Value="10,0"/>
         <Setter Property="CornerRadius"    Value="8"/>
     </Style>
     <Style Selector="ComboBox.FormCombo:pointerover">
-        <Setter Property="BorderBrush" Value="#4A90B8"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboItemForeground}"/>
     </Style>
     <Style Selector="ComboBox.FormCombo:focus">
-        <Setter Property="BorderBrush" Value="#4A90B8"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboHoverBorder}"/>
     </Style>
     <Style Selector="ComboBox.FormCombo /template/ ComboBoxItem">
-        <Setter Property="Foreground" Value="#2E6E99"/>
+        <Setter Property="Foreground" Value="{DynamicResource ComboItemForeground}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Padding"    Value="12,8"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -112,16 +112,16 @@
         <Setter Property="Cursor"     Value="Hand"/>
     </Style>
     <Style Selector="ComboBox.FormCombo /template/ ComboBoxItem:selected">
-        <Setter Property="Background" Value="#EAF4FA"/>
+        <Setter Property="Background" Value="{DynamicResource ComboItemSelected}"/>
     </Style>
 
     <!-- DATEPICKER -->
     <Style Selector="DatePicker.FormDate">
-        <Setter Property="Background"      Value="{StaticResource InputBg}"/>
-        <Setter Property="Foreground"      Value="{StaticResource TextPrimary}"/>
+        <Setter Property="Background"      Value="{DynamicResource InputBg}"/>
+        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
         <Setter Property="FontFamily"      Value="Segoe UI"/>
         <Setter Property="FontSize"        Value="15"/>
-        <Setter Property="BorderBrush"     Value="{StaticResource InputBorder}"/>
+        <Setter Property="BorderBrush"     Value="{DynamicResource InputBorder}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height"          Value="36"/>
         <Setter Property="Padding"         Value="10,5"/>

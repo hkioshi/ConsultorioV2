@@ -39,8 +39,8 @@ builder.Services.AddAuthentication(options =>
     })
     .AddGoogle(options =>
     {
-        options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+        options.ClientId = builder.Configuration["Authentication:Google:ClientId"] ?? throw new ArgumentNullException();
+        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"] ?? throw new ArgumentNullException();
 
         options.Scope.Add("https://www.googleapis.com/auth/calendar");
         options.SaveTokens = true;
