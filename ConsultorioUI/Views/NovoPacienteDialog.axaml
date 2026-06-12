@@ -100,7 +100,7 @@
                     </Grid>
 
                     <!-- Data Nasc / Gênero / Estado Civil -->
-                    <Grid ColumnDefinitions="*,16,*,16,*" Margin="0,0,0,14">
+                    <Grid ColumnDefinitions="*,*,*,*" Margin="0,0,0,14">
                         <StackPanel Grid.Column="0">
                             <TextBlock Theme="{DynamicResource FieldLabel}" Text="Data de nascimento *"/>
                             <!-- Avalonia: DatePicker não usa Language; configure CultureInfo no code-behind -->
@@ -115,7 +115,7 @@
                                 <ComboBoxItem Content="Prefiro não informar"/>
                             </ComboBox>
                         </StackPanel>
-                        <StackPanel Grid.Column="4">
+                        <StackPanel Grid.Column="3">
                             <TextBlock Theme="{DynamicResource FieldLabel}" Text="Estado civil"/>
                             <ComboBox x:Name="CmbEstadoCivil" Theme="{DynamicResource FormCombo}">
                                 <ComboBoxItem Content="Solteiro(a)"/>

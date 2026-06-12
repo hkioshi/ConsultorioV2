@@ -24,7 +24,6 @@ public partial class PacientesView : UserControl
     private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e)
     {
         // TODO: Abrir janela/dialog de cadastro de novo paciente
-        MessageBox.Show(this, "ainda nao implentado");
         var dialog = new NovoPacienteDialog();
         dialog.ShowDialog( TopLevel.GetTopLevel(this) as Window);
 

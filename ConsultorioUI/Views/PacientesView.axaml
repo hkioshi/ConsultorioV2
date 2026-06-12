@@ -49,7 +49,7 @@
             <Button Grid.Column="1"
                 x:Name="BtnNovoPaciente"
                 VerticalAlignment="Center"
-                Classes="btnAddPaciente" Click="BtnNovoPaciente_Click">
+                Classes="" Click="BtnNovoPaciente_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="+"
                             FontSize="16"
@@ -104,9 +104,9 @@
 
             <!-- Filter chips -->
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <RadioButton x:Name="rdbNome" Content="Nome"   Classes="rdbFiltro" IsChecked="True" Margin="0,0,6,0"/>
-                <RadioButton x:Name="rdbId" Content="ID"  Classes="rdbFiltro" Margin="0,0,6,0"/>
-                <RadioButton x:Name="rdbCPF" Content="CPF" Classes="rdbFiltro" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbNome" Content="Nome"   Classes="" IsChecked="True" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbId" Content="ID"  Classes="" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbCPF" Content="CPF" Classes="" Margin="0,0,6,0"/>
             </StackPanel>
         </Grid>
 
@@ -177,13 +177,11 @@
                                            Classes="Cell"/>
 
                                         
-
-
                                         <!-- AÇÕES -->
                                         <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Content="✏ Quaq"  ToolTip.Tip="Editar" />
-                                            <Button Content="👤 Quaq" Click="Perfil_Click" ToolTip.Tip="Perfil Completo" Classes="BtnAction"/>
-                                            <Button Content="📄 Quaq" ToolTip.Tip="Prontuario"  Classes="BtnAction"/>
+                                            <Button Content="sadasd Quaq"  ToolTip.Tip="Editar"  Classes="BtnAction"/>
+                                            <Button Content="asdas Quaq" Click="Perfil_Click" ToolTip.Tip="Perfil Completo" Classes="BtnAction"/>
+                                            <Button Content="asdasd Quaq" ToolTip.Tip="Prontuario"  Classes="BtnAction"/>
 
                                         </StackPanel>
                                     
