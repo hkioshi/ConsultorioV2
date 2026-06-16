@@ -22,8 +22,16 @@ public partial class MainWindow : Window
     {
         _mainContent.Content = view switch
         {
+            //TODO: Fazer Prontuario
+            //TODO: Fazer Odontograma
+            //TODO: Fazer Agenda
+            //TODO: Fazer Tratamentos
+            //TODO: Fazer Pagamentos
+            //TODO: Fazer Configs
             "Inicio" => new InicioView(),
-            "Pacientes" => new PacientesView(),
+            "Pacientes" => new PacientesView(this),
+            "Agenda" => new AgendaView(),
+            "Financeiro" => new PagamentoView(),
             _ => _mainContent.Content
             
         };

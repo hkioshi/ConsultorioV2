@@ -7,10 +7,14 @@
         <entry key="ConsultorioUI/App.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Styles/AdicionarPacienteStyle.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Styles/Colors.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Styles/ColorsLight.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Styles/MostrarPerfilStyle.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Styles/PacientesStyle.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Views/AgendaView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/InicioView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/MainWindow.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Views/NovoPacienteDialog.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Views/PacientePerfilView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/PacientesView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/SidebarControl.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/teste.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />

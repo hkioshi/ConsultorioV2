@@ -179,9 +179,9 @@
                                         
                                         <!-- AÇÕES -->
                                         <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Content="sadasd Quaq"  ToolTip.Tip="Editar"  Classes="BtnAction"/>
-                                            <Button Content="asdas Quaq" Click="Perfil_Click" ToolTip.Tip="Perfil Completo" Classes="BtnAction"/>
-                                            <Button Content="asdasd Quaq" ToolTip.Tip="Prontuario"  Classes="BtnAction"/>
+                                            <Button Content="sadasd Quaq"  ToolTip.Tip="Editar" Tag="{Binding Id}" Classes="BtnAction"/>
+                                            <Button Content="asdas Quaq" Click="Perfil_Click" ToolTip.Tip="Perfil Completo" Tag="{Binding Id}" Classes="BtnAction"/>
+                                            <Button Content="asdasd Quaq" ToolTip.Tip="Prontuario" Tag="{Binding Id}" Classes="BtnAction"/>
 
                                         </StackPanel>
                                     

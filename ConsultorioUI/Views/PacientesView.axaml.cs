@@ -1,6 +1,8 @@
 using System;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Avalonia.Controls;
+using Avalonia.Controls.Selection;
 using Avalonia.Interactivity;
 using ConsultorioUI.Services;
 using ConsultorioUI.Models;
@@ -11,19 +13,20 @@ namespace ConsultorioUI.Views;
 
 public partial class PacientesView : UserControl
 {
-    
-    PacienteViewModel _PacienteVM;
+    public event Action<string> OnNavigate;
 
-    public PacientesView()
+    PacienteViewModel _PacienteVM;
+    private MainWindow _mainWindow;
+    public PacientesView(MainWindow mainWindow)
     {
         InitializeComponent();
+        _mainWindow = mainWindow;
         _PacienteVM = new();
         DataContext = _PacienteVM;
     }
 
     private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e)
     {
-        // TODO: Abrir janela/dialog de cadastro de novo paciente
         var dialog = new NovoPacienteDialog();
         dialog.ShowDialog( TopLevel.GetTopLevel(this) as Window);
 
@@ -102,22 +105,23 @@ public partial class PacientesView : UserControl
         // TODO: Abrir tela de edição para o paciente com id
         MessageBox.Show(this,$"Editar paciente ID: {id}");
     }
-
+    
     private void BtnProntuario_Click(object sender, RoutedEventArgs e)
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
         // TODO: Abrir prontuário do paciente
-        MessageBox.Show(this,$"Abrir prontuário do paciente ID: {id}");
-    }
-
-    private void RadioButton_Checked(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    private void Perfil_Click(object sender, RoutedEventArgs e)
-    {
         
+    }
+    
+    //TODO: Fazer Perfil Para Paciente
+
+    private void Perfil_Click(object? sender, RoutedEventArgs e)
+    {
+        var btn = sender as Button;
+        var id = btn?.Tag?.ToString();
+
+        PacientePerfilView perfil = new(id);
+        _mainWindow.MainContent.Content = new PacientePerfilView(id);
     }
 }
