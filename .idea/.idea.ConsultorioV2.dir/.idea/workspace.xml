@@ -17,17 +17,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="Botao ok no MessageBox">
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/ProntuarioViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/ProntuarioView.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/ProntuarioView.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Assets/Logo.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Assets/Logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/ProntuarioController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Controllers/ProntuarioController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/WindowResources_DraCelia.xaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Styles/PacientesStyle.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/PacientesStyle.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/InicioView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/InicioView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +163,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.ConsultorioApi: https">
+  <component name="RunManager" selected=".NET Project.Unnamed">
     <configuration name="Unnamed" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/ConsultorioUI/bin/Debug/net10.0/ConsultorioUI" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -256,7 +251,7 @@
       <workItem from="1781644104584" duration="522000" />
       <workItem from="1781648394550" duration="55000" />
       <workItem from="1781651782020" duration="116000" />
-      <workItem from="1781651926214" duration="11941000" />
+      <workItem from="1781651926214" duration="15468000" />
     </task>
     <servers />
   </component>
