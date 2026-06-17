@@ -73,13 +73,15 @@
 
                 <TextBox x:Name="TxtBusca"
                          Classes="txtCaixaDeBusca"
-                         TextChanged="TxtBusca_TextChanged">
+                         TextChanged="TxtBusca_TextChanged"
+                         Padding="50,0,0,0">
                     <TextBox.Styles>
                         <Style Selector="Border">
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="BorderThickness" Value="0"/>
                         </Style>
                     </TextBox.Styles>
+                    
                 </TextBox>
                 <!-- Placeholder -->
                 <TextBlock IsHitTestVisible="False"
@@ -178,10 +180,40 @@
 
                                         
                                         <!-- AÇÕES -->
-                                        <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Content="sadasd Quaq"  ToolTip.Tip="Editar" Tag="{Binding Id}" Classes="BtnAction"/>
-                                            <Button Content="asdas Quaq" Click="Perfil_Click" ToolTip.Tip="Perfil Completo" Tag="{Binding Id}" Classes="BtnAction"/>
-                                            <Button Content="asdasd Quaq" ToolTip.Tip="Prontuario" Tag="{Binding Id}" Classes="BtnAction"/>
+                                        <StackPanel 
+                                            Grid.Column="3" 
+                                            Orientation="Horizontal" 
+                                            HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center">
+                                            
+                                            <Button 
+                                                Content="✎"  
+                                                ToolTip.Tip="Editar" 
+                                                Tag="{Binding Id}" 
+                                                Click="BtnEditar_Click" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Margin="5,0"
+                                                />
+                                            <Button 
+                                                Content="👤"
+                                                Click="BtnPerfil_Click" 
+                                                ToolTip.Tip="Perfil Completo" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Tag="{Binding Id}" 
+                                                Margin="5,0"
+                                                />
+                                            <Button 
+                                                Content="📋" 
+                                                Click="BtnProntuario_Click" 
+
+                                                ToolTip.Tip="Prontuario" 
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Tag="{Binding Id}" 
+                                                Margin="5,0"
+                                                />
 
                                         </StackPanel>
                                     

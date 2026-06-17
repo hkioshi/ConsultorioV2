@@ -22,8 +22,7 @@ public partial class MainWindow : Window
     {
         _mainContent.Content = view switch
         {
-            //TODO: Fazer Prontuario
-            //TODO: Fazer Odontograma
+            
             //TODO: Fazer Agenda
             //TODO: Fazer Tratamentos
             //TODO: Fazer Pagamentos

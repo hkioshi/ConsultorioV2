@@ -10,7 +10,6 @@ using ConsultorioUI.ViewModels;
 
 namespace ConsultorioUI.Views;
 
-
 public partial class PacientesView : UserControl
 {
     public event Action<string> OnNavigate;
@@ -40,7 +39,7 @@ public partial class PacientesView : UserControl
 
     private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
     {
-        // TODO: Filtrar lista de pacientes conforme o texto digitado
+        //TODO: Formatar o texto quando pesquisar
         if (TxtBusca.Text == "") return;
 
 
@@ -50,7 +49,7 @@ public partial class PacientesView : UserControl
             try
             {
                 // Filtrar por CPF
-                var response = await _PacienteVM.BuscarPacientePorCpf(TxtBusca.Text);
+                var response = await _PacienteVM.BuscarPacientePorCpf(TxtBusca.Text.Trim());
                 if (response is null) return;
                 MessageBox.Show(this,response.Nome);
                 _PacienteVM.Pacientes.Clear();
@@ -96,27 +95,33 @@ public partial class PacientesView : UserControl
             foreach (Paciente i in response) _PacienteVM.Pacientes.Add(i);
 
         }
-    }
-
+    } 
+    //TODO: Fazer Editar
+    //TODO: Design Editar
     private void BtnEditar_Click(object sender, RoutedEventArgs e)
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
-        // TODO: Abrir tela de edição para o paciente com id
-        MessageBox.Show(this,$"Editar paciente ID: {id}");
+
+        // EditarView editar = new(id);
+        // _mainWindow.MainContent.Content = new EditarView(id);
     }
-    
+    //TODO: Fazer Prontuario
+    //TODO: Fazer Odontograma
+    //TODO: Design Prontuario
     private void BtnProntuario_Click(object sender, RoutedEventArgs e)
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
-        // TODO: Abrir prontuário do paciente
+
+        ProntuarioView prontuario = new(id);
+        _mainWindow.MainContent.Content = new ProntuarioView(id);
         
     }
     
-    //TODO: Fazer Perfil Para Paciente
+    //TODO: Design Perfil
 
-    private void Perfil_Click(object? sender, RoutedEventArgs e)
+    private void BtnPerfil_Click(object? sender, RoutedEventArgs e)
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
