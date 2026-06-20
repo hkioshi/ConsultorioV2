@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ConsultorioApi.Models;
 
-public class Procedimentos
+public class Procedimento
 {
-    public string Id { get; set; }
+    [Key] [Required] 
+    public int Id { get; set; }
     public string Nome { get; set; }
     public double Valor { get; set; }
     
