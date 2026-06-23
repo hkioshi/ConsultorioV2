@@ -2,31 +2,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="ConsultorioUI.App"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
-     <Application.Resources>
-         <ResourceDictionary>
-             <ResourceDictionary.ThemeDictionaries>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
 
-                 <ResourceDictionary x:Key="Light">
-                     <ResourceDictionary.MergedDictionaries>
-                         <ResourceInclude Source="avares://ConsultorioUI/Styles/ColorsLight.axaml"/>
-                     </ResourceDictionary.MergedDictionaries>
-                 </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://ConsultorioUI/Styles/ColorsLight.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
 
-                 <ResourceDictionary x:Key="Dark">
-                     <ResourceDictionary.MergedDictionaries>
-                         <ResourceInclude Source="avares://ConsultorioUI/Styles/ColorsDark.axaml"/>
-                     </ResourceDictionary.MergedDictionaries>
-                 </ResourceDictionary>
-             </ResourceDictionary.ThemeDictionaries>
-         </ResourceDictionary>
-     </Application.Resources>
-             
-     <Application.Styles>
-         <FluentTheme/>
-         <StyleInclude Source="avares://ConsultorioUI/Styles/AdicionarPacienteStyle.axaml"/>
-         <StyleInclude Source="avares://ConsultorioUI/Styles/PacientesStyle.axaml"/>
-         <StyleInclude Source="avares://ConsultorioUI/Styles/MostrarPerfilStyle.axaml"/>
-     </Application.Styles>
+                <ResourceDictionary x:Key="Dark">
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="avares://ConsultorioUI/Styles/ColorsDark.axaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://ConsultorioUI/Styles/AdicionarPacienteStyle.axaml" />
+        <StyleInclude Source="avares://ConsultorioUI/Styles/PacientesStyle.axaml" />
+        <StyleInclude Source="avares://ConsultorioUI/Styles/MostrarPerfilStyle.axaml" />
+    </Application.Styles>
 </Application>

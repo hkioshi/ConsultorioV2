@@ -10,5 +10,6 @@
         <Image Source="avares://ConsultorioUI/Assets/Logo.png"
                Width="600"
                Height="600"
-               Stretch="Uniform"/>    </Grid>
+               Stretch="Uniform" />
+    </Grid>
 </UserControl>

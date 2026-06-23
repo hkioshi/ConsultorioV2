@@ -2,37 +2,37 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- Background -->
-    <SolidColorBrush x:Key="PageBg"       Color="#F4F9FB"/>
-    <SolidColorBrush x:Key="CardBg"       Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="CardBorder"   Color="#DCE9EF"/>
-    <SolidColorBrush x:Key="TableBg" Color="#DAE2E6"/>
+    <SolidColorBrush x:Key="PageBg" Color="#F4F9FB" />
+    <SolidColorBrush x:Key="CardBg" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="CardBorder" Color="#DCE9EF" />
+    <SolidColorBrush x:Key="TableBg" Color="#DAE2E6" />
 
-    
+
     <!-- Interação -->
-    <SolidColorBrush x:Key="RowHover"     Color="#EAF6FB"/>
-    <SolidColorBrush x:Key="RowSeparator" Color="#E1EEF4"/>
-    
+    <SolidColorBrush x:Key="RowHover" Color="#EAF6FB" />
+    <SolidColorBrush x:Key="RowSeparator" Color="#E1EEF4" />
+
     <!-- Destaques -->
-    <SolidColorBrush x:Key="AccentBlue"   Color="#3A8DDE"/>
-    <SolidColorBrush x:Key="AccentMint"   Color="#5EC6B8"/>
-    <SolidColorBrush x:Key="AccentSoft"   Color="#A7D8F5"/>
+    <SolidColorBrush x:Key="AccentBlue" Color="#3A8DDE" />
+    <SolidColorBrush x:Key="AccentMint" Color="#5EC6B8" />
+    <SolidColorBrush x:Key="AccentSoft" Color="#A7D8F5" />
 
     <!-- Texto -->
-    <SolidColorBrush x:Key="TextPrimary"  Color="#1F2D3A"/>
-    <SolidColorBrush x:Key="TextMuted"    Color="#6B8A99"/>
-    <SolidColorBrush x:Key="TextOnAccent" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="#1F2D3A" />
+    <SolidColorBrush x:Key="TextMuted" Color="#6B8A99" />
+    <SolidColorBrush x:Key="TextOnAccent" Color="#FFFFFF" />
 
     <!-- Inputs -->
-    <SolidColorBrush x:Key="InputBg"      Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="InputBorder"  Color="#CFE3EC"/>
-    <SolidColorBrush x:Key="InputFocus"   Color="#3A8DDE"/>
-    <SolidColorBrush x:Key="AccentPurple" Color="#A855C8"/>
-    
-    
-    <SolidColorBrush x:Key="InputPlaceholder" Color="#2E5566"/>
+    <SolidColorBrush x:Key="InputBg" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="InputBorder" Color="#CFE3EC" />
+    <SolidColorBrush x:Key="InputFocus" Color="#3A8DDE" />
+    <SolidColorBrush x:Key="AccentPurple" Color="#A855C8" />
 
-    <SolidColorBrush x:Key="ComboHoverBorder"    Color="#4A90B8"/>
-    <SolidColorBrush x:Key="ComboItemForeground" Color="#2E6E99"/>
-    <SolidColorBrush x:Key="ComboItemSelected"   Color="#EAF4FA"/>
-    
+
+    <SolidColorBrush x:Key="InputPlaceholder" Color="#2E5566" />
+
+    <SolidColorBrush x:Key="ComboHoverBorder" Color="#4A90B8" />
+    <SolidColorBrush x:Key="ComboItemForeground" Color="#2E6E99" />
+    <SolidColorBrush x:Key="ComboItemSelected" Color="#EAF4FA" />
+
 </ResourceDictionary>

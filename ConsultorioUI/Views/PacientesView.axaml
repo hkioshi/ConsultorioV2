@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <!-- Header -->
-            <RowDefinition Height="16"/>
+            <RowDefinition Height="16" />
             <!-- Espaço -->
             <RowDefinition Height="Auto"/>
             <!-- Stats cards -->

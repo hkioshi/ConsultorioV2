@@ -1,31 +1,31 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!-- Add Resources Here -->
-    <SolidColorBrush x:Key="PageBg"       Color="#0F1E26"/>
-    <SolidColorBrush x:Key="CardBg"       Color="#112233"/>
-    <SolidColorBrush x:Key="CardBorder"   Color="#1E3D52"/>
-    <SolidColorBrush x:Key="TableBg" Color="#1E3D52"/>
+    <SolidColorBrush x:Key="PageBg" Color="#0F1E26" />
+    <SolidColorBrush x:Key="CardBg" Color="#112233" />
+    <SolidColorBrush x:Key="CardBorder" Color="#1E3D52" />
+    <SolidColorBrush x:Key="TableBg" Color="#1E3D52" />
 
-    
-    <SolidColorBrush x:Key="RowHover"     Color="#1A3344"/>
-    <SolidColorBrush x:Key="RowSeparator" Color="#1E3D52"/>
 
-    <SolidColorBrush x:Key="AccentBlue"   Color="#3A8DDE"/>
-    <SolidColorBrush x:Key="AccentMint"   Color="#5EC6B8"/>
-    <SolidColorBrush x:Key="AccentSoft"   Color="#1E4D6B"/>
+    <SolidColorBrush x:Key="RowHover" Color="#1A3344" />
+    <SolidColorBrush x:Key="RowSeparator" Color="#1E3D52" />
 
-    <SolidColorBrush x:Key="TextPrimary"  Color="#C8E6F0"/>
-    <SolidColorBrush x:Key="TextMuted"    Color="#6A9AAA"/>
-    <SolidColorBrush x:Key="TextOnAccent" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="AccentBlue" Color="#3A8DDE" />
+    <SolidColorBrush x:Key="AccentMint" Color="#5EC6B8" />
+    <SolidColorBrush x:Key="AccentSoft" Color="#1E4D6B" />
 
-    <SolidColorBrush x:Key="InputBg"      Color="#112233"/>
-    <SolidColorBrush x:Key="InputBorder"  Color="#1E3D52"/>
-    <SolidColorBrush x:Key="InputFocus"   Color="#3A8DDE"/>
-    <SolidColorBrush x:Key="AccentPurple" Color="#A855C8"/>
-    
-    <SolidColorBrush x:Key="InputPlaceholder" Color="#6A9AAA"/>
-    
-    <SolidColorBrush x:Key="ComboHoverBorder"    Color="#5AA8D0"/>
-    <SolidColorBrush x:Key="ComboItemForeground" Color="#7ECFEE"/>
-    <SolidColorBrush x:Key="ComboItemSelected"   Color="#1A3D52"/>
+    <SolidColorBrush x:Key="TextPrimary" Color="#C8E6F0" />
+    <SolidColorBrush x:Key="TextMuted" Color="#6A9AAA" />
+    <SolidColorBrush x:Key="TextOnAccent" Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="InputBg" Color="#112233" />
+    <SolidColorBrush x:Key="InputBorder" Color="#1E3D52" />
+    <SolidColorBrush x:Key="InputFocus" Color="#3A8DDE" />
+    <SolidColorBrush x:Key="AccentPurple" Color="#A855C8" />
+
+    <SolidColorBrush x:Key="InputPlaceholder" Color="#6A9AAA" />
+
+    <SolidColorBrush x:Key="ComboHoverBorder" Color="#5AA8D0" />
+    <SolidColorBrush x:Key="ComboItemForeground" Color="#7ECFEE" />
+    <SolidColorBrush x:Key="ComboItemSelected" Color="#1A3D52" />
 </ResourceDictionary>

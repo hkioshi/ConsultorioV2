@@ -3,15 +3,15 @@
 
     <!-- BOTÃO ADD PACIENTE -->
     <Style Selector="Button.btnAddPaciente">
-        <Setter Property="Background"      Value="{DynamicResource CardBg}"/>
-        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="FontSize"        Value="12"/>
-        <Setter Property="FontWeight"      Value="SemiBold"/>
-        <Setter Property="Padding"         Value="16,8"/>
-        <Setter Property="Margin"          Value="5,0,0,0"/>
-        <Setter Property="Cursor"          Value="Hand"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{DynamicResource CardBg}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="16,8" />
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="Bd"
@@ -21,52 +21,52 @@
                         BorderThickness="1"
                         Padding="{TemplateBinding Padding}">
                     <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
+                                      VerticalAlignment="Center" />
                 </Border>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="Button.btnAddPaciente:pointerover /template/ Border#Bd">
-        <Setter Property="Background" Value="{DynamicResource AccentSoft}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentSoft}" />
     </Style>
     <Style Selector="Button.btnAddPaciente:pressed /template/ Border#Bd">
-        <Setter Property="Background" Value="{DynamicResource AccentBlue}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentBlue}" />
     </Style>
 
     <!-- CAIXA DE BUSCA -->
     <Style Selector="TextBox.txtCaixaDeBusca">
-        <Setter Property="Background"               Value="{DynamicResource InputBg}"/>
-        <Setter Property="Foreground"               Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="CaretBrush"               Value="{DynamicResource AccentPurple}"/>
-        <Setter Property="FontFamily"               Value="Segoe UI"/>
-        <Setter Property="FontSize"                 Value="15"/>
-        <Setter Property="BorderBrush"              Value="{DynamicResource InputBorder}"/>
-        <Setter Property="BorderThickness"          Value="1.5"/>
-        <Setter Property="Padding"                  Value="23,8,12,8"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="CornerRadius"             Value="8"/>
+        <Setter Property="Background" Value="{DynamicResource InputBg}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource AccentPurple}" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}" />
+        <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="Padding" Value="23,8,12,8" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="8" />
     </Style>
 
     <!-- FILTRO LABEL -->
     <Style Selector="TextBlock.txtFiltro">
-        <Setter Property="Foreground"  Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontSize"    Value="15"/>
-        <Setter Property="FontWeight"  Value="SemiBold"/>
-        <Setter Property="FontFamily"  Value="Segoe UI"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
     </Style>
 
     <!-- FILTRO RADIO -->
     <Style Selector="RadioButton.rdbFiltro">
-        <Setter Property="Background"      Value="Transparent"/>
-        <Setter Property="BorderBrush"     Value="{DynamicResource InputBorder}"/>
-        <Setter Property="BorderThickness" Value="0.5"/>
-        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontSize"        Value="15"/>
-        <Setter Property="FontWeight"      Value="SemiBold"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="Padding"         Value="12,5"/>
-        <Setter Property="Cursor"          Value="Hand"/>
-        <Setter Property="GroupName"       Value="StatusFilter"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="Padding" Value="12,5" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="GroupName" Value="StatusFilter" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="Bd"
@@ -76,78 +76,78 @@
                         CornerRadius="5"
                         Padding="{TemplateBinding Padding}">
                     <ContentPresenter HorizontalAlignment="Center"
-                                      VerticalAlignment="Center"/>
+                                      VerticalAlignment="Center" />
                 </Border>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="RadioButton.rdbFiltro:pointerover /template/ Border#Bd">
-        <Setter Property="Background" Value="{DynamicResource AccentSoft}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentSoft}" />
     </Style>
     <Style Selector="RadioButton.rdbFiltro:pointerover">
-        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
     </Style>
     <Style Selector="RadioButton.rdbFiltro:checked /template/ Border#Bd">
-        <Setter Property="Background"  Value="{DynamicResource AccentBlue}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentBlue}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentBlue}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentBlue}" />
     </Style>
     <Style Selector="RadioButton.rdbFiltro:checked">
-        <Setter Property="Foreground" Value="{DynamicResource TextOnAccent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextOnAccent}" />
     </Style>
 
     <!-- HEADER COLUNA -->
     <Style Selector="TextBlock.ColHeader">
-        <Setter Property="Foreground"        Value="{DynamicResource TextOnAccent}"/>
-        <Setter Property="FontSize"          Value="17"/>
-        <Setter Property="FontWeight"        Value="Bold"/>
-        <Setter Property="TextAlignment"     Value="Center"/>
-        <Setter Property="FontFamily"        Value="Segoe UI"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextOnAccent}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
 
     <!-- TABELA -->
     <Style Selector="Border.Table">
-        <Setter Property="Background"      Value="{DynamicResource TableBg}"/>
-        <Setter Property="CornerRadius"    Value="12"/>
-        <Setter Property="BorderBrush"     Value="{DynamicResource CardBorder}"/>
-        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Background" Value="{DynamicResource TableBg}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardBorder}" />
+        <Setter Property="BorderThickness" Value="2" />
     </Style>
 
     <!-- CÉLULA -->
     <Style Selector="TextBlock.Cell">
-        <Setter Property="Foreground"        Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontSize"          Value="16"/>
-        <Setter Property="FontFamily"        Value="Segoe UI"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="TextAlignment"     Value="Center"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
     </Style>
 
     <!-- LINHA DA TABELA -->
     <Style Selector="Border.TableRow">
-        <Setter Property="Background"      Value="{DynamicResource CardBg}"/>
-        <Setter Property="BorderBrush"     Value="{DynamicResource CardBorder}"/>
-        <Setter Property="CornerRadius"    Value="5"/>
-        <Setter Property="BorderThickness" Value="0,0,0,2"/>
+        <Setter Property="Background" Value="{DynamicResource CardBg}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardBorder}" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="BorderThickness" Value="0,0,0,2" />
     </Style>
     <Style Selector="Border.TableRow:pointerover">
-        <Setter Property="Background" Value="{DynamicResource AccentSoft}"/>
+        <Setter Property="Background" Value="{DynamicResource AccentSoft}" />
     </Style>
 
     <!-- HEADER PACIENTES -->
     <Style Selector="Border.PacientesHeader">
-        <Setter Property="Background"   Value="{DynamicResource AccentBlue}"/>
-        <Setter Property="Padding"      Value="0,10"/>
-        <Setter Property="CornerRadius" Value="12,12,0,0"/>
+        <Setter Property="Background" Value="{DynamicResource AccentBlue}" />
+        <Setter Property="Padding" Value="0,10" />
+        <Setter Property="CornerRadius" Value="12,12,0,0" />
     </Style>
 
     <!-- BOTÃO ACTION -->
     <Style Selector="Button.BtnAction">
-        <Setter Property="Padding"         Value="6,0"/>
-        <Setter Property="Background"      Value="{DynamicResource CardBg}"/>
-        <Setter Property="BorderBrush"     Value="{DynamicResource CardBorder}"/>
-        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="Margin"          Value="5,0"/>
-        <Setter Property="Height"          Value="30"/>
+        <Setter Property="Padding" Value="6,0" />
+        <Setter Property="Background" Value="{DynamicResource CardBg}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CardBorder}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="Height" Value="30" />
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
     </Style>

@@ -3,137 +3,137 @@
 
     <!-- ABA DE SEÇÃO -->
     <Style Selector="RadioButton.TabBtn">
-        <Setter Property="Background"      Value="Transparent"/>
-        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="FontSize"        Value="12"/>
-        <Setter Property="FontWeight"      Value="SemiBold"/>
-        <Setter Property="Padding"         Value="16,10"/>
-        <Setter Property="Cursor"          Value="Hand"/>
-        <Setter Property="GroupName"       Value="FormTabs"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="GroupName" Value="FormTabs" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="Bd" Background="Transparent" Padding="{TemplateBinding Padding}">
                     <Grid>
-                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
                         <Border x:Name="Underline"
                                 Height="2" CornerRadius="1"
                                 Background="{DynamicResource TextPrimary}"
                                 VerticalAlignment="Bottom"
-                                IsVisible="False"/>
+                                IsVisible="False" />
                     </Grid>
                 </Border>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="RadioButton.TabBtn:checked /template/ Border#Underline">
-        <Setter Property="IsVisible" Value="True"/>
+        <Setter Property="IsVisible" Value="True" />
     </Style>
     <Style Selector="RadioButton.TabBtn:checked">
-        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
     </Style>
     <Style Selector="RadioButton.TabBtn:pointerover">
-        <Setter Property="Foreground" Value="{DynamicResource TextOnAccent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextOnAccent}" />
     </Style>
 
     <!-- LABEL -->
     <Style Selector="TextBlock.FieldLabel">
-        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontSize"   Value="11"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Margin"     Value="0,0,0,5"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Margin" Value="0,0,0,5" />
     </Style>
 
     <!-- SEÇÃO TÍTULO -->
     <Style Selector="TextBlock.SectionTitle">
-        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontSize"   Value="11"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Margin"     Value="0,0,0,12"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="0,0,0,12" />
     </Style>
 
     <!-- TEXTBOX BASE -->
     <Style Selector="TextBox.FormInput">
-        <Setter Property="Background"               Value="{DynamicResource InputBg}"/>
-        <Setter Property="Foreground"               Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="CaretBrush"               Value="{DynamicResource InputFocus}"/>
-        <Setter Property="FontFamily"               Value="Segoe UI"/>
-        <Setter Property="FontSize"                 Value="15"/>
-        <Setter Property="BorderBrush"              Value="{DynamicResource InputBorder}"/>
-        <Setter Property="BorderThickness"          Value="1"/>
-        <Setter Property="Height"                   Value="36"/>
-        <Setter Property="Padding"                  Value="10,0"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="CornerRadius"             Value="8"/>
+        <Setter Property="Background" Value="{DynamicResource InputBg}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="CaretBrush" Value="{DynamicResource InputFocus}" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="8" />
     </Style>
     <Style Selector="TextBox.FormInput:pointerover /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="{DynamicResource InputFocus}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource InputFocus}" />
     </Style>
     <Style Selector="TextBox.FormInput:focus /template/ Border#PART_BorderElement">
-        <Setter Property="BorderBrush" Value="{DynamicResource InputFocus}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource InputFocus}" />
     </Style>
 
     <!-- TEXTAREA -->
     <Style Selector="TextBox.FormTextArea">
-        <Setter Property="Height"                      Value="72"/>
-        <Setter Property="TextWrapping"                Value="Wrap"/>
-        <Setter Property="AcceptsReturn"               Value="True"/>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="VerticalContentAlignment"    Value="Top"/>
-        <Setter Property="Padding"                     Value="10,8"/>
-        <Setter Property="CornerRadius"                Value="8"/>
+        <Setter Property="Height" Value="72" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="AcceptsReturn" Value="True" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="Padding" Value="10,8" />
+        <Setter Property="CornerRadius" Value="8" />
     </Style>
 
     <!-- COMBOBOX -->
     <Style Selector="ComboBox.FormCombo">
-        <Setter Property="Background"      Value="{DynamicResource InputBg}"/>
-        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="FontSize"        Value="13"/>
-        <Setter Property="BorderBrush"     Value="{DynamicResource InputBorder}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Height"          Value="36"/>
-        <Setter Property="Padding"         Value="10,0"/>
-        <Setter Property="CornerRadius"    Value="8"/>
+        <Setter Property="Background" Value="{DynamicResource InputBg}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Padding" Value="10,0" />
+        <Setter Property="CornerRadius" Value="8" />
     </Style>
     <Style Selector="ComboBox.FormCombo:pointerover">
-        <Setter Property="BorderBrush" Value="{DynamicResource ComboItemForeground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboItemForeground}" />
     </Style>
     <Style Selector="ComboBox.FormCombo:focus">
-        <Setter Property="BorderBrush" Value="{DynamicResource ComboHoverBorder}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ComboHoverBorder}" />
     </Style>
     <Style Selector="ComboBox.FormCombo /template/ ComboBoxItem">
-        <Setter Property="Foreground" Value="{DynamicResource ComboItemForeground}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Padding"    Value="12,8"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontSize"   Value="13"/>
-        <Setter Property="Cursor"     Value="Hand"/>
+        <Setter Property="Foreground" Value="{DynamicResource ComboItemForeground}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Cursor" Value="Hand" />
     </Style>
     <Style Selector="ComboBox.FormCombo /template/ ComboBoxItem:selected">
-        <Setter Property="Background" Value="{DynamicResource ComboItemSelected}"/>
+        <Setter Property="Background" Value="{DynamicResource ComboItemSelected}" />
     </Style>
 
     <!-- DATEPICKER -->
     <Style Selector="DatePicker.FormDate">
-        <Setter Property="Background"      Value="{DynamicResource InputBg}"/>
-        <Setter Property="Foreground"      Value="{DynamicResource TextPrimary}"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="FontSize"        Value="15"/>
-        <Setter Property="BorderBrush"     Value="{DynamicResource InputBorder}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Height"          Value="36"/>
-        <Setter Property="Padding"         Value="10,5"/>
+        <Setter Property="Background" Value="{DynamicResource InputBg}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="BorderBrush" Value="{DynamicResource InputBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Padding" Value="10,5" />
     </Style>
 
     <!-- CHECKBOX TOGGLE (azul) -->
     <Style Selector="CheckBox.ToggleCheck">
-        <Setter Property="Foreground"               Value="#2E6E99"/>
-        <Setter Property="FontFamily"               Value="Segoe UI"/>
-        <Setter Property="FontSize"                 Value="13"/>
-        <Setter Property="Cursor"                   Value="Hand"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="#2E6E99" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Template">
             <ControlTemplate>
                 <StackPanel Orientation="Horizontal">
@@ -145,80 +145,25 @@
                                  Width="16" Height="16"
                                  Fill="#7AAFCC"
                                  HorizontalAlignment="Left"
-                                 Margin="2,0,0,0"/>
+                                 Margin="2,0,0,0" />
                     </Border>
-                    <ContentPresenter VerticalAlignment="Center"/>
+                    <ContentPresenter VerticalAlignment="Center" />
                 </StackPanel>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="CheckBox.ToggleCheck:checked /template/ Border#Box">
-        <Setter Property="Background"  Value="#4A90B8"/>
-        <Setter Property="BorderBrush" Value="#4A90B8"/>
+        <Setter Property="Background" Value="#4A90B8" />
+        <Setter Property="BorderBrush" Value="#4A90B8" />
     </Style>
     <Style Selector="CheckBox.ToggleCheck:checked /template/ Ellipse#Knob">
-        <Setter Property="Fill"                Value="White"/>
-        <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="Margin"              Value="0,0,2,0"/>
+        <Setter Property="Fill" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="0,0,2,0" />
     </Style>
 
     <!-- CHECKBOX TOGGLE LILÁS -->
-    
-    <Style Selector="CheckBox.ToggleCheckLilac">
-    <Setter Property="Template">
-        <ControlTemplate>
-            <StackPanel Orientation="Horizontal">
-                <Border x:Name="Box"
-                        Width="38" Height="22" CornerRadius="11"
-                        Background="#C8E2EF" BorderBrush="#C8E2EF"
-                        BorderThickness="1" Margin="0,0,10,0">
-                    <Ellipse x:Name="Knob"
-                             Width="16" Height="16"
-                             Fill="#7AAFCC"
-                             HorizontalAlignment="Left"
-                             Margin="2,0,0,0"/>
-                </Border>
-                <ContentPresenter VerticalAlignment="Center"/>
-            </StackPanel>
-        </ControlTemplate>
-    </Setter>
-</Style>
-<Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Border#Box">
-    <Setter Property="Background"  Value="#C07EC8"/>
-    <Setter Property="BorderBrush" Value="#C07EC8"/>
-</Style>
-<Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Ellipse#Knob">
-    <Setter Property="Fill"                Value="White"/>
-    <Setter Property="HorizontalAlignment" Value="Right"/>
-    <Setter Property="Margin"              Value="0,0,2,0"/>
-</Style><Style Selector="CheckBox.ToggleCheckLilac">
-    <Setter Property="Template">
-        <ControlTemplate>
-            <StackPanel Orientation="Horizontal">
-                <Border x:Name="Box"
-                        Width="38" Height="22" CornerRadius="11"
-                        Background="#C8E2EF" BorderBrush="#C8E2EF"
-                        BorderThickness="1" Margin="0,0,10,0">
-                    <Ellipse x:Name="Knob"
-                             Width="16" Height="16"
-                             Fill="#7AAFCC"
-                             HorizontalAlignment="Left"
-                             Margin="2,0,0,0"/>
-                </Border>
-                <ContentPresenter VerticalAlignment="Center"/>
-            </StackPanel>
-        </ControlTemplate>
-    </Setter>
-</Style>
-<Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Border#Box">
-    <Setter Property="Background"  Value="#C07EC8"/>
-    <Setter Property="BorderBrush" Value="#C07EC8"/>
-</Style>
-<Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Ellipse#Knob">
-    <Setter Property="Fill"                Value="White"/>
-    <Setter Property="HorizontalAlignment" Value="Right"/>
-    <Setter Property="Margin"              Value="0,0,2,0"/>
-</Style>
+
     <Style Selector="CheckBox.ToggleCheckLilac">
         <Setter Property="Template">
             <ControlTemplate>
@@ -231,95 +176,151 @@
                                  Width="16" Height="16"
                                  Fill="#7AAFCC"
                                  HorizontalAlignment="Left"
-                                 Margin="2,0,0,0"/>
+                                 Margin="2,0,0,0" />
                     </Border>
-                    <ContentPresenter VerticalAlignment="Center"/>
+                    <ContentPresenter VerticalAlignment="Center" />
                 </StackPanel>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Border#Box">
-        <Setter Property="Background"  Value="#C07EC8"/>
-        <Setter Property="BorderBrush" Value="#C07EC8"/>
+        <Setter Property="Background" Value="#C07EC8" />
+        <Setter Property="BorderBrush" Value="#C07EC8" />
     </Style>
     <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Ellipse#Knob">
-        <Setter Property="Fill"                Value="White"/>
-        <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="Margin"              Value="0,0,2,0"/>
+        <Setter Property="Fill" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="0,0,2,0" />
+    </Style>
+    <Style Selector="CheckBox.ToggleCheckLilac">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel Orientation="Horizontal">
+                    <Border x:Name="Box"
+                            Width="38" Height="22" CornerRadius="11"
+                            Background="#C8E2EF" BorderBrush="#C8E2EF"
+                            BorderThickness="1" Margin="0,0,10,0">
+                        <Ellipse x:Name="Knob"
+                                 Width="16" Height="16"
+                                 Fill="#7AAFCC"
+                                 HorizontalAlignment="Left"
+                                 Margin="2,0,0,0" />
+                    </Border>
+                    <ContentPresenter VerticalAlignment="Center" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
     </Style>
     <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Border#Box">
-        <Setter Property="Background"  Value="#C07EC8"/>
-        <Setter Property="BorderBrush" Value="#C07EC8"/>
+        <Setter Property="Background" Value="#C07EC8" />
+        <Setter Property="BorderBrush" Value="#C07EC8" />
     </Style>
     <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Ellipse#Knob">
-        <Setter Property="Fill"                Value="White"/>
-        <Setter Property="HorizontalAlignment" Value="Right"/>
-        <Setter Property="Margin"              Value="0,0,2,0"/>
+        <Setter Property="Fill" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="0,0,2,0" />
+    </Style>
+    <Style Selector="CheckBox.ToggleCheckLilac">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <StackPanel Orientation="Horizontal">
+                    <Border x:Name="Box"
+                            Width="38" Height="22" CornerRadius="11"
+                            Background="#C8E2EF" BorderBrush="#C8E2EF"
+                            BorderThickness="1" Margin="0,0,10,0">
+                        <Ellipse x:Name="Knob"
+                                 Width="16" Height="16"
+                                 Fill="#7AAFCC"
+                                 HorizontalAlignment="Left"
+                                 Margin="2,0,0,0" />
+                    </Border>
+                    <ContentPresenter VerticalAlignment="Center" />
+                </StackPanel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Border#Box">
+        <Setter Property="Background" Value="#C07EC8" />
+        <Setter Property="BorderBrush" Value="#C07EC8" />
+    </Style>
+    <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Ellipse#Knob">
+        <Setter Property="Fill" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="0,0,2,0" />
+    </Style>
+    <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Border#Box">
+        <Setter Property="Background" Value="#C07EC8" />
+        <Setter Property="BorderBrush" Value="#C07EC8" />
+    </Style>
+    <Style Selector="CheckBox.ToggleCheckLilac:checked /template/ Ellipse#Knob">
+        <Setter Property="Fill" Value="White" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="0,0,2,0" />
     </Style>
 
     <!-- BOTÃO PRIMÁRIO -->
     <Style Selector="Button.BtnPrimary">
-        <Setter Property="Background"      Value="#4A90B8"/>
-        <Setter Property="Foreground"      Value="White"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="FontSize"        Value="13"/>
-        <Setter Property="FontWeight"      Value="SemiBold"/>
-        <Setter Property="Padding"         Value="24,10"/>
-        <Setter Property="Cursor"          Value="Hand"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="#4A90B8" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="24,10" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="Bd" Background="{TemplateBinding Background}"
                         CornerRadius="8" Padding="{TemplateBinding Padding}">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="Button.BtnPrimary:pointerover /template/ Border#Bd">
-        <Setter Property="Background" Value="#2E6E99"/>
+        <Setter Property="Background" Value="#2E6E99" />
     </Style>
     <Style Selector="Button.BtnPrimary:pressed /template/ Border#Bd">
-        <Setter Property="Background" Value="#255880"/>
+        <Setter Property="Background" Value="#255880" />
     </Style>
 
     <!-- BOTÃO ACENTO (lilás) -->
     <Style Selector="Button.BtnAccent">
-        <Setter Property="Background"      Value="#C07EC8"/>
-        <Setter Property="Foreground"      Value="White"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="FontSize"        Value="13"/>
-        <Setter Property="FontWeight"      Value="SemiBold"/>
-        <Setter Property="Padding"         Value="24,10"/>
-        <Setter Property="Cursor"          Value="Hand"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="#C07EC8" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="24,10" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="Bd" Background="{TemplateBinding Background}"
                         CornerRadius="8" Padding="{TemplateBinding Padding}">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="Button.BtnAccent:pointerover /template/ Border#Bd">
-        <Setter Property="Background" Value="#9A5AAA"/>
+        <Setter Property="Background" Value="#9A5AAA" />
     </Style>
     <Style Selector="Button.BtnAccent:pressed /template/ Border#Bd">
-        <Setter Property="Background" Value="#7A3F8A"/>
+        <Setter Property="Background" Value="#7A3F8A" />
     </Style>
 
     <!-- BOTÃO SECUNDÁRIO -->
     <Style Selector="Button.BtnSecondary">
-        <Setter Property="Background"      Value="Transparent"/>
-        <Setter Property="Foreground"      Value="#7AAFCC"/>
-        <Setter Property="FontFamily"      Value="Segoe UI"/>
-        <Setter Property="FontSize"        Value="13"/>
-        <Setter Property="FontWeight"      Value="SemiBold"/>
-        <Setter Property="Padding"         Value="24,10"/>
-        <Setter Property="Cursor"          Value="Hand"/>
-        <Setter Property="BorderBrush"     Value="#C8E2EF"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#7AAFCC" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="24,10" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderBrush" Value="#C8E2EF" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="Bd"
@@ -327,16 +328,16 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="8" Padding="{TemplateBinding Padding}">
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </Border>
             </ControlTemplate>
         </Setter>
     </Style>
     <Style Selector="Button.BtnSecondary:pointerover /template/ Border#Bd">
-        <Setter Property="Background" Value="#EAF4FA"/>
+        <Setter Property="Background" Value="#EAF4FA" />
     </Style>
     <Style Selector="Button.BtnSecondary:pointerover">
-        <Setter Property="Foreground" Value="#4A90B8"/>
+        <Setter Property="Foreground" Value="#4A90B8" />
     </Style>
 
 </Styles>

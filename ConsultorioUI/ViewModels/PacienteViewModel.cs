@@ -24,13 +24,14 @@ namespace ConsultorioUI.ViewModels
             _httpClient = new();
             Pacientes = [];
         }
+
         public async Task<Paciente?> BuscarPacientePorId(string txt)
         {
             if (!int.TryParse(txt, out _)) throw new Exception("Não é um numero");
-            var response = await _httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorId/{txt}");
-          
-            return response;
+            var response =
+                await _httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorId/{txt}");
 
+            return response;
         }
 
         public async Task<IEnumerable<Paciente>?> BuscarPacientePorNome(string txt) =>
@@ -44,62 +45,72 @@ namespace ConsultorioUI.ViewModels
         {
             if (string.IsNullOrWhiteSpace(paciente.Nome))
             {
-                MessageBox.Show(visual,"O campo Nome é obrigatório.");
+                MessageBox.Show(visual, "O campo Nome é obrigatório.");
                 return false;
             }
+
             if (string.IsNullOrWhiteSpace(paciente.Cpf) || paciente.Cpf.Length != 14)
             {
-                MessageBox.Show(visual,"CPF inválido ou não informado.");
+                MessageBox.Show(visual, "CPF inválido ou não informado.");
                 return false;
             }
-            if (paciente.DataNascimento == DateTime.MinValue )
+
+            if (paciente.DataNascimento == DateTime.MinValue)
             {
-                MessageBox.Show(visual,"Informe a data de nascimento.");
+                MessageBox.Show(visual, "Informe a data de nascimento.");
                 return false;
             }
+
             if (string.IsNullOrWhiteSpace(paciente.Telefone) || paciente.Telefone.Length < 14)
             {
-                MessageBox.Show(visual,"Telefone inválido ou não informado.");
+                MessageBox.Show(visual, "Telefone inválido ou não informado.");
                 return false;
             }
+
             return true;
         }
+
         public bool Validar(Visual visual, PacienteUpdateDTO paciente)
         {
             if (string.IsNullOrWhiteSpace(paciente.Nome))
             {
-                MessageBox.Show(visual,"O campo Nome é obrigatório.");
+                MessageBox.Show(visual, "O campo Nome é obrigatório.");
                 return false;
             }
+
             if (string.IsNullOrWhiteSpace(paciente.Cpf) || paciente.Cpf.Length < 14)
             {
-                MessageBox.Show(visual,"CPF inválido ou não informado.");
+                MessageBox.Show(visual, "CPF inválido ou não informado.");
                 return false;
             }
-            if (paciente.DataNascimento == DateTime.MinValue )
+
+            if (paciente.DataNascimento == DateTime.MinValue)
             {
-                MessageBox.Show(visual,"Informe a data de nascimento.");
+                MessageBox.Show(visual, "Informe a data de nascimento.");
                 return false;
             }
+
             if (string.IsNullOrWhiteSpace(paciente.Telefone) || paciente.Telefone.Length < 14)
             {
-                MessageBox.Show(visual,"Telefone inválido ou não informado.");
+                MessageBox.Show(visual, "Telefone inválido ou não informado.");
                 return false;
             }
+
             return true;
         }
+
         public async Task<bool> SalvarNovo(Paciente paciente)
         {
-            const string urlPaciente   = "https://localhost:7256/Paciente";
+            const string urlPaciente = "https://localhost:7256/Paciente";
             const string urlProntuario = "https://localhost:7256/Prontuario";
             using HttpClient client = new();
 
             var response = await client.PostAsync(
                 urlPaciente,
                 new StringContent(JsonSerializer.Serialize(paciente), Encoding.UTF8, "application/json"));
-            
-            if(!response.IsSuccessStatusCode) return false; 
-            
+
+            if (!response.IsSuccessStatusCode) return false;
+
             var pacienteCriado = await response.Content.ReadFromJsonAsync<Paciente>();
 
             response = await client.PostAsync(
@@ -109,15 +120,13 @@ namespace ConsultorioUI.ViewModels
                     Encoding.UTF8, "application/json"));
 
             return response.IsSuccessStatusCode;
-
         }
-        
+
         public async Task<bool> SalvarAlteracao(PacienteUpdateDTO paciente, string id)
         {
-            
-            const string urlPaciente   = "https://localhost:7256/Paciente";
+            const string urlPaciente = "https://localhost:7256/Paciente";
             using HttpClient client = new();
-            
+
             var response = await client.PutAsJsonAsync(
                 $"{urlPaciente}/{id}",
                 paciente);

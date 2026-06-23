@@ -11,16 +11,16 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <local1:SidebarControl 
+        <local1:SidebarControl
             x:Name="Sidebar"
-            Grid.Column="0"/>
+            Grid.Column="0" />
 
-        <ContentControl 
+        <ContentControl
             x:Name="MainContent"
-            Grid.Column="1"/>
+            Grid.Column="1" />
     </Grid>
 </Window>
