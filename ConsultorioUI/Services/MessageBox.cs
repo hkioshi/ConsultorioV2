@@ -2,15 +2,15 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using Avalonia.Media;
+using ConsultorioUI.Views;
 
 namespace ConsultorioUI.Services;
 
 public static class MessageBox
 {
-    
-    public static  void Show(Visual visual, string message)
+    public static  void Show(string message)
     {
-        var parentWindow = TopLevel.GetTopLevel(visual) as Window;
+        var parentWindow = App.Window;
 
         var okButton = new Button
         {
@@ -47,7 +47,7 @@ public static class MessageBox
 
         okButton.Click += (_, _) => dialog.Close();
 
-        if (parentWindow != null) dialog.ShowDialog(parentWindow);
+        dialog.ShowDialog(parentWindow);
     }
     
 }

@@ -112,7 +112,7 @@ public partial class PacientePerfilView : UserControl
             var response = await _vm.SalvarAlteracao(pacienteSalvo, _id);
             if (response)
             {
-                MessageBox.Show(this,"Salvo com sucesso!");
+                MessageBox.Show("Salvo com sucesso!");
                 
                 App.Navigation.Navigate("Pacientes");
             }

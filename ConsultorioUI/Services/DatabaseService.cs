@@ -10,23 +10,23 @@ namespace ConsultorioUI.Services;
 
 public class DatabaseService
 {
-    private static readonly HttpClient _httpClient = new HttpClient();
+    private static readonly HttpClient HttpClient = new HttpClient();
 
     public static async Task<Paciente?> BuscarPacientePorId(string txt) =>
-        await _httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorId/{txt}");
+        await HttpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorId/{txt}");
 
     public static async Task<IEnumerable<Paciente>?> BuscarPacientePorNome(string txt) =>
-        await _httpClient.GetFromJsonAsync<List<Paciente>>($"https://localhost:7256/Paciente/BuscarPorNome/{txt}");
+        await HttpClient.GetFromJsonAsync<List<Paciente>>($"https://localhost:7256/Paciente/BuscarPorNome/{txt}");
     
     public static async Task<Paciente?> BuscarPacientePorCpf(string txt) =>
-        await _httpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorCPF/{txt}");
+        await HttpClient.GetFromJsonAsync<Paciente>($"https://localhost:7256/Paciente/BuscarPorCPF/{txt}");
 
     public static async Task<bool> SalvarNovo(Paciente paciente)
     {
         const string urlPaciente = "https://localhost:7256/Paciente";
         const string urlProntuario = "https://localhost:7256/Prontuario";
 
-        var response = await _httpClient.PostAsync(
+        var response = await HttpClient.PostAsync(
             urlPaciente,
             new StringContent(JsonSerializer.Serialize(paciente), Encoding.UTF8, "application/json"));
 
@@ -34,7 +34,7 @@ public class DatabaseService
 
         var pacienteCriado = await response.Content.ReadFromJsonAsync<Paciente>();
 
-        response = await _httpClient.PostAsync(
+        response = await HttpClient.PostAsync(
             urlProntuario,
             new StringContent(
                 JsonSerializer.Serialize(new ProntuarioId { PacienteId = pacienteCriado!.Id }),

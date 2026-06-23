@@ -17,14 +17,15 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
     }
     public static NavigationService Navigation { get; private set; } = null!;
+    public static MainWindow Window {get; private set; } = null!;
 
     public override void OnFrameworkInitializationCompleted()
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            var mainWindow = new MainWindow();
-            Navigation = new NavigationService(mainWindow);
-            desktop.MainWindow = mainWindow;
+            Window = new MainWindow();
+            Navigation = new NavigationService(Window);
+            desktop.MainWindow = Window;
         }
 
         base.OnFrameworkInitializationCompleted();
