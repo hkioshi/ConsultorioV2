@@ -47,7 +47,7 @@ public static class MessageBox
 
         okButton.Click += (_, _) => dialog.Close();
 
-        dialog.ShowDialog(parentWindow);
+        if (parentWindow != null) dialog.ShowDialog(parentWindow);
     }
     
 }

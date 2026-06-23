@@ -73,7 +73,7 @@
                                 <TextBlock Text="Data de nascimento" Classes="FieldLabel" />
                                 <DatePicker x:Name="DtNascimento" Classes="FormDate" />
                             </StackPanel>
-
+    
                             <!-- Gênero agora sozinho, uma linha abaixo -->
                             <StackPanel Grid.Row="3" Grid.Column="0">
                                 <TextBlock Text="Gênero" Classes="FieldLabel" />

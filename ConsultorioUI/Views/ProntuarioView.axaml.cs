@@ -8,10 +8,12 @@ using ConsultorioUI.ViewModels;
 
 namespace ConsultorioUI.Views;
 
-public partial class ProntuarioView : UserControl 
+public partial class ProntuarioView : UserControl
 {
+    private string _id;
     public ProntuarioView(string id)
     {
+        _id = id;
         DataContext = new ProntuarioViewModel();
         InitializeComponent();
     }

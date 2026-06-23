@@ -12,40 +12,31 @@ namespace ConsultorioUI.Views;
 
 public partial class PacientesView : UserControl
 {
-    public event Action<string> OnNavigate;
-
-    PacienteViewModel _PacienteVM;
-    private MainWindow _mainWindow;
-    public PacientesView(MainWindow mainWindow)
+    private readonly PacienteViewModel _pacienteVm = new();
+    public PacientesView()
     {
         InitializeComponent();
-        _mainWindow = mainWindow;
-        _PacienteVM = new();
-        DataContext = _PacienteVM;
+        DataContext = _pacienteVm;
     }
 
-    private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e)
-    {
-        _mainWindow.MainContent.Content = new NovoPacienteView(_mainWindow);
-    }
-
+    private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e) =>
+        App.Navigation.Navigate("NovoPaciente");        
+    
     private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
     {
         //TODO: Formatar o texto quando pesquisar
         if (TxtBusca.Text == "") return;
-
-
-
+        
         if (rdbCPF.IsChecked == true)
         {
             try
             {
                 // Filtrar por CPF
-                var response = await _PacienteVM.BuscarPacientePorCpf(TxtBusca.Text.Trim());
+                var response = await _pacienteVm.BuscarPacientePorCpf(TxtBusca.Text.Trim());
                 if (response is null) return;
                 MessageBox.Show(this,response.Nome);
-                _PacienteVM.Pacientes.Clear();
-                _PacienteVM.Pacientes.Add(response);
+                _pacienteVm.Pacientes.Clear();
+                _pacienteVm.Pacientes.Add(response);
             }
             catch (Exception ex)
             {
@@ -58,18 +49,15 @@ public partial class PacientesView : UserControl
             try
             {
                 // Filtrar por ID
-                var response = await _PacienteVM.BuscarPacientePorId(TxtBusca.Text);
-                if (response is null) return;
-                _PacienteVM.Pacientes.Clear();
-                _PacienteVM.Pacientes.Add(response);
+                _pacienteVm.AdicionarPaciente(await _pacienteVm.BuscarPacientePorId(TxtBusca.Text));
             }
             catch (JsonException ex)
             {
-                _PacienteVM.Pacientes.Clear();
+                _pacienteVm.Pacientes.Clear();
             }
             catch (Exception ex)
             {
-                _PacienteVM.Pacientes.Clear();
+                _pacienteVm.Pacientes.Clear();
                 MessageBox.Show(this,ex.Message);
                 TxtBusca.Text = "";
             }
@@ -77,16 +65,10 @@ public partial class PacientesView : UserControl
 
         }
         else if (rdbNome.IsChecked == true)
-        {
             // Filtrar por Nome
-            var response = await _PacienteVM.BuscarPacientePorNome(TxtBusca.Text);
-            if (response is null) return;
-            _PacienteVM.Pacientes.Clear();
-
-
-            foreach (Paciente i in response) _PacienteVM.Pacientes.Add(i);
-
-        }
+            _pacienteVm.AdicionarPacientes(await _pacienteVm.BuscarPacientePorNome(TxtBusca.Text));
+            
+        
     } 
     //TODO: Fazer Editar
     //TODO: Design Editar
@@ -106,8 +88,7 @@ public partial class PacientesView : UserControl
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
 
-        _mainWindow.MainContent.Content = new ProntuarioView(id);
-        
+        App.Navigation.Navigate("Prontuario",id);        
     }
     
     //TODO: Design Perfil
@@ -116,6 +97,6 @@ public partial class PacientesView : UserControl
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
-        _mainWindow.MainContent.Content = new PacientePerfilView(id,_mainWindow);
+        App.Navigation.Navigate("PerfilPaciente",id);
     }
 }

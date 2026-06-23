@@ -13,22 +13,19 @@ namespace ConsultorioUI.Views;
 
 public partial class PacientePerfilView : UserControl
 {
-    private MainWindow _mainWindow;
-    private PacienteViewModel VM;
-    private string Id;
+    private readonly PacienteViewModel _vm = new();
+    private readonly string _id;
 
-    public PacientePerfilView(string id, MainWindow mainWindow)
+    public PacientePerfilView(string id)
     {
         InitializeComponent();
-        VM = new();
-        Id = id;
+        _id = id;
         _ = Iniciar(id);
-        _mainWindow = mainWindow;
     }
 
     async Task Iniciar(string id)
     {
-        var paciente = await VM.BuscarPacientePorId(id);
+        var paciente = await _vm.BuscarPacientePorId(id);
         if (paciente is null) return;
 
         // Dados Pessoais
@@ -76,7 +73,7 @@ public partial class PacientePerfilView : UserControl
 
     private async void BtnSalvar_Click(object? sender, RoutedEventArgs e)
     {
-        PacienteUpdateDTO PacienteSalvo = new PacienteUpdateDTO
+        PacienteUpdateDTO pacienteSalvo = new PacienteUpdateDTO
         {
             Nome           = TxtNome.Text?.Trim() ?? "",
             Cpf            = TxtCpf.Text?.Trim() ?? "",
@@ -110,13 +107,14 @@ public partial class PacientePerfilView : UserControl
             QueroReceberLembretes = ChkLembretes.IsChecked ?? false
         };
 
-        if(VM.Validar(this,PacienteSalvo))
+        if(ValidacaoService.Validar(this,pacienteSalvo))
         {
-            var response = await VM.SalvarAlteracao(PacienteSalvo, Id);
+            var response = await _vm.SalvarAlteracao(pacienteSalvo, _id);
             if (response)
             {
                 MessageBox.Show(this,"Salvo com sucesso!");
-                _mainWindow.MainContent.Content = new PacientesView(_mainWindow);
+                
+                App.Navigation.Navigate("Pacientes");
             }
         }
         

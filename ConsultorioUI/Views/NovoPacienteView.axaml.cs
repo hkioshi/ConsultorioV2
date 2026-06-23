@@ -1,8 +1,6 @@
 using System;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using ConsultorioUI.Models;
 using ConsultorioUI.Services;
 using ConsultorioUI.ViewModels;
@@ -11,32 +9,12 @@ namespace ConsultorioUI.Views;
 
 public partial class NovoPacienteView : UserControl
 {
-    private PacienteViewModel VM = new PacienteViewModel();
-    private MainWindow _mainWindow;
-    public NovoPacienteView(MainWindow mainWindow)
-    {
-        _mainWindow = mainWindow;
-        InitializeComponent();
-    }
+    private readonly PacienteViewModel _vm = new PacienteViewModel();
+    public NovoPacienteView() => InitializeComponent();
     
-    private void SelecionarComboPorTexto(ComboBox combo, string? valor)
-    {
-        if (string.IsNullOrWhiteSpace(valor)) return;
-
-        foreach (var item in combo.Items)
-        {
-            if (item is ComboBoxItem cbi &&
-                cbi.Content?.ToString()?.Equals(valor, StringComparison.OrdinalIgnoreCase) == true)
-            {
-                combo.SelectedItem = cbi;
-                break;
-            }
-        }
-    }
-
     private async void BtnSalvar_Click(object? sender, RoutedEventArgs e)
     {
-        Paciente PacienteSalvo = new Paciente
+        Paciente pacienteSalvo = new Paciente
         {
             Nome           = TxtNome.Text?.Trim() ?? "",
             Cpf            = TxtCpf.Text?.Trim() ?? "",
@@ -70,13 +48,12 @@ public partial class NovoPacienteView : UserControl
             QueroReceberLembretes = ChkLembretes.IsChecked ?? false
         };
 
-        if(VM.Validar(this,PacienteSalvo))
+        if(ValidacaoService.Validar(this,pacienteSalvo))
         {
-            var response = await VM.SalvarNovo(PacienteSalvo);
-            if (response)
+            if (await _vm.SalvarNovo(pacienteSalvo))
             {
                 MessageBox.Show(this,"Salvo com sucesso!");
-                _mainWindow.MainContent.Content = new PacientesView(_mainWindow);
+                App.Navigation.Navigate("Pacientes");
             }
         }
         
