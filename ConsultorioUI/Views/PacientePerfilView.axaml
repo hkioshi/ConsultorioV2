@@ -26,14 +26,13 @@
                            Margin="0,3,0,0"/>
             </StackPanel>
             <Button Grid.Column="1"
-                    Content="✕"
+                    Content="Salvar Alteração"
+                    Click="BtnSalvar_Click"
                     Foreground="{DynamicResource TextPrimary}"
-                    Background="Transparent"
                     BorderThickness="0"
                     FontSize="16"
                     Cursor="Hand"
-                    VerticalAlignment="Center"
-                    />
+                    VerticalAlignment="Center"/>
         </Grid>
     </Border>
 
@@ -76,7 +75,7 @@
                     </StackPanel>
 
                     <!-- Gênero agora sozinho, uma linha abaixo -->
-                    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                    <StackPanel Grid.Row="3" Grid.Column="0" >
                         <TextBlock Text="Gênero" Classes="FieldLabel"/>
                         <ComboBox x:Name="CmbGenero" Classes="FormCombo" HorizontalAlignment="Stretch">
                             <ComboBoxItem Content="Masculino"/>
@@ -85,7 +84,7 @@
                         </ComboBox>
                     </StackPanel>
 
-                    <StackPanel Grid.Row="4" Grid.Column="0">
+                    <StackPanel Grid.Row="3" Grid.Column="1">
                         <TextBlock Text="Estado civil" Classes="FieldLabel"/>
                         <ComboBox x:Name="CmbEstadoCivil" Classes="FormCombo">
                             <ComboBoxItem Content="Solteiro(a)"/>
@@ -94,28 +93,7 @@
                             <ComboBoxItem Content="Viúvo(a)"/>
                         </ComboBox>
                     </StackPanel>
-
-                    <StackPanel Grid.Row="4" Grid.Column="1">
-                        <TextBlock Text="Profissão" Classes="FieldLabel"/>
-                        <TextBox x:Name="TxtProfissao" Classes="FormInput"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="5" Grid.Column="0">
-                        <TextBlock Text="Nome do pai" Classes="FieldLabel"/>
-                        <TextBox x:Name="TxtNomePai" Classes="FormInput"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="5" Grid.Column="1">
-                        <TextBlock Text="Nome da mãe" Classes="FieldLabel"/>
-                        <TextBox x:Name="TxtNomeMae" Classes="FormInput"/>
-                    </StackPanel>
-
-                    <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
-                        <TextBlock Text="Nome do cônjuge" Classes="FieldLabel"/>
-                        <TextBox x:Name="TxtNomeConjuge" Classes="FormInput"/>
-                    </StackPanel>
-
-                </Grid>     
+                 </Grid>     
                 </StackPanel>
             </Border>
 
@@ -144,7 +122,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                            <TextBlock Text="Logradouro" Classes="FieldLabel"/>
+                            <TextBlock Text="Logradouro" Classes=""/>
                             <TextBox x:Name="TxtLogradouro" Classes="FormInput"/>
                         </StackPanel>
 
@@ -163,9 +141,38 @@
                             <TextBox x:Name="TxtCidade" Classes="FormInput"/>
                         </StackPanel>
 
+                       
                         <StackPanel Grid.Row="3" Grid.Column="1">
                             <TextBlock Text="Estado" Classes="FieldLabel"/>
-                            <TextBox x:Name="TxtEstado" Classes="FormInput"/>
+                            <ComboBox x:Name="CmbEstado" Classes="FormCombo">
+                                <ComboBoxItem Content="SP"/>
+                                <ComboBoxItem Content="RJ"/>
+                                <ComboBoxItem Content="MG"/>
+                                <ComboBoxItem Content="RS"/>
+                                <ComboBoxItem Content="PR"/>
+                                <ComboBoxItem Content="SC"/>
+                                <ComboBoxItem Content="BA"/>
+                                <ComboBoxItem Content="GO"/>
+                                <ComboBoxItem Content="DF"/>
+                                <ComboBoxItem Content="PE"/>
+                                <ComboBoxItem Content="CE"/>
+                                <ComboBoxItem Content="AM"/>
+                                <ComboBoxItem Content="PA"/>
+                                <ComboBoxItem Content="MT"/>
+                                <ComboBoxItem Content="MS"/>
+                                <ComboBoxItem Content="ES"/>
+                                <ComboBoxItem Content="RN"/>
+                                <ComboBoxItem Content="PB"/>
+                                <ComboBoxItem Content="AL"/>
+                                <ComboBoxItem Content="PI"/>
+                                <ComboBoxItem Content="SE"/>
+                                <ComboBoxItem Content="MA"/>
+                                <ComboBoxItem Content="TO"/>
+                                <ComboBoxItem Content="RO"/>
+                                <ComboBoxItem Content="AC"/>
+                                <ComboBoxItem Content="AP"/>
+                                <ComboBoxItem Content="RR"/>
+                            </ComboBox>
                         </StackPanel>
 
                         <StackPanel Grid.Row="4" Grid.Column="0">
@@ -197,34 +204,37 @@
                           RowSpacing="10" ColumnSpacing="10">
 
                         <StackPanel Grid.Row="0" Grid.Column="0">
-                            <TextBlock Text="Convênio" Classes="FieldLabel"/>
-                            <TextBox x:Name="TxtConvenio" Classes="FormInput"/>
+                            <TextBlock Text="Profissão" Classes="FieldLabel"/>
+                            <TextBox x:Name="TxtProfissao" Classes="FormInput"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="0" Grid.Column="1">
-                            <TextBlock Text="Número do convênio" Classes="FieldLabel"/>
-                            <TextBox x:Name="TxtNumeroConvenio" Classes="FormInput"/>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="1" Grid.Column="0">
-                            <TextBlock Text="Como conheceu" Classes="FieldLabel"/>
-                            <ComboBox x:Name="CmbConheceuPor" Classes="FormCombo"/>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="1" Grid.Column="1">
                             <TextBlock Text="Preferência de horário" Classes="FieldLabel"/>
                             <TextBox x:Name="TxtPreferenciaHorario" Classes="FormInput"/>
                         </StackPanel>
 
-                        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                             <TextBlock Text="Observações" Classes="FieldLabel"/>
                             <TextBox x:Name="TxtObservacoes" Classes="FormInput FormTextArea"/>
                         </StackPanel>
+                        
+                        <StackPanel Grid.Row="2" Grid.Column="0">
+                            <TextBlock Text="Nome do pai" Classes="FieldLabel"/>
+                            <TextBox x:Name="TxtNomePai" Classes="FormInput"/>
+                        </StackPanel>
 
+                        <StackPanel Grid.Row="2" Grid.Column="1">
+                            <TextBlock Text="Nome da mãe" Classes="FieldLabel"/>
+                            <TextBox x:Name="TxtNomeMae" Classes="FormInput"/>
+                        </StackPanel>
+                        
                         <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                                   x:Name="ChkLembretes"
                                   Content="Quero receber lembretes"
-                                  Classes="ToggleCheck"/>
+                                  />
+                       
+
+                        
 
                     </Grid>
                 </StackPanel>

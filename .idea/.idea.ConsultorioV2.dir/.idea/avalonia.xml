@@ -16,10 +16,12 @@
         <entry key="ConsultorioUI/Views/InicioView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/MainWindow.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/NovoPacienteDialog.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Views/NovoPacienteView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/PacientePerfilView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/PacientesView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/PagamentoView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/Prontuario.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Views/ProntuarioView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/SidebarControl.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/teste.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
       </map>

@@ -26,15 +26,7 @@ public partial class PacientesView : UserControl
 
     private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new NovoPacienteDialog();
-        dialog.ShowDialog( TopLevel.GetTopLevel(this) as Window);
-
-        // PacienteSalvo será null se o usuário cancelou
-        if (dialog.PacienteSalvo != null)
-        {
-            var paciente = dialog.PacienteSalvo;
-            // salvar no banco, atualizar lista...
-        }
+        _mainWindow.MainContent.Content = new NovoPacienteView(_mainWindow);
     }
 
     private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
@@ -114,7 +106,6 @@ public partial class PacientesView : UserControl
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
 
-        ProntuarioView prontuario = new(id);
         _mainWindow.MainContent.Content = new ProntuarioView(id);
         
     }
@@ -125,8 +116,6 @@ public partial class PacientesView : UserControl
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
-
-        PacientePerfilView perfil = new(id);
-        _mainWindow.MainContent.Content = new PacientePerfilView(id);
+        _mainWindow.MainContent.Content = new PacientePerfilView(id,_mainWindow);
     }
 }

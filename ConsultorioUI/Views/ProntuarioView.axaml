@@ -2,156 +2,463 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:ConsultorioUI.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="700"
              x:Class="ConsultorioUI.Views.ProntuarioView"
+             x:DataType="vm:ProntuarioViewModel"
              Background="{DynamicResource PageBg}">
 
-    <Grid Margin="28,24">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="16"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="16"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="14"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <!-- ══════════ HEADER ══════════ -->
-        <Grid Grid.Row="0">
-            <StackPanel>
-                <TextBlock Foreground="{DynamicResource TextPrimary}"
-                           FontSize="20"
-                           FontWeight="SemiBold"
-                           FontFamily="Segoe UI">
-                    <Run>Prontuário</Run>
-                    <Run x:Name="Nome"/>
-                </TextBlock>
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"> </RowDefinition>
+                <RowDefinition Height="*"> </RowDefinition>
+            </Grid.RowDefinitions>
+           <Grid Grid.Row="0" Margin="20,0,20,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Gerencie o cadastro e histórico dos seus pacientes"
-                           Foreground="{DynamicResource TextMuted}"
+        <!-- Título e subtítulo -->
+        <StackPanel Grid.Column="0"
+                    VerticalAlignment="Center"
+                    Spacing="4">
+
+            <TextBlock Text="Prontuário"
+                       Foreground="{DynamicResource TextPrimary}"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       FontFamily="Segoe UI"/>
+
+            <TextBlock Text="Odontograma e histórico de tratamentos do paciente"
+                       Foreground="{DynamicResource TextMuted}"
+                       FontSize="12"
+                       FontFamily="Segoe UI"/>
+        </StackPanel>
+
+        <!-- Lado direito: nome do paciente + badge -->
+        <StackPanel Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal"
+                    Spacing="12">
+
+            <Border Background="{DynamicResource AccentBlue}"
+                    CornerRadius="20"
+                    Padding="14,6"
+                    VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" Spacing="6">
+                    <TextBlock Text="&#128100;"
+                               FontSize="13"
+                               VerticalAlignment="Center"/>
+                    <TextBlock Text="Nome do Paciente"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource TextPrimary}"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="{DynamicResource CardBg}"
+                    CornerRadius="20"
+                    Padding="14,6"
+                    VerticalAlignment="Center">
+                <TextBlock Text="Data: 23/06/2026"
                            FontSize="12"
-                           FontFamily="Segoe UI"
-                           Margin="0,3,0,0"/>
-            </StackPanel>
-        </Grid>
+                           Foreground="{DynamicResource TextMuted}"
+                           VerticalAlignment="Center"/>
+            </Border>
 
-        <!-- ══════════ ODONTOGRAMA ══════════ -->
-        <Grid Grid.Row="3">
+        </StackPanel>
+    </Grid>
+        
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <!-- COLUNA 0 — ODONTOGRAMA -->
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/> <!-- Números superiores -->
-                    <RowDefinition Height="Auto"/> <!-- Checkboxes superiores -->
-                    <RowDefinition Height="Auto"/> <!-- Linha do meio -->
-                    <RowDefinition Height="Auto"/> <!-- Checkboxes inferiores -->
-                    <RowDefinition Height="Auto"/> <!-- Números inferiores -->
-                </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-                <!-- Números — arcada superior -->
-                <UniformGrid Grid.Row="0" Columns="16">
-                    <TextBlock Text="18" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="17" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="16" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="15" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="14" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="13" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="12" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="11" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="21" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="22" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="23" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="24" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="25" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="26" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="27" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="28" HorizontalAlignment="Center" FontSize="11"/>
-                </UniformGrid>
+            <Grid Grid.ColumnSpan="2" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*"
+                  VerticalAlignment="Center">
 
-                <!-- Checkboxes — arcada superior -->
-                <UniformGrid Grid.Row="1" Columns="16">
-                    <CheckBox x:Name="Dente18" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente17" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente16" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente15" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente14" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente13" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente12" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente11" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente21" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente22" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente23" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente24" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente25" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente26" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente27" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente28" HorizontalAlignment="Center"/>
-                </UniformGrid>
+                <!-- LINHA 1: Números da arcada superior -->
+                <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="20,0"
+                        Background="{DynamicResource AccentBlue}"
+                        CornerRadius="12,12,0,0"
+                        Padding="16,12">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
 
-                <!-- Linha do meio -->
-                <Border Grid.Row="2" Height="2" Background="#CFE3EC" Margin="0,10"/>
+                        <!-- Dentes superiores direitos: 18 ao 11 -->
+                        <TextBlock Grid.Column="0" Text="18" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="1" Text="17" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="2" Text="16" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="3" Text="15" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="4" Text="14" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="5" Text="13" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="6" Text="12" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="7" Text="11" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
 
-                <!-- Checkboxes — arcada inferior -->
-                <UniformGrid Grid.Row="3" Columns="16">
-                    <CheckBox x:Name="Dente48" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente47" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente46" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente45" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente44" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente43" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente42" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente41" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente31" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente32" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente33" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente34" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente35" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente36" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente37" HorizontalAlignment="Center"/>
-                    <CheckBox x:Name="Dente38" HorizontalAlignment="Center"/>
-                </UniformGrid>
+                        <!-- Dentes superiores esquerdos: 21 ao 28 -->
+                        <TextBlock Grid.Column="8" Text="21" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="9" Text="22" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="10" Text="23" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="11" Text="24" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="12" Text="25" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="13" Text="26" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="14" Text="27" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="15" Text="28" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                    </Grid>
+                </Border>
 
-                <!-- Números — arcada inferior -->
-                <UniformGrid Grid.Row="4" Columns="16">
-                    <TextBlock Text="48" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="47" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="46" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="45" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="44" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="43" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="42" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="41" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="31" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="32" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="33" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="34" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="35" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="36" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="37" HorizontalAlignment="Center" FontSize="11"/>
-                    <TextBlock Text="38" HorizontalAlignment="Center" FontSize="11"/>
-                </UniformGrid>
+                <!-- LINHA 2: CheckBoxes da arcada superior -->
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        Background="{DynamicResource InputBg}"
+                        Padding="16,10"
+                        Margin="20,0">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+
+                        <CheckBox Grid.Column="0" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="1" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="2" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="3" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="4" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="5" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="6" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="7" HorizontalAlignment="Center" />
+
+                        <CheckBox Grid.Column="8" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="9" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="10" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="11" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="12" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="13" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="14" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="15" HorizontalAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <!-- LINHA 3: CheckBoxes da arcada inferior -->
+                <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="20,0"
+
+                        Background="{DynamicResource InputBg}"
+                        Padding="16,10">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+
+                        <CheckBox Grid.Column="0" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="1" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="2" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="3" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="4" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="5" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="6" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="7" HorizontalAlignment="Center" />
+
+                        <CheckBox Grid.Column="8" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="9" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="10" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="11" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="12" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="13" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="14" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="15" HorizontalAlignment="Center" />
+                    </Grid>
+                </Border>
+
+                <!-- LINHA 4: Números da arcada inferior -->
+                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                        Margin="20,0"
+
+                        Background="{DynamicResource AccentBlue}"
+                        CornerRadius="0,0,12,12"
+                        Padding="16,12">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+
+                        <!-- Dentes inferiores direitos: 48 ao 41 -->
+                        <TextBlock Grid.Column="0" Text="48" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="1" Text="47" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="2" Text="46" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="3" Text="45" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="4" Text="44" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="5" Text="43" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="6" Text="42" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="7" Text="41" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+
+                        <!-- Dentes inferiores esquerdos: 31 ao 38 -->
+                        <TextBlock Grid.Column="8" Text="31" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="9" Text="32" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="10" Text="33" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="11" Text="34" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="12" Text="35" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="13" Text="36" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="14" Text="37" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                        <TextBlock Grid.Column="15" Text="38" HorizontalAlignment="Center"
+                                   FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+                    </Grid>
+                </Border>
+
+            </Grid>
+            
+       <Border Grid.Row="0" Grid.Column="2"
+        Grid.RowSpan="3"
+        Background="{DynamicResource CardBg}"
+        CornerRadius="12"
+        Padding="20,16"
+        Margin="0,0,10,10">
+
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto,Auto,Auto">
+
+            <!-- NOME DO TRATAMENTO -->
+            <TextBlock Grid.Row="0"
+                       Text="Tratamento"
+                       FontSize="11"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextPrimary}"
+                       Margin="0,0,0,6"/>
+
+            <TextBox Grid.Row="1"
+                     x:Name="TratamentoNome"
+                     Watermark="Nome do tratamento"
+                     Height="36"
+                     CornerRadius="8"
+                     Padding="10,8"
+                     FontSize="13"
+                     Margin="0,0,0,14"/>
+
+            <!-- Divisor -->
+            <Border Grid.Row="2"
+                    Height="1"
+                    Background="{DynamicResource CardBorder}"
+                    Margin="0,0,0,14"/>
+
+            <!-- Labels Faces + Anotações -->
+            <Grid Grid.Row="3" ColumnDefinitions="Auto,60,*" Margin="0,0,0,6">
+                <TextBlock Grid.Column="0"
+                           Text="Faces do Dente"
+                           FontSize="13"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextPrimary}"/>
+                <TextBlock Grid.Column="2"
+                           Text="Anotações"
+                           FontSize="13"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextPrimary}"/>
             </Grid>
 
-            <!-- COLUNA 1 — FACES DO DENTE -->
-            <Grid Grid.Column="1" Margin="24,0,0,0">
-                <StackPanel Spacing="6">
-                    <TextBlock Text="Faces do Dente" FontWeight="SemiBold" FontSize="13"/>
-                    <CheckBox x:Name="FaceVestibular"     Content="Vestibular"/>
-                    <CheckBox x:Name="FaceLingual"        Content="Lingual/Palatina"/>
-                    <CheckBox x:Name="FaceMesial"         Content="Mesial"/>
-                    <CheckBox x:Name="FaceDistal"         Content="Distal"/>
-                    <CheckBox x:Name="FaceOclusal"        Content="Oclusal/Incisal"/>
-                    <Button 
-                        Content="Salvar"
-                    /> 
+            <!-- FACES + ANOTAÇÕES — Row="*" para crescer -->
+            <Grid Grid.Row="4" ColumnDefinitions="Auto,16,*">
+
+                <StackPanel Grid.Column="0" Spacing="8" VerticalAlignment="Top">
+                    <CheckBox x:Name="FaceVestibular" Content="Vestibular"/>
+                    <CheckBox x:Name="FaceLingual"    Content="Lingual / Palatina"/>
+                    <CheckBox x:Name="FaceMesial"     Content="Mesial"/>
+                    <CheckBox x:Name="FaceDistal"     Content="Distal"/>
+                    <CheckBox x:Name="FaceOclusal"    Content="Oclusal / Incisal"/>
                 </StackPanel>
-                
+
+                <Border Grid.Column="1"
+                        Width="1"
+                        Background="{DynamicResource CardBorder}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Stretch"/>
+
+                <!-- TextBox ocupa todo o espaço disponível -->
+                <TextBox Grid.Column="2"
+                         x:Name="Anotacoes"
+                         Watermark="Observações gerais sobre o dente..."
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Stretch"
+                         VerticalContentAlignment="Top"
+                         Padding="10,8"
+                         CornerRadius="8"
+                         FontSize="13"/>
             </Grid>
+
+            <!-- Divisor -->
+            <Border Grid.Row="5"
+                    Height="1"
+                    Background="{DynamicResource CardBorder}"
+                    Margin="0,14"/>
+
+            <!-- Label Valor -->
+            <TextBlock Grid.Row="6"
+                       Text="Valor (R$)"
+                       FontSize="11"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextPrimary}"
+                       Margin="0,0,0,6"/>
+
+            <!-- VALOR + SALVAR — tamanho natural -->
+            <Grid Grid.Row="7" ColumnDefinitions="*,Auto">
+                <TextBox Grid.Column="0"
+                         x:Name="TratamentoValor"
+                         Watermark="R$ 0,00"
+                         CornerRadius="8,0,0,8"
+                         Padding="10,8"
+                         FontSize="13"/>
+
+                <Button Grid.Column="1"
+                        Content="Salvar"
+                        CornerRadius="0,8,8,0"
+                        Background="{DynamicResource AccentBlue}"
+                        Foreground="{DynamicResource TextPrimary}"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Padding="15"/>
+            </Grid>
+
+        </Grid>
+    </Border>
+            <!-- Grid principal da tela -->
+            <Grid Grid.Row="1" Grid.Column="0" 
+                  Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10,0,10,10">
+                <Border 
+                     
+            Background="{DynamicResource CardBg}"
+            CornerRadius="12"
+            Padding="20,16"
+            Margin="0,16,0,0">
+
+        <Grid RowDefinitions="Auto,12,Auto,12,*">
+
+            <!-- Cabeçalho -->
+            <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+
+                <TextBlock Grid.Column="0"
+                           Text="Tratamentos"
+                           FontSize="15"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextPrimary}"
+                           VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Column="1"
+                           x:Name="TotalTratamentos"
+                           Text="0 registros"
+                           FontSize="11"
+                           Foreground="{DynamicResource TextPrimary}"
+                           VerticalAlignment="Center"/>
+            </Grid>
+
+            <!-- Filtro -->
+            <Grid Grid.Row="2" ColumnDefinitions="Auto,*">
+
+                <Border Grid.Column="0"
+                        Background="{DynamicResource InputBg}"
+                        CornerRadius="8,0,0,8"
+                        Padding="10,0"
+                        Width="36">
+                    <TextBlock Text="&#128269;"
+                               FontSize="13"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"/>
+                </Border>
+
+                <TextBox Grid.Column="1"
+                         x:Name="FiltroTratamento"
+                         Watermark="Buscar tratamento..."
+                         Height="36"
+                         CornerRadius="0,8,8,0"
+                         Padding="10,8"
+                         FontSize="13"/>
+            </Grid>
+
+            <!-- ListBox -->
+            <ListBox Grid.Row="4"
+                     x:Name="ListaTratamentos"
+                     Background="Transparent"
+                     Padding="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{DynamicResource TableBg}"
+                                CornerRadius="8"
+                                Padding="14,10"
+                                Margin="0,0,0,6">
+                            <Grid ColumnDefinitions="*,Auto,Auto">
+
+                                <!-- Nome do tratamento -->
+                                <StackPanel Grid.Column="0" Spacing="3">
+                                    <TextBlock Text=""
+                                               FontSize="13"
+                                               FontWeight="SemiBold"
+                                               Foreground="{DynamicResource TextPrimary}"/>
+                                    <TextBlock Text=""
+                                               FontSize="11"
+                                               Foreground="{DynamicResource TextPrimary}"/>
+                                </StackPanel>
+
+                                <!-- Valor -->
+                                <TextBlock Grid.Column="1"
+                                           Text=""
+                                           FontSize="13"
+                                           FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextPrimary}"
+                                           VerticalAlignment="Center"
+                                           Margin="12,0"/>
+
+                                <!-- Status -->
+                                <Border Grid.Column="2"
+                                        Background="{DynamicResource InputBg}"
+                                        CornerRadius="20"
+                                        Padding="10,4"
+                                        VerticalAlignment="Center">
+                                    <TextBlock Text=""
+                                               FontSize="11"
+                                               FontWeight="SemiBold"
+                                               Foreground="#388E3C"/>
+                                </Border>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Grid>
+    </Border>
+            </Grid>
+             
 
         </Grid>
     </Grid>
