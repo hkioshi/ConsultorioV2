@@ -14,46 +14,45 @@ namespace ConsultorioUI.Views;
 public partial class PacientePerfilView : UserControl
 {
     private readonly PacienteViewModel _vm = new();
-    private readonly string _id;
+    private readonly Paciente _paciente;
 
-    public PacientePerfilView(string id)
+    public PacientePerfilView(Paciente paciente)
     {
         InitializeComponent();
-        _id = id;
-        _ = Iniciar(id);
+        _paciente = paciente;
+        Iniciar();
     }
 
-    async Task Iniciar(string id)
+    async Task Iniciar()
     {
-        var paciente = await _vm.BuscarPacientePorId(id);
-        if (paciente is null) return;
+        if (_paciente is null) return;
 
         // Dados Pessoais
-        TxtNome.Text          = paciente.Nome;
-        TxtCpf.Text            = paciente.Cpf;
-        TxtRg.Text              = paciente.Rg;
-        DtNascimento.SelectedDate = paciente.DataNascimento;
-        SelecionarComboPorTexto(CmbGenero, paciente.Genero);
-        SelecionarComboPorTexto(CmbEstadoCivil, paciente.EstadoCivil);
-        TxtProfissao.Text     = paciente.Profissao;
-        TxtNomePai.Text       = paciente.NomePai;
-        TxtNomeMae.Text       = paciente.NomeMae;
+        TxtNome.Text          = _paciente.Nome;
+        TxtCpf.Text            = _paciente.Cpf;
+        TxtRg.Text              = _paciente.Rg;
+        DtNascimento.SelectedDate = _paciente.DataNascimento;
+        SelecionarComboPorTexto(CmbGenero, _paciente.Genero);
+        SelecionarComboPorTexto(CmbEstadoCivil, _paciente.EstadoCivil);
+        TxtProfissao.Text     = _paciente.Profissao;
+        TxtNomePai.Text       = _paciente.NomePai;
+        TxtNomeMae.Text       = _paciente.NomeMae;
 
         // Contato / Endereço
-        TxtCep.Text          = paciente.Cep;
-        TxtNumero.Text       = paciente.Numero;
-        TxtLogradouro.Text   = paciente.Logradouro;
-        TxtComplemento.Text  = paciente.Complemento;
-        TxtBairro.Text       = paciente.Bairro;
-        TxtCidade.Text       = paciente.Cidade;
-        CmbEstado.Text       = paciente.Estado;
-        TxtTelefone.Text     = paciente.Telefone;
-        TxtEmail.Text        = paciente.Email;
+        TxtCep.Text          = _paciente.Cep;
+        TxtNumero.Text       = _paciente.Numero;
+        TxtLogradouro.Text   = _paciente.Logradouro;
+        TxtComplemento.Text  = _paciente.Complemento;
+        TxtBairro.Text       = _paciente.Bairro;
+        TxtCidade.Text       = _paciente.Cidade;
+        CmbEstado.Text       = _paciente.Estado;
+        TxtTelefone.Text     = _paciente.Telefone;
+        TxtEmail.Text        = _paciente.Email;
 
         // Informações Adicionais
-        TxtPreferenciaHorario.Text   = paciente.PreferenciaHorario;
-        TxtObservacoes.Text          = paciente.Observacoes;
-        ChkLembretes.IsChecked       = paciente.QueroReceberLembretes;
+        TxtPreferenciaHorario.Text   = _paciente.PreferenciaHorario;
+        TxtObservacoes.Text          = _paciente.Observacoes;
+        ChkLembretes.IsChecked       = _paciente.QueroReceberLembretes;
     }
 
     private void SelecionarComboPorTexto(ComboBox combo, string? valor)
@@ -109,7 +108,7 @@ public partial class PacientePerfilView : UserControl
 
         if(ValidacaoService.Validar(this,pacienteSalvo))
         {
-            var response = await _vm.SalvarAlteracao(pacienteSalvo, _id);
+            var response = await _vm.SalvarAlteracao(pacienteSalvo, _paciente.Id.ToString());
             if (response)
             {
                 MessageBox.Show("Salvo com sucesso!");

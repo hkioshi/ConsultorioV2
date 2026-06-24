@@ -102,6 +102,23 @@ public class ProntuarioController : ControllerBase
         }
     }
     
+    [HttpGet("IdProntuarioPorIdPaciente/{id}")]
+    public IActionResult ExibirIdProntuarioPorIdPaciente(string id)
+    {
+        try
+        {
+            var Prontuario =
+                _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.PacienteId.Equals(int.Parse(id))));
+            return Ok(Prontuario.Id);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
+    }
+    
     [HttpDelete("{id}")]
     public IActionResult DeletaProntuario(int id)
     {

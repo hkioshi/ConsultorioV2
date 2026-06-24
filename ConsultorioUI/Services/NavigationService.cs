@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using ConsultorioUI.Models;
 using ConsultorioUI.Views;
 
 namespace ConsultorioUI.Services;
@@ -35,13 +36,13 @@ public class NavigationService
         
     }
 
-    public void Navigate(string view, string id)
+    public void Navigate(string view, Paciente? paciente)
     {
         _mainWindow.MainContent.Content = view switch
         {
 
-            "PerfilPaciente" => new PacientePerfilView(id),
-            "Prontuario" => new ProntuarioView(id),
+            "PerfilPaciente" => new PacientePerfilView(paciente),
+            "Prontuario" => new ProntuarioView(paciente),
             _ => _mainWindow.MainContent.Content
 
         };

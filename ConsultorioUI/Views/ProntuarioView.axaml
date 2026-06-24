@@ -52,7 +52,7 @@
                         <TextBlock Text="&#128100;"
                                    FontSize="13"
                                    VerticalAlignment="Center" />
-                        <TextBlock Text="Nome do Paciente"
+                        <TextBlock Name="TxtNomePaciente"
                                    FontSize="13"
                                    FontWeight="SemiBold"
                                    Foreground="{DynamicResource TextPrimary}"
@@ -140,53 +140,52 @@
                         Background="{DynamicResource InputBg}"
                         Padding="16,10"
                         Margin="20,0">
-                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" Name="GrdSuperior">
 
-                        <CheckBox Grid.Column="0" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="1" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="2" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="3" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="4" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="5" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="6" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="7" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="0" Tag="18" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="1" Tag="17" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="2" Tag="16" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="3" Tag="15" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="4" Tag="14" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="5" Tag="13" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="6" Tag="12" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="7" Tag="11" HorizontalAlignment="Center" />
 
-                        <CheckBox Grid.Column="8" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="9" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="10" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="11" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="12" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="13" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="14" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="15" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="8" Tag="21" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="9" Tag="22" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="10" Tag="23" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="11" Tag="24" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="12" Tag="25" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="13" Tag="26" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="14" Tag="27" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="15" Tag="28" HorizontalAlignment="Center" />
                     </Grid>
                 </Border>
 
                 <!-- LINHA 3: CheckBoxes da arcada inferior -->
                 <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                         Margin="20,0"
-
                         Background="{DynamicResource InputBg}"
                         Padding="16,10">
-                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*">
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" Name="GrdInferior">
 
-                        <CheckBox Grid.Column="0" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="1" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="2" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="3" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="4" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="5" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="6" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="7" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="0" Tag="48" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="1" Tag="47" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="2" Tag="46" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="3" Tag="45" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="4" Tag="44" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="5" Tag="43" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="6" Tag="42" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="7" Tag="41" HorizontalAlignment="Center" />
 
-                        <CheckBox Grid.Column="8" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="9" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="10" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="11" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="12" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="13" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="14" HorizontalAlignment="Center" />
-                        <CheckBox Grid.Column="15" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="8" Tag="31" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="9" Tag="32" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="10" Tag="33" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="11" Tag="34" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="12" Tag="35" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="13" Tag="36" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="14" Tag="37" HorizontalAlignment="Center" />
+                        <CheckBox Grid.Column="15" Tag="38" HorizontalAlignment="Center" />
                     </Grid>
                 </Border>
 
@@ -258,7 +257,7 @@
 
                     <TextBox Grid.Row="1"
                              x:Name="TratamentoNome"
-                             Watermark="Nome do tratamento"
+                             PlaceholderText="Nome do tratamento"
                              Height="36"
                              CornerRadius="8"
                              Padding="10,8"
@@ -288,12 +287,16 @@
                     <!-- FACES + ANOTAÇÕES — Row="*" para crescer -->
                     <Grid Grid.Row="4" ColumnDefinitions="Auto,16,*">
 
+
                         <StackPanel Grid.Column="0" Spacing="8" VerticalAlignment="Top">
                             <CheckBox x:Name="FaceVestibular" Content="Vestibular" />
                             <CheckBox x:Name="FaceLingual" Content="Lingual / Palatina" />
                             <CheckBox x:Name="FaceMesial" Content="Mesial" />
                             <CheckBox x:Name="FaceDistal" Content="Distal" />
                             <CheckBox x:Name="FaceOclusal" Content="Oclusal / Incisal" />
+                            <ToggleButton IsCheckedChanged="Completo_OnIsCheckedChanged" x:Name="Completo" Content="Completo" />
+
+
                         </StackPanel>
 
                         <Border Grid.Column="1"
@@ -302,10 +305,9 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Stretch" />
 
-                        <!-- TextBox ocupa todo o espaço disponível -->
                         <TextBox Grid.Column="2"
                                  x:Name="Anotacoes"
-                                 Watermark="Observações gerais sobre o dente..."
+                                 PlaceholderText="Observações gerais sobre o dente..."
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap"
                                  VerticalAlignment="Stretch"
@@ -333,7 +335,7 @@
                     <Grid Grid.Row="7" ColumnDefinitions="*,Auto">
                         <TextBox Grid.Column="0"
                                  x:Name="TratamentoValor"
-                                 Watermark="R$ 0,00"
+                                 PlaceholderText="R$ 0,00"
                                  CornerRadius="8,0,0,8"
                                  Padding="10,8"
                                  FontSize="13" />
@@ -344,6 +346,7 @@
                                 Background="{DynamicResource AccentBlue}"
                                 Foreground="{DynamicResource TextPrimary}"
                                 VerticalAlignment="Center"
+                                Click="BtnSalvar_Click"
                                 FontSize="16"
                                 FontWeight="SemiBold"
                                 Padding="15" />
@@ -397,7 +400,7 @@
 
                             <TextBox Grid.Column="1"
                                      x:Name="FiltroTratamento"
-                                     Watermark="Buscar tratamento..."
+                                     PlaceholderText="Buscar tratamento..."
                                      Height="36"
                                      CornerRadius="0,8,8,0"
                                      Padding="10,8"

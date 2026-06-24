@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text.Json;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -83,8 +84,10 @@ public partial class PacientesView : UserControl
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
-
-        if (id != null) App.Navigation.Navigate("Prontuario", id);
+        
+        App.Navigation.Navigate(
+            "Prontuario", 
+            _pacienteVm.Pacientes.FirstOrDefault(p => p.Id.ToString() == id ));
     }
     
     //TODO: Design Perfil
@@ -93,6 +96,6 @@ public partial class PacientesView : UserControl
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
-        if (id != null) App.Navigation.Navigate("PerfilPaciente", id);
+        if (id != null) App.Navigation.Navigate("PerfilPaciente",_pacienteVm.Pacientes.FirstOrDefault(p => p.Id.ToString() == id));
     }
 }

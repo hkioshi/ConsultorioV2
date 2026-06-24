@@ -63,6 +63,15 @@ public static class ValidacaoService
 
         return true;
     }
-    
-    
+
+
+    public static double ValidarDouble(string? tratamentoValorText)
+    {
+
+        if (double.TryParse(tratamentoValorText, out double valor))
+            return valor;
+        
+        throw new Exception("Valor Invalido");
+
+    }
 }
