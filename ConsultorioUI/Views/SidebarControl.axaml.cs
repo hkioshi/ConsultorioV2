@@ -5,20 +5,26 @@ namespace ConsultorioUI.Views;
 public partial class SidebarControl : UserControl
 {
     public SidebarControl() => InitializeComponent();
+
+    private void NavegarParaInicio(string navegacao)
+    {
+        App.Navigation.VoltarAoInicio();
+        App.Navigation.Navigate(navegacao);
+    }
     
     private void NavInicio_Click(object sender, RoutedEventArgs e) =>
-        App.Navigation.Navigate("Inicio");
+        NavegarParaInicio("Inicio");
     
     private void NavPacientes_Click(object sender, RoutedEventArgs e) =>
-        App.Navigation.Navigate("Pacientes");
+        NavegarParaInicio("Pacientes");
 
     private void NavAgenda_Click(object sender, RoutedEventArgs e) =>
-        App.Navigation.Navigate("Agenda");
+        NavegarParaInicio("Agenda");
 
     private void NavFinanceiro_Click(object sender, RoutedEventArgs e) =>
-        App.Navigation.Navigate("Financeiro");
+        NavegarParaInicio("Financeiro");
     
     private void NavConfiguracoes_Click(object sender, RoutedEventArgs e) =>
-        App.Navigation.Navigate("Config");
+        NavegarParaInicio("Config");
     
 }

@@ -23,7 +23,6 @@ public partial class PacientesView : UserControl
     
     private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
     {
-        //TODO: Formatar o texto quando pesquisar
         if (TxtBusca.Text == "") return;
         
         if (rdbCPF.IsChecked == true)
@@ -72,14 +71,11 @@ public partial class PacientesView : UserControl
             if (TxtBusca.Text != null)
                 _pacienteVm.AdicionarPacientes(await _pacienteVm.BuscarPacientePorNome(TxtBusca.Text) ?? Array.Empty<Paciente>());
     } 
-    //TODO: Fazer Editar
-    //TODO: Design Editar
+
     private void BtnEditar_Click(object sender, RoutedEventArgs e)
     {
     }
-    //TODO: Fazer Prontuario
-    //TODO: Fazer Odontograma
-    //TODO: Design Prontuario
+
     private void BtnProntuario_Click(object sender, RoutedEventArgs e)
     {
         var btn = sender as Button;
@@ -90,8 +86,6 @@ public partial class PacientesView : UserControl
             _pacienteVm.Pacientes.FirstOrDefault(p => p.Id.ToString() == id ));
     }
     
-    //TODO: Design Perfil
-
     private void BtnPerfil_Click(object? sender, RoutedEventArgs e)
     {
         var btn = sender as Button;

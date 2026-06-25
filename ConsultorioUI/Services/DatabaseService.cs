@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
@@ -70,4 +71,7 @@ public class DatabaseService
 
         return response.IsSuccessStatusCode;
     }
+    public static async Task<List<Tratamento>?> ExibirTratamentos(int Id) =>
+        await _httpClient.GetFromJsonAsync<List<Tratamento>>($"Tratamentos/{Id}");
+    
 }

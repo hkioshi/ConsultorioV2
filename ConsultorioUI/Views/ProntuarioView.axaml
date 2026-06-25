@@ -16,12 +16,17 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="20,0,20,0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
+            <Button Grid.Column="0" 
+                    Content="Voltar" 
+                    Click="Voltar_click"/>
+            
             <!-- Título e subtítulo -->
-            <StackPanel Grid.Column="0"
+            <StackPanel Grid.Column="1"
                         VerticalAlignment="Center"
                         Spacing="4">
 
@@ -38,7 +43,7 @@
             </StackPanel>
 
             <!-- Lado direito: nome do paciente + badge -->
-            <StackPanel Grid.Column="1"
+            <StackPanel Grid.Column="2"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal"
@@ -294,7 +299,8 @@
                             <CheckBox x:Name="FaceMesial" Content="Mesial" />
                             <CheckBox x:Name="FaceDistal" Content="Distal" />
                             <CheckBox x:Name="FaceOclusal" Content="Oclusal / Incisal" />
-                            <ToggleButton IsCheckedChanged="Completo_OnIsCheckedChanged" x:Name="Completo" Content="Completo" />
+                            <ToggleButton IsCheckedChanged="Completo_OnIsCheckedChanged" x:Name="Completo"
+                                          Content="Completo" />
 
 
                         </StackPanel>
@@ -354,28 +360,27 @@
 
                 </Grid>
             </Border>
+
             <!-- Grid principal da tela -->
+
             <Grid Grid.Row="1" Grid.Column="0"
                   Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="10,0,10,10">
-                <Border
 
-                    Background="{DynamicResource CardBg}"
-                    CornerRadius="12"
-                    Padding="20,16"
-                    Margin="0,16,0,0">
+                <Border Background="{DynamicResource CardBg}"
+                        CornerRadius="12"
+                        Padding="20,16"
+                        Margin="0,16,0,0">
 
                     <Grid RowDefinitions="Auto,12,Auto,12,*">
 
                         <!-- Cabeçalho -->
                         <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
-
                             <TextBlock Grid.Column="0"
                                        Text="Tratamentos"
                                        FontSize="15"
                                        FontWeight="SemiBold"
                                        Foreground="{DynamicResource TextPrimary}"
                                        VerticalAlignment="Center" />
-
                             <TextBlock Grid.Column="1"
                                        x:Name="TotalTratamentos"
                                        Text="0 registros"
@@ -386,7 +391,6 @@
 
                         <!-- Filtro -->
                         <Grid Grid.Row="2" ColumnDefinitions="Auto,*">
-
                             <Border Grid.Column="0"
                                     Background="{DynamicResource InputBg}"
                                     CornerRadius="8,0,0,8"
@@ -397,7 +401,6 @@
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
                             </Border>
-
                             <TextBox Grid.Column="1"
                                      x:Name="FiltroTratamento"
                                      PlaceholderText="Buscar tratamento..."
@@ -406,52 +409,113 @@
                                      Padding="10,8"
                                      FontSize="13" />
                         </Grid>
+
                         <!-- ListBox -->
                         <ListBox Grid.Row="4"
                                  x:Name="ListaTratamentos"
                                  Background="Transparent"
-                                 Padding="0">
+                                 ItemsSource="{Binding Tratamentos}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border Background="{DynamicResource TableBg}"
                                             CornerRadius="8"
-                                            Padding="14,10"
-                                            Margin="0,0,0,6">
-                                        <Grid ColumnDefinitions="*,Auto,Auto">
-                                            <!-- Nome do tratamento -->
-                                            <StackPanel Grid.Column="0" Spacing="3">
-                                                <TextBlock Text=""
+                                            Padding="14,10">
+
+                                        <Grid ColumnDefinitions="48,*,110,56,80,Auto,Auto,Auto"
+                                              ColumnSpacing="10">
+
+                                            <!-- ID -->
+                                            <StackPanel Grid.Column="0" Spacing="2" VerticalAlignment="Center">
+                                                <TextBlock Text="ID"
+                                                           FontSize="10"
+                                                           Foreground="{DynamicResource TextSecondary}" />
+                                                <TextBlock Text="{Binding Id}"
                                                            FontSize="13"
                                                            FontWeight="SemiBold"
                                                            Foreground="{DynamicResource TextPrimary}" />
-                                                <TextBlock Text=""
-                                                           FontSize="11"
+                                            </StackPanel>
+
+                                            <!-- Nome do Tratamento -->
+                                            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                                                <TextBlock Text="Tratamento"
+                                                           FontSize="10"
+                                                           Foreground="{DynamicResource TextSecondary}" />
+                                                <TextBlock Text="{Binding Procedimento}"
+                                                           FontSize="13"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource TextPrimary}"
+                                                           TextTrimming="CharacterEllipsis" />
+                                            </StackPanel>
+
+                                            <!-- Data -->
+                                            <StackPanel Grid.Column="2" Spacing="2" VerticalAlignment="Center">
+                                                <TextBlock Text="Data"
+                                                           FontSize="10"
+                                                           Foreground="{DynamicResource TextSecondary}" />
+                                                <TextBlock Text="{Binding Data, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                                           FontSize="13"
                                                            Foreground="{DynamicResource TextPrimary}" />
                                             </StackPanel>
+
+                                            <!-- Dente -->
+                                            <StackPanel Grid.Column="3" Spacing="2" VerticalAlignment="Center">
+                                                <TextBlock Text="Dente"
+                                                           FontSize="10"
+                                                           Foreground="{DynamicResource TextSecondary}" />
+                                                <TextBlock Text="{Binding Dente}"
+                                                           FontSize="13"
+                                                           Foreground="{DynamicResource TextPrimary}" />
+                                            </StackPanel>
+
                                             <!-- Valor -->
-                                            <TextBlock Grid.Column="1"
-                                                       Text=""
-                                                       FontSize="13"
-                                                       FontWeight="SemiBold"
-                                                       Foreground="{DynamicResource TextPrimary}"
-                                                       VerticalAlignment="Center"
-                                                       Margin="12,0" />
+                                            <StackPanel Grid.Column="4" Spacing="2" VerticalAlignment="Center">
+                                                <TextBlock Text="Valor"
+                                                           FontSize="10"
+                                                           Foreground="{DynamicResource TextSecondary}" />
+                                                <TextBlock Text="{Binding Valor, StringFormat='R$ {0:N2}'}"
+                                                           FontSize="13"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource TextPrimary}" />
+                                            </StackPanel>
+
                                             <!-- Status -->
-                                            <Border Grid.Column="2"
+                                            <Border Grid.Column="5"
                                                     Background="{DynamicResource InputBg}"
                                                     CornerRadius="20"
                                                     Padding="10,4"
                                                     VerticalAlignment="Center">
-                                                <TextBlock Text=""
+                                                <TextBlock Text="{Binding Status}"
                                                            FontSize="11"
                                                            FontWeight="SemiBold"
                                                            Foreground="#388E3C" />
                                             </Border>
+
+                                            <!-- Botão Descrição -->
+                                            <Button Grid.Column="6"
+                                                    Content="Descrição"
+                                                    Click="Descricao_click"
+                                                    VerticalAlignment="Center"
+                                                    Padding="10,4"
+                                                    FontSize="11"
+                                                    CornerRadius="6" />
+
+                                            <!-- Botão Pagar -->
+                                            <Button Grid.Column="7"
+                                                    Content="Pagar"
+                                                    Click="Pagar_click"
+                                                    VerticalAlignment="Center"
+                                                    Padding="10,4"
+                                                    FontSize="11"
+                                                    CornerRadius="6"
+                                                    Background="#E8F5E9"
+                                                    Foreground="#2E7D32" />
+
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
+
                     </Grid>
                 </Border>
             </Grid>

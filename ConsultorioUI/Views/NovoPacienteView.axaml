@@ -12,8 +12,9 @@
                 BorderBrush="{DynamicResource CardBorder}"
                 BorderThickness="0,0,0,1"
                 Padding="28,20">
-            <Grid ColumnDefinitions="*,Auto">
-                <StackPanel Grid.Column="0">
+            <Grid ColumnDefinitions="75,*,Auto">
+                <Button Content="Voltar" Click="Voltar_click"/>
+                <StackPanel Grid.Column="1">
                     <TextBlock Text="Cadastro de Paciente"
                                Foreground="{DynamicResource TextPrimary}"
                                FontSize="16"
@@ -23,7 +24,7 @@
                                FontSize="11"
                                Margin="0,3,0,0" />
                 </StackPanel>
-                <Button Grid.Column="1"
+                <Button Grid.Column="2"
                         Content="Salvar Novo Paciente"
                         Click="BtnSalvar_Click"
                         Foreground="{DynamicResource TextPrimary}"
@@ -38,7 +39,8 @@
 
         <!-- ═══════════ CONTEÚDO (formulário) ═══════════ -->
         <ScrollViewer Grid.Row="1">
-            <WrapPanel Orientation="Horizontal" Margin="20">
+            <WrapPanel Orientation="Horizontal" Margin="20" 
+                       HorizontalAlignment="Center">
 
                 <!-- ═══════════ DADOS PESSOAIS ═══════════ -->
                 <Border Background="{DynamicResource CardBg}"

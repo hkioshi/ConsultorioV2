@@ -59,4 +59,7 @@ public partial class NovoPacienteView : UserControl
         
         
     }
+
+    private void Voltar_click(object? sender, RoutedEventArgs e) =>
+        App.Navigation.Voltar();
 }

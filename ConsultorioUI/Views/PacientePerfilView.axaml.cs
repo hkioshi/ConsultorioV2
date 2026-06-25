@@ -118,6 +118,10 @@ public partial class PacientePerfilView : UserControl
         }
         
     }
+
+    private void Voltar_click(object? sender, RoutedEventArgs e) =>
+        App.Navigation.Voltar();
+    
 }
     
     

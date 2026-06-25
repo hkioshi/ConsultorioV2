@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using ConsultorioUI.Models;
@@ -13,15 +15,22 @@ namespace ConsultorioUI.ViewModels;
 public partial class ProntuarioViewModel : ObservableObject
 {
     public ObservableCollection<Procedimento> Procedimentos { get; set; }
+    public ObservableCollection<Tratamento> Tratamentos { get; set; }
     public Paciente PacienteAtual { get; set; }
-    [ObservableProperty] private string nome = "";
-    [ObservableProperty] private string nomeValor;
+
 
     public ProntuarioViewModel(Paciente paciente)
     {
         PacienteAtual = paciente;
+        Tratamentos = [new Tratamento
+        {
+            Id = 1,
+            Dente = 16,
+            Status = "Teste",
+            Valor = 100
+        }];
     }
-
+    
     public async void Salvar(ProntuarioView prontuarioView)
     {
         List<string> DentesMarcados= [];
@@ -55,7 +64,6 @@ public partial class ProntuarioViewModel : ObservableObject
                     Status = "Nao Pago",
                     Valor = VerNumerodeFaces(prontuarioView) * ValidacaoService.ValidarDouble(prontuarioView.TratamentoValor.Text)
                 };
-
                 await DatabaseService.SalvarNovoTratamento(novoTratamento);
                 App.Navigation.Navigate("Prontuario",PacienteAtual);
                 Console.WriteLine("Tratamento Salvo com sucesso!");
@@ -64,7 +72,6 @@ public partial class ProntuarioViewModel : ObservableObject
             {
                 MessageBox.Show(e.Message);
             }
-            
         }
     }
 
@@ -81,4 +88,25 @@ public partial class ProntuarioViewModel : ObservableObject
         
         return faces;
     }
+
+    public async Task IniciarTabela(ProntuarioView prontuarioView)
+    {
+        int idTratamento = await DatabaseService.BuscarIdProntuarioPorIdPaciente(
+            PacienteAtual.Id.ToString());
+
+        if (ValidacaoService.ValidarNull(idTratamento))
+        {
+            var lista = await DatabaseService.ExibirTratamentos(idTratamento);
+
+            Tratamentos.Clear();
+
+            foreach (var item in lista ?? [])
+            {
+                Tratamentos.Add(item);
+            }
+            prontuarioView.TotalTratamentos.Text = Tratamentos.Count + " Tratamento";
+        }
+        
+    }
+    
 }

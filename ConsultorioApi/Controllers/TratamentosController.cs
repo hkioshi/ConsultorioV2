@@ -36,13 +36,30 @@ public class TratamentosController : ControllerBase
             return Problem(e.Message);
         }
     }
+    
+    [HttpGet("{id}")]
+    public IActionResult TratamentosPorIdPaciente(int id)
+    {
+        try
+        {
+            return Ok(_mapper.Map<List<ReadTratamentosDto>>(_context.Tratamentos.Where(i => i.ProntuarioId.Equals(id)).ToList()));
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+    }
 
     [HttpGet]
     public ActionResult ExibirTratamentos()
     {
         try
         {
-            var tratamentos = _mapper.Map<List<ReadTratamentosDto>>(_context.Tratamentos.ToList());
+            var tratamentos = _mapper.Map<List<ReadTratamentosDto>>(
+                _context.Tratamentos.ToList()
+            );
             return Ok(tratamentos);
         }
         catch (Exception e)

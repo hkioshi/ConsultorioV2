@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using ConsultorioUI.Models;
+using ConsultorioUI.Services;
 using ConsultorioUI.ViewModels;
 
 namespace ConsultorioUI.Views;
@@ -16,17 +17,11 @@ public partial class ProntuarioView : UserControl
         DataContext = _viewModel;
         InitializeComponent();
         TxtNomePaciente.Text = _paciente.Nome;
+        _viewModel.IniciarTabela(this);
     }
     
-    //TODO: Botao Salvar
-        //Registrar todos os botoes dentes que estiverem marcados, pegar nome do tratamento, faces, 
-    //TODO: Protese e Estração
-
-
-    private void BtnSalvar_Click(object? sender, RoutedEventArgs e)
-    {
-        _viewModel.Salvar(this);
-    }
+    private void BtnSalvar_Click(object? sender, RoutedEventArgs e) =>
+        _viewModel.Salvar(this); 
 
     private void Completo_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
     {
@@ -36,4 +31,18 @@ public partial class ProntuarioView : UserControl
         FaceVestibular.IsEnabled = !Completo.IsChecked.Value;
         FaceMesial.IsEnabled =  !Completo.IsChecked.Value;
     }
+
+    private void Descricao_click(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void Pagar_click(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void Voltar_click(object? sender, RoutedEventArgs e) =>
+        App.Navigation.Voltar();
+    
 }

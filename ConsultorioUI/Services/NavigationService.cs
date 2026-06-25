@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Avalonia;
 using Avalonia.Controls;
 using ConsultorioUI.Models;
 using ConsultorioUI.Views;
@@ -7,29 +9,37 @@ namespace ConsultorioUI.Services;
 public class NavigationService
 {
     private MainWindow _mainWindow { get; set; }
-    public NavigationService(MainWindow mainwindow)
-    {
+    private Visual Atual = new InicioView();
+    private Stack<Visual> _stack { get; set; } = new();
+    public NavigationService(MainWindow mainwindow) =>
         _mainWindow = mainwindow;
-    }
-    public void Navigate<T>()
-        where T : UserControl, new()
+    public void VoltarAoInicio() =>
+        _stack.Clear();
+
+    public void Voltar()
     {
-        _mainWindow.MainContent.Content = new T();
+        Atual = _stack.Pop();
+        _mainWindow.MainContent.Content = Atual;
     }
+    
+    public Visual Ir(Visual visual)
+    {
+        _stack.Push(Atual);
+        Atual = visual;
+        return visual;
+    }
+    
+    
     public void Navigate(string view)
     {
         _mainWindow.MainContent.Content = view switch
         {
             
-            //TODO: Fazer Agenda
-            //TODO: Fazer Tratamentos
-            //TODO: Fazer Pagamentos
-            //TODO: Fazer Configs
-            "Inicio" => new InicioView(),
-            "Pacientes" => new PacientesView(),
-            "Agenda" => new AgendaView(),
-            "Financeiro" => new PagamentoView(),
-            "NovoPaciente" => new NovoPacienteView(),
+            "Inicio" => Ir(new InicioView()),
+            "Pacientes" => Ir(new PacientesView()),
+            "Agenda" => Ir(new AgendaView()),
+            "Financeiro" => Ir(new PagamentoView()),
+            "NovoPaciente" => Ir(new NovoPacienteView()),
             _ => _mainWindow.MainContent.Content
             
         };
@@ -40,11 +50,12 @@ public class NavigationService
     {
         _mainWindow.MainContent.Content = view switch
         {
-
-            "PerfilPaciente" => new PacientePerfilView(paciente),
-            "Prontuario" => new ProntuarioView(paciente),
+            "PerfilPaciente" => Ir(new PacientePerfilView(paciente)),
+            "Prontuario" => Ir(new ProntuarioView(paciente)),
             _ => _mainWindow.MainContent.Content
-
         };
     }
+    
+    
+    
 }

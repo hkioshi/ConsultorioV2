@@ -74,4 +74,21 @@ public static class ValidacaoService
         throw new Exception("Valor Invalido");
 
     }
+
+    public static bool ValidarNull(int idTratamento)
+    {
+        if (idTratamento != null)
+            return true;
+        
+        MessageBox.Show("Este paciente nao tem prontuario");
+        return false;
+        
+        
+    }
+        
+            
+            
+    
+        
+    
 }
