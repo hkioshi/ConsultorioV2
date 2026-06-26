@@ -45,5 +45,14 @@ namespace ConsultorioUI.ViewModels
             if (paciente is not null)
                 Pacientes.Add(paciente);
         }
+
+        public async Task<bool> ExcluirTratento(Paciente paciente)
+        {
+            return true;
+        }
+        
+            //await DatabaseService.ExcluirPaciente(paciente.Id);
+        
+        
     }
 }

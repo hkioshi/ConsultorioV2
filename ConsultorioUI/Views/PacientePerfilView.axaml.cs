@@ -121,7 +121,16 @@ public partial class PacientePerfilView : UserControl
 
     private void Voltar_click(object? sender, RoutedEventArgs e) =>
         App.Navigation.Voltar();
-    
+
+    private async void Excluir_click(object? sender, RoutedEventArgs e)
+    {
+        if (await MessageBox.ShowWarning("Tem certeza que quer exluir?"))
+            if (await _vm.ExcluirTratento(_paciente))
+            {
+                MessageBox.Show("Excluido com sucesso");
+                App.Navigation.Atualizar("Pacientes");
+            }
+    }
 }
     
     

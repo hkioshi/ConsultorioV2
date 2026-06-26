@@ -6,7 +6,6 @@ public class Todo_Repo
     // TODO: Verificar se a API já está rodando antes de iniciar novo processo
     // TODO: Exibir mensagem amigável quando API estiver indisponível
 
-    // TODO: Adicionar botão de voltar em todas as telas
     // TODO: Implementar confirmação ao sair de formulários com alterações não salvas
 
     // TODO: Corrigir busca de pacientes quando texto inicia com espaço
@@ -14,7 +13,6 @@ public class Todo_Repo
     // TODO: Tornar busca case-insensitive
 
     // TODO: Implementar busca por CPF na listagem de pacientes
-    // TODO: Permitir busca por nome ou CPF simultaneamente
 
     // TODO: Adicionar máscara de CPF
     // TODO: Adicionar máscara de RG

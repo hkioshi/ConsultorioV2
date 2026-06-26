@@ -51,9 +51,8 @@ public class DatabaseService
     public static async Task<bool> SalvarAlteracao(PacienteUpdateDTO paciente, string id)
     {
         const string urlPaciente = "Paciente";
-        using HttpClient client = new();
 
-        var response = await client.PutAsJsonAsync(
+        var response = await _httpClient.PutAsJsonAsync(
             $"{urlPaciente}/{id}",
             paciente);
 
@@ -72,6 +71,34 @@ public class DatabaseService
         return response.IsSuccessStatusCode;
     }
     public static async Task<List<Tratamento>?> ExibirTratamentos(int Id) =>
-        await _httpClient.GetFromJsonAsync<List<Tratamento>>($"Tratamentos/{Id}");
+        await _httpClient.GetFromJsonAsync<List<Tratamento>>($"Tratamentos/AcharTratametosDoPaciente/{Id}");
     
+    public static async Task<bool> SalvarAlteracaoTratamento(Tratamento tratamento, int id)
+    {
+        var response = await _httpClient.PutAsJsonAsync(
+            $"Tratamentos/{id}",
+            tratamento);
+
+        return response.IsSuccessStatusCode;
+    }
+
+    public static async Task<Tratamento?> BuscarTratamento(string? id) =>
+        await _httpClient.GetFromJsonAsync<Tratamento>($"Tratamentos/{id}");
+    public static async Task<bool> ExcluirTratamento(int id)
+    {
+        var response = await _httpClient.DeleteAsync($"/Tratamentos/{id}");
+        return response.IsSuccessStatusCode;
+    }
+
+    public async Task ExcluirPaciente(int id)
+    {
+        
+        //Todo: responsePagamentos
+        var responsePaciente = await _httpClient.DeleteAsync($"/Paciente/{id}");
+        
+        
+        bool response;
+        if (responsePaciente.IsSuccessStatusCode) ;
+
+    }
 }

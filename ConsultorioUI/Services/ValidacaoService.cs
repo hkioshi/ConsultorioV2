@@ -43,7 +43,7 @@ public static class ValidacaoService
             return false;
         }
 
-        if (string.IsNullOrWhiteSpace(paciente.Cpf) || paciente.Cpf.Length < 14)
+        if (string.IsNullOrWhiteSpace(paciente.Cpf) || paciente.Cpf.Length == 11)
         {
             MessageBox.Show("CPF inválido ou não informado.");
             return false;

@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using ConsultorioUI.Models;
@@ -7,7 +9,7 @@ using ConsultorioUI.ViewModels;
 namespace ConsultorioUI.Views;
 
 public partial class ProntuarioView : UserControl
-{
+{   
     private readonly Paciente _paciente;
     private  ProntuarioViewModel _viewModel;
     public ProntuarioView(Paciente paciente)
@@ -19,9 +21,9 @@ public partial class ProntuarioView : UserControl
         TxtNomePaciente.Text = _paciente.Nome;
         _viewModel.IniciarTabela(this);
     }
-    
-    private void BtnSalvar_Click(object? sender, RoutedEventArgs e) =>
-        _viewModel.Salvar(this); 
+
+    private async void BtnSalvar_Click(object? sender, RoutedEventArgs e) =>
+        await _viewModel.Salvar(this);
 
     private void Completo_OnIsCheckedChanged(object? sender, RoutedEventArgs e)
     {
@@ -34,7 +36,9 @@ public partial class ProntuarioView : UserControl
 
     private void Descricao_click(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        var btn = sender as Button;
+        var id = btn?.Tag?.ToString();
+        _viewModel.AbrirDescricao(id, this);
     }
 
     private void Pagar_click(object? sender, RoutedEventArgs e)

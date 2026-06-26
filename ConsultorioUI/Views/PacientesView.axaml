@@ -6,66 +6,65 @@
              x:DataType="vm:PacienteViewModel"
              x:Class="ConsultorioUI.Views.PacientesView"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             Background="{DynamicResource PageBg}"
-             >
+             Background="{DynamicResource PageBg}">
     <Grid Margin="28,24">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
             <!-- Header -->
             <RowDefinition Height="16" />
             <!-- Espaço -->
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
             <!-- Stats cards -->
-            <RowDefinition Height="16"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="16" />
+            <RowDefinition Height="Auto" />
             <!-- Search + Filtros -->
-            <RowDefinition Height="14"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="*" />
             <!-- Tabela -->
         </Grid.RowDefinitions>
 
         <!-- ══════════ HEADER ══════════ -->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0"  VerticalAlignment="Center" >
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
                 <TextBlock Text="Pacientes"
-                        Foreground="{DynamicResource TextPrimary}"
-                        FontSize="20"
-                        FontWeight="SemiBold"
-                        
-                        FontFamily="Segoe UI"/>
+                           Foreground="{DynamicResource TextPrimary}"
+                           FontSize="20"
+                           FontWeight="SemiBold"
+
+                           FontFamily="Segoe UI" />
 
                 <TextBlock Text="Gerencie o cadastro e histórico dos seus pacientes"
-                        Foreground="{DynamicResource TextMuted}"
-                        FontSize="12"
-                        FontFamily="Segoe UI"
-                        Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource TextMuted}"
+                           FontSize="12"
+                           FontFamily="Segoe UI"
+                           Margin="0,3,0,0" />
             </StackPanel>
 
             <Button Grid.Column="1"
-                x:Name="BtnNovoPaciente"
-                VerticalAlignment="Center"
-                Classes="" Click="BtnNovoPaciente_Click">
+                    x:Name="BtnNovoPaciente"
+                    VerticalAlignment="Center"
+                    Click="BtnNovoPaciente_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="+"
-                            FontSize="16"
-                            FontWeight="Bold"
-                            Margin="0,0,6,0"
-                            VerticalAlignment="Center"/>
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Margin="0,0,6,0"
+                               VerticalAlignment="Center" />
                     <TextBlock Text="Novo Paciente"
-                            VerticalAlignment="Center"/>
+                               VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="16"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="16" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <!-- Search com ícone de lupa -->
@@ -77,11 +76,11 @@
                          Padding="50,0,0,0">
                     <TextBox.Styles>
                         <Style Selector="Border">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
                         </Style>
                     </TextBox.Styles>
-                    
+
                 </TextBox>
                 <!-- Placeholder -->
                 <TextBlock IsHitTestVisible="False"
@@ -92,50 +91,49 @@
                            VerticalAlignment="Center"
                            Margin="50,0,0,0"
                            IsVisible="{Binding Text, ElementName=TxtBusca, 
-                       Converter={x:Static StringConverters.IsNullOrEmpty}}"/>
+                       Converter={x:Static StringConverters.IsNullOrEmpty}}" />
                 <!-- Ícone lupa -->
-                <Path Data="M10 2C5.6 2 2 5.6 2 10C2 14.4 5.6 18 10 18C11.8 18 13.4 17.4 14.7 16.4L18.3 20L20 18.3L16.4 14.7C17.4 13.4 18 11.8 18 10C18 5.6 14.4 2 10 2ZM10 4C13.3 4 16 6.7 16 10C16 13.3 13.3 16 10 16C6.7 16 4 13.3 4 10C4 6.7 6.7 4 10 4Z"
-        Fill="{DynamicResource TextPrimary}"
-        Width="16" Height="16"
-        Stretch="Uniform"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        Margin="20,0,0,0"
-        IsHitTestVisible="False"/>
+                <Path
+                    Data="M10 2C5.6 2 2 5.6 2 10C2 14.4 5.6 18 10 18C11.8 18 13.4 17.4 14.7 16.4L18.3 20L20 18.3L16.4 14.7C17.4 13.4 18 11.8 18 10C18 5.6 14.4 2 10 2ZM10 4C13.3 4 16 6.7 16 10C16 13.3 13.3 16 10 16C6.7 16 4 13.3 4 10C4 6.7 6.7 4 10 4Z"
+                    Fill="{DynamicResource TextPrimary}"
+                    Width="16" Height="16"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    IsHitTestVisible="False" />
             </Grid>
 
             <!-- Filter chips -->
             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
-                <RadioButton x:Name="rdbNome" Content="Nome"   Classes="" IsChecked="True" Margin="0,0,6,0"/>
-                <RadioButton x:Name="rdbId" Content="ID"  Classes="" Margin="0,0,6,0"/>
-                <RadioButton x:Name="rdbCPF" Content="CPF" Classes="" Margin="0,0,6,0"/>
+                <RadioButton x:Name="rdbNome" Content="Nome" Classes="" IsChecked="True" Margin="0,0,6,0" />
+                <RadioButton x:Name="rdbId" Content="ID" Classes="" Margin="0,0,6,0" />
+                <RadioButton x:Name="rdbCPF" Content="CPF" Classes="" Margin="0,0,6,0" />
             </StackPanel>
         </Grid>
 
         <!-- ══════════ TABELA ══════════ -->
         <Border Grid.Row="6"
-            
-            Classes="Table">
-
+                Classes="Table">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <!-- HEADER -->
                 <Border Grid.Row="0"
-                    Classes="PacientesHeader">
+                        Classes="PacientesHeader">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60" />
                             <!-- ID -->
-                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*" />
                             <!-- Paciente -->
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*" />
                             <!-- Telefone -->
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*" />
                             <!-- Ações -->
                         </Grid.ColumnDefinitions>
 
@@ -146,8 +144,7 @@
                     </Grid>
                 </Border>
 
-                
-                
+
                 <!-- LISTA -->
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding Pacientes}">
@@ -156,67 +153,56 @@
                                 <Border Classes="TableRow">
                                     <Grid Height="53">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="60" />
                                             <!-- ID -->
-                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="3*" />
                                             <!-- Paciente -->
-                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*" />
                                             <!-- Telefone -->
-                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="2*" />
                                             <!-- Ações -->
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Grid.Column="0"
-                                           Text="{Binding Id}"
-                                           Classes="Cell"/>
+                                                   Text="{Binding Id}"
+                                                   Classes="Cell" />
 
                                         <TextBlock Grid.Column="1"
-                                           Text="{Binding Nome}"
-                                           Classes="Cell"/>
+                                                   Text="{Binding Nome}"
+                                                   Classes="Cell" />
 
                                         <TextBlock Grid.Column="2"
-                                           Text="{Binding Telefone}"
-                                           Classes="Cell"/>
+                                                   Text="{Binding Telefone}"
+                                                   Classes="Cell" />
 
-                                        
+
                                         <!-- AÇÕES -->
-                                        <StackPanel 
-                                            Grid.Column="3" 
-                                            Orientation="Horizontal" 
-                                            HorizontalAlignment="Center" 
+                                        <StackPanel
+                                            Grid.Column="3"
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
                                             
-                                            <Button 
-                                                Content="✎"  
-                                                ToolTip.Tip="Editar" 
-                                                Tag="{Binding Id}" 
-                                                Click="BtnEditar_Click" 
-                                                VerticalAlignment="Center"
-                                                HorizontalAlignment="Center"
-                                                Margin="5,0"
-                                                />
-                                            <Button 
+                                            <Button
                                                 Content="👤"
-                                                Click="BtnPerfil_Click" 
-                                                ToolTip.Tip="Perfil Completo" 
+                                                Click="BtnPerfil_Click"
+                                                ToolTip.Tip="Perfil Completo"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
-                                                Tag="{Binding Id}" 
-                                                Margin="5,0"
-                                                />
-                                            <Button 
-                                                Content="📋" 
-                                                Click="BtnProntuario_Click" 
+                                                Tag="{Binding Id}"
+                                                Margin="5,0" />
+                                            <Button
+                                                Content="📋"
+                                                Click="BtnProntuario_Click"
 
-                                                ToolTip.Tip="Prontuario" 
+                                                ToolTip.Tip="Prontuario"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
-                                                Tag="{Binding Id}" 
-                                                Margin="5,0"
-                                                />
+                                                Tag="{Binding Id}"
+                                                Margin="5,0" />
 
                                         </StackPanel>
-                                    
+
                                     </Grid>
                                 </Border>
                             </DataTemplate>

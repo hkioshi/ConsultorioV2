@@ -37,7 +37,7 @@ public class TratamentosController : ControllerBase
         }
     }
     
-    [HttpGet("{id}")]
+    [HttpGet("AcharTratametosDoPaciente/{id}")]
     public IActionResult TratamentosPorIdPaciente(int id)
     {
         try
@@ -52,6 +52,21 @@ public class TratamentosController : ControllerBase
         }
     }
 
+    [HttpGet("{id}")]
+    public IActionResult TratamentosPorId(int id)
+    {
+        try
+        {
+            return Ok(_mapper.Map<ReadTratamentosDto>(_context.Tratamentos.FirstOrDefault(i => i.Id.Equals(id))));
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+    }
+    
     [HttpGet]
     public ActionResult ExibirTratamentos()
     {
@@ -84,9 +99,9 @@ public class TratamentosController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeletaTratamento(int id)
     {
-        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.Id == id);
-        if (paciente == null) return NotFound();
-        _context.Remove(paciente);
+        var tratamento = _context.Tratamentos.FirstOrDefault(tr => tr.Id == id);
+        if (tratamento == null) return NotFound();
+        _context.Remove(tratamento);
         _context.SaveChanges();
         return NoContent();
     }

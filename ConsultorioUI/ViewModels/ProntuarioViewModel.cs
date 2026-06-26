@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using ConsultorioUI.Models;
@@ -17,8 +18,6 @@ public partial class ProntuarioViewModel : ObservableObject
     public ObservableCollection<Procedimento> Procedimentos { get; set; }
     public ObservableCollection<Tratamento> Tratamentos { get; set; }
     public Paciente PacienteAtual { get; set; }
-
-
     public ProntuarioViewModel(Paciente paciente)
     {
         PacienteAtual = paciente;
@@ -30,8 +29,7 @@ public partial class ProntuarioViewModel : ObservableObject
             Valor = 100
         }];
     }
-    
-    public async void Salvar(ProntuarioView prontuarioView)
+    public async Task Salvar(ProntuarioView prontuarioView)
     {
         List<string> DentesMarcados= [];
         foreach (var item in prontuarioView.GrdSuperior.Children.OfType<CheckBox>())
@@ -65,7 +63,7 @@ public partial class ProntuarioViewModel : ObservableObject
                     Valor = VerNumerodeFaces(prontuarioView) * ValidacaoService.ValidarDouble(prontuarioView.TratamentoValor.Text)
                 };
                 await DatabaseService.SalvarNovoTratamento(novoTratamento);
-                App.Navigation.Navigate("Prontuario",PacienteAtual);
+                App.Navigation.Atualizar("Prontuario",PacienteAtual);
                 Console.WriteLine("Tratamento Salvo com sucesso!");
             }
             catch (Exception e)
@@ -73,8 +71,8 @@ public partial class ProntuarioViewModel : ObservableObject
                 MessageBox.Show(e.Message);
             }
         }
-    }
 
+    }
     private int VerNumerodeFaces(ProntuarioView prontuarioView)
     {
         int faces = 0;
@@ -88,7 +86,6 @@ public partial class ProntuarioViewModel : ObservableObject
         
         return faces;
     }
-
     public async Task IniciarTabela(ProntuarioView prontuarioView)
     {
         int idTratamento = await DatabaseService.BuscarIdProntuarioPorIdPaciente(
@@ -108,5 +105,25 @@ public partial class ProntuarioViewModel : ObservableObject
         }
         
     }
-    
+    public async void AbrirDescricao(string? id, Visual visual)
+    {
+        var tratamento = await DatabaseService.BuscarTratamento(id);
+        if (tratamento != null)
+        {
+            bool alterou = false;
+            var dialog = new EditarTratamentoDialog(tratamento);
+
+            var window = TopLevel.GetTopLevel(visual) as Window;
+            if (window != null)
+                alterou = await dialog.ShowDialog<bool>(window);
+
+            if (alterou)
+            {
+                App.Navigation.Atualizar("Prontuario", PacienteAtual);
+            }
+
+        }
+             
+
+    }
 }

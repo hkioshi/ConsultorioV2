@@ -46,6 +46,22 @@ public class NavigationService
         
     }
 
+    public void Atualizar(string view)
+    {
+        _mainWindow.MainContent.Content = view switch
+        {
+            
+            "Inicio" => Att(new InicioView()),
+            "Pacientes" => Att(new PacientesView()),
+            "Agenda" => Att(new AgendaView()),
+            "Financeiro" => Att(new PagamentoView()),
+            "NovoPaciente" => Att(new NovoPacienteView()),
+            _ => _mainWindow.MainContent.Content
+            
+        };
+        
+    }
+    
     public void Navigate(string view, Paciente? paciente)
     {
         _mainWindow.MainContent.Content = view switch
@@ -55,7 +71,23 @@ public class NavigationService
             _ => _mainWindow.MainContent.Content
         };
     }
-    
-    
-    
+
+
+    public void Atualizar(string view, Paciente paciente)
+    {
+        _mainWindow.MainContent.Content = view switch
+        {
+            "PerfilPaciente" => Att(new PacientePerfilView(paciente)),
+            "Prontuario" => Att(new ProntuarioView(paciente)),
+            _ => _mainWindow.MainContent.Content
+        };
+    }
+
+    private Visual Att(Visual visual)
+    {
+        _stack.Pop();
+        _stack.Push(Atual);
+        Atual = visual;
+        return visual;
+    }
 }

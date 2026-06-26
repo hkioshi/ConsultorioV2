@@ -26,14 +26,20 @@
                                FontSize="11"
                                Margin="0,3,0,0" />
                 </StackPanel>
-                <Button Grid.Column="2"
-                        Content="Salvar Alteração"
-                        Click="BtnSalvar_Click"
-                        Foreground="{DynamicResource TextPrimary}"
-                        BorderThickness="0"
-                        FontSize="16"
-                        Cursor="Hand"
-                        VerticalAlignment="Center" />
+                <StackPanel Grid.Column="2">
+                    <Button 
+                            Content="Salvar Alteração"
+                            Click="BtnSalvar_Click"
+                            Foreground="{DynamicResource TextPrimary}"
+                            BorderThickness="0"
+                            FontSize="16"
+                            Cursor="Hand"
+                            VerticalAlignment="Center" />
+                </StackPanel>
+                <Button Grid.Column="0"
+                        Content="🗑 Excluir"
+                        Click="Excluir_click"/>
+
             </Grid>
         </Border>
 

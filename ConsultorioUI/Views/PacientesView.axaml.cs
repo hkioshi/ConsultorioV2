@@ -23,14 +23,19 @@ public partial class PacientesView : UserControl
     
     private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (TxtBusca.Text == "") return;
-        
+        var texto = TxtBusca.Text.Trim();
+        if (texto == "")
+        {
+            TxtBusca.Text = "";
+            return;
+        };
+
+        // Filtrar por CPF
         if (rdbCPF.IsChecked == true)
         {
             try
             {
-                // Filtrar por CPF
-                if (TxtBusca.Text != null)
+                if (texto.Length == 11)
                 {
                     var response = await _pacienteVm.BuscarPacientePorCpf(TxtBusca.Text.Trim());
                     if (response is null) return;
@@ -45,13 +50,12 @@ public partial class PacientesView : UserControl
             }
 
         }
+        // Filtrar por ID
         else if (rdbId.IsChecked == true)
         {
             try
             {
-                // Filtrar por ID
-                if (TxtBusca.Text != null)
-                    _pacienteVm.AdicionarPaciente(await _pacienteVm.BuscarPacientePorId(TxtBusca.Text));
+                _pacienteVm.AdicionarPaciente(await _pacienteVm.BuscarPacientePorId(TxtBusca.Text));
             }
             catch (JsonException)
             {
@@ -66,15 +70,26 @@ public partial class PacientesView : UserControl
 
 
         }
+        // Filtrar por Nome
         else if (rdbNome.IsChecked == true)
-            // Filtrar por Nome
-            if (TxtBusca.Text != null)
-                _pacienteVm.AdicionarPacientes(await _pacienteVm.BuscarPacientePorNome(TxtBusca.Text) ?? Array.Empty<Paciente>());
-    } 
+        {
+            try
+            {
+                _pacienteVm.AdicionarPacientes(await _pacienteVm.BuscarPacientePorNome(texto) ?? Array.Empty<Paciente>());
+            }
+            catch (JsonException)
+            {
+                _pacienteVm.Pacientes.Clear();
+            }
+            catch (Exception ex)
+            {
+                _pacienteVm.Pacientes.Clear();
+                MessageBox.Show(ex.Message);
+                TxtBusca.Text = "";
+            }
 
-    private void BtnEditar_Click(object sender, RoutedEventArgs e)
-    {
-    }
+        }
+    } 
 
     private void BtnProntuario_Click(object sender, RoutedEventArgs e)
     {

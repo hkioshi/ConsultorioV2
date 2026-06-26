@@ -1,0 +1,126 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ConsultorioUI.ViewModels"
+        x:Class="ConsultorioUI.Views.EditarTratamentoDialog"
+        x:DataType="vm:TratamentoViewModel"
+        Width="500"
+        Height="620"
+        CanResize="False"
+        Background="{DynamicResource PageBg}"
+        WindowStartupLocation="CenterOwner"
+        Title="Editar Tratamento">
+
+    <Grid Margin="20"
+          RowDefinitions="Auto,*,Auto">
+
+        <TextBlock Text="Editar Tratamento"
+                   FontSize="22"
+                   FontWeight="SemiBold"
+                   Margin="0,0,0,20"/>
+
+        <ScrollViewer Grid.Row="1">
+
+            <StackPanel Spacing="14">
+                <StackPanel>
+                    <TextBlock Text="Observações"/>
+                    <TextBox Text="{Binding Tratamento.Observacoes}"
+                             Height="100"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel >
+                    <TextBlock Text="Dente"/>
+                    <NumericUpDown Minimum="11"
+                                   Maximum="85"
+                                   Value="{Binding Tratamento.Dente}"/>
+                </StackPanel>
+                
+                <StackPanel >
+                    <TextBlock Text="Data"/>
+                    <DatePicker SelectedDate="{Binding Data}"/>
+                </StackPanel>
+                
+                <StackPanel>
+                    <TextBlock Text="Procedimento"/>
+                    <TextBox Text="{Binding Tratamento.Procedimento}"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Status"/>
+                    <ComboBox SelectedItem="{Binding Tratamento.Status}">
+                        <ComboBoxItem Content="Pendente"/>
+                        <ComboBoxItem Content="Em andamento"/>
+                        <ComboBoxItem Content="Concluído"/>
+                        <ComboBoxItem Content="Cancelado"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock Text="Valor"/>
+                    <NumericUpDown Increment="10"
+                                   Minimum="0"
+                                   Value="{Binding Tratamento.Valor}"/>
+                </StackPanel>
+
+                <GroupBox Header="Faces">
+
+                    <Grid ColumnDefinitions="*,*"
+                          RowDefinitions="Auto,Auto,Auto">
+
+                        <CheckBox Grid.Row="0"
+                                  Grid.Column="0"
+                                  Content="Oclusal / Incisal"
+                                  IsChecked="{Binding Tratamento.OclusalIncisal}"/>
+
+                        <CheckBox Grid.Row="0"
+                                  Grid.Column="1"
+                                  Content="Vestibular"
+                                  IsChecked="{Binding   Tratamento.Vestibular}"/>
+
+                        <CheckBox Grid.Row="1"
+                                  Grid.Column="0"
+                                  Content="Lingual / Palatina"
+                                  IsChecked="{Binding Tratamento.LingualPalatina}"/>
+
+                        <CheckBox Grid.Row="1"
+                                  Grid.Column="1"
+                                  Content="Mesial"
+                                  IsChecked="{Binding Tratamento.Mesial}"/>
+
+                        <CheckBox Grid.Row="2"
+                                  Grid.Column="0"
+                                  Content="Distal"
+                                  IsChecked="{Binding Tratamento.Distal}"/>
+
+                    </Grid>
+
+                </GroupBox>
+
+                
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <Grid Grid.Row="2"
+              Margin="0,20,0,0"
+              ColumnDefinitions="Auto,*,Auto,Auto">
+
+            <Button Grid.Column="0"
+                    Content="🗑 Excluir"
+                    Click="Excluir_click"/>
+
+            <Button Grid.Column="2"
+                    Margin="0,0,10,0"
+                    Content="Cancelar"
+                    Click="Cancelar_click"/>
+
+            <Button Grid.Column="3"
+                    Content="Salvar"
+                    Click="Salvar_click"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

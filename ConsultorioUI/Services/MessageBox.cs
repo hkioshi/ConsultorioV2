@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
@@ -49,5 +50,62 @@ public static class MessageBox
 
         dialog.ShowDialog(parentWindow);
     }
+    
+    public static async Task<bool> ShowWarning(string message)
+    {
+        var parentWindow = App.Window;
+
+        var naoButton = new Button
+        {
+            Margin = Thickness.Parse("3"),
+
+            Content = "Não"
+        };
+
+        var simButton = new Button
+        {
+            Margin = Thickness.Parse("3"),
+
+            Content = "Sim"
+        };
+
+        var dialog = new Window
+        {
+            Title = "Aviso",
+            Width = 320,
+            SizeToContent = SizeToContent.Height,
+            CanResize = false,
+            WindowStartupLocation = WindowStartupLocation.CenterOwner,
+            Content = new StackPanel
+            {
+                Margin = new Thickness(24),
+                Children =
+                {
+                    new TextBlock
+                    {
+                        Text = message,
+                        TextWrapping = TextWrapping.Wrap,
+                        TextAlignment = TextAlignment.Center
+                    },
+                    new StackPanel
+                    {
+                        Orientation =  Orientation.Horizontal,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        Children =
+                        {
+                            naoButton,
+                            simButton
+                        }
+                    },
+                }
+            }
+        };
+
+        naoButton.Click += (_, _) => dialog.Close(false);
+        simButton.Click += (_, _) => dialog.Close(true);
+
+        return await dialog.ShowDialog<bool>(parentWindow);
+    }
+    
     
 }
