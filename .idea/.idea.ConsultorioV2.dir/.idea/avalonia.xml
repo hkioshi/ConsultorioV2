@@ -12,6 +12,7 @@
         <entry key="ConsultorioUI/Styles/MostrarPerfilStyle.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Styles/PacientesStyle.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/AgendaView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
+        <entry key="ConsultorioUI/Views/CalendarioView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/ConfigView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/EditarTratamentoDialog.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />
         <entry key="ConsultorioUI/Views/InicioView.axaml" value="ConsultorioUI/ConsultorioUI.csproj" />

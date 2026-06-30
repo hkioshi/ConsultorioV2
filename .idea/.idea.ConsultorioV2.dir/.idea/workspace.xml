@@ -17,9 +17,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="Botao ok no MessageBox">
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Models/Evento.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Models/EventoDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AgendaViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ConsultorioUI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ConsultorioUI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Styles/ColorsLight.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/ColorsLight.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,15 +52,16 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65571af56f9b4d67b686cc14d6194300198e00/94/cb82251f/HttpClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/8a/025a5785/DefaultInterpolatedStringHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/df/bc8d08e5/ArrayPool`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/e7/4e995343/AsyncVoidMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/92acfe286036468c82a794ee9e0f8f5417cc00/96/1d76a381/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioApi/Controllers/ProcedimentoController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioApi/Data/Dtos/CreateProcedimentoDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioApi/Data/Dtos/ReadProcedimentoDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioApi/Data/Dtos/UpdateProcedimentoDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioApi/Profiles/ProcedimentoProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/CreateTratamentoDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/Evento.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/EventoDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/PacienteUpdateDTO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/Procedimento.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/Tratamento.cs" root0="FORCE_HIGHLIGHTING" />
@@ -153,7 +161,7 @@
   "keyToString": {
     ".NET Launch Settings Profile.ConsultorioApi: https.executor": "Run",
     ".NET Project.ConsultorioUI.executor": "Run",
-    ".NET Project.Unnamed.executor": "Run",
+    ".NET Project.Unnamed.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -290,6 +298,7 @@
       <workItem from="1782498456137" duration="12743000" />
       <workItem from="1782827160874" duration="558000" />
       <workItem from="1782828594784" duration="166000" />
+      <workItem from="1782828894851" duration="18522000" />
     </task>
     <servers />
   </component>
@@ -354,6 +363,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ConsultorioUI/ViewModels/AgendaViewModel.cs</url>
+          <line>19</line>
+          <properties documentPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AgendaViewModel.cs" containingFunctionPresentation="Constructor 'AgendaViewModel'">
+            <startOffsets>
+              <option value="587" />
+            </startOffsets>
+            <endOffsets>
+              <option value="603" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -101,4 +101,10 @@ public class DatabaseService
         if (responsePaciente.IsSuccessStatusCode) ;
 
     }
+
+    public static async Task<List<Evento>?> BuscarEventosHoje() => 
+        await _httpClient.GetFromJsonAsync<List<Evento>>($"/api/calendario/draceliaodonto@gmail.com/hoje");
+    
+    
+    
 }
