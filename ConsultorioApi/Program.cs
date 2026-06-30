@@ -36,12 +36,14 @@ builder.Services.AddAuthentication(options =>
     {
         options.ExpireTimeSpan = TimeSpan.FromDays(30);
         options.SlidingExpiration = true;
+        options.Cookie.SameSite = SameSiteMode.Lax;           // fix: correlation cookie
+        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // fix: permite HTTP em dev
     })
     .AddGoogle(options =>
     {
         options.ClientId = builder.Configuration["Authentication:Google:ClientId"] ?? throw new ArgumentNullException();
         options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"] ?? throw new ArgumentNullException();
-
+        
         options.Scope.Add("https://www.googleapis.com/auth/calendar");
         options.SaveTokens = true;
     });
@@ -62,9 +64,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Lax
+});
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();

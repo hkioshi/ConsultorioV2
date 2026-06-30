@@ -12,13 +12,11 @@ public class LoginController : Controller
     [HttpGet]
     public IActionResult Login()
     {
-        var redirectUri = Url.Action(nameof(Callback), "Auth", null, Request.Scheme);
- 
         return Challenge(new AuthenticationProperties
         {
             IsPersistent = true,
             ExpiresUtc = DateTimeOffset.UtcNow.AddDays(30),
-            RedirectUri = redirectUri
+            RedirectUri = "/Login/callback"  // para onde redirecionar APÓS o login
         }, "Google");
     }
  

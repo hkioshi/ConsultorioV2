@@ -17,27 +17,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="Botao ok no MessageBox">
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Models/TratamentoUpdateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/TratamentoViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/EditarTratamentoDialog.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/EditarTratamentoDialog.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/TratamentosController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Controllers/TratamentosController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/MessageBox.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/MessageBox.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/NavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/NavigationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/Todo Repo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/Todo Repo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/ValidacaoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/ValidacaoService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/ProntuarioViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/ProntuarioViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientePerfilView.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/PacientesView.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/ProntuarioView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/ProntuarioView.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/ProntuarioView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/ProntuarioView.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +173,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -305,7 +287,9 @@
       <workItem from="1782313247345" duration="225000" />
       <workItem from="1782420402002" duration="3173000" />
       <workItem from="1782479662086" duration="5199000" />
-      <workItem from="1782498456137" duration="11344000" />
+      <workItem from="1782498456137" duration="12743000" />
+      <workItem from="1782827160874" duration="558000" />
+      <workItem from="1782828594784" duration="166000" />
     </task>
     <servers />
   </component>
