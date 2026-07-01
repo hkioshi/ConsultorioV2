@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using ConsultorioUI.Models;
+using ConsultorioUI.Views;
 
 namespace ConsultorioUI.Services;
 
@@ -102,9 +104,6 @@ public class DatabaseService
 
     }
 
-    public static async Task<List<Evento>?> BuscarEventosHoje() => 
-        await _httpClient.GetFromJsonAsync<List<Evento>>($"/api/calendario/draceliaodonto@gmail.com/hoje");
-    
     
     
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using ConsultorioUI.Models;
 using ConsultorioUI.Services;
+using ConsultorioUI.Views;
 
 namespace ConsultorioUI.ViewModels;
 public partial class AgendaViewModel : ObservableObject
@@ -24,16 +25,16 @@ public partial class AgendaViewModel : ObservableObject
     {
         try
         {
-            var resposta = await DatabaseService.BuscarEventosHoje();
-            foreach (var evento in resposta)
-            {
-                EventosHoje.Add(evento);
-            }
+           // var resposta = await DatabaseService.BuscarEventosHoje();
+           
+        }
+        catch(UnauthorizedAccessException)
+        {
+            //App.Navigation.Navigate("Login");
         }
         catch (Exception e)
         {
             MessageBox.Show(e.Message);
-            throw;
         }
         
     }

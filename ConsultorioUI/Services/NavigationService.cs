@@ -22,7 +22,7 @@ public class NavigationService
         _mainWindow.MainContent.Content = Atual;
     }
     
-    public Visual Ir(Visual visual)
+    private Visual Ir(Visual visual)
     {
         _stack.Push(Atual);
         Atual = visual;
@@ -40,6 +40,7 @@ public class NavigationService
             "Agenda" => Ir(new AgendaView()),
             "Financeiro" => Ir(new PagamentoView()),
             "NovoPaciente" => Ir(new NovoPacienteView()),
+            "Login" => Ir(new LoginView()),
             _ => _mainWindow.MainContent.Content
             
         };

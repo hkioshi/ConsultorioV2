@@ -32,5 +32,18 @@
     <SolidColorBrush x:Key="ComboHoverBorder" Color="#2E79C9"/>
     <SolidColorBrush x:Key="ComboItemForeground" Color="#225C84"/>
     <SolidColorBrush x:Key="ComboItemSelected" Color="#DCEFF8"/>
+    
+    <!-- Menu Lateral (Claro - Cinza) -->
+    <SolidColorBrush x:Key="SidebarBg" Color="#E1E6EA"/>
+    <SolidColorBrush x:Key="SidebarBorder" Color="#C3CBD2"/>
 
+    <SolidColorBrush x:Key="SidebarItemHover" Color="#D4DBE1"/>
+    <SolidColorBrush x:Key="SidebarItemPressed" Color="#C8D1D8"/>
+    <SolidColorBrush x:Key="SidebarItemSelected" Color="#2E79C9"/>
+
+    <SolidColorBrush x:Key="SidebarText" Color="#263238"/>
+    <SolidColorBrush x:Key="SidebarTextMuted" Color="#6B7782"/>
+    <SolidColorBrush x:Key="SidebarIcon" Color="#4F6D82"/>
+
+    <SolidColorBrush x:Key="SidebarSeparator" Color="#B5BEC6"/>
 </ResourceDictionary>
