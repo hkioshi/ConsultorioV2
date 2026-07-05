@@ -5,7 +5,7 @@ namespace ConsultorioUI.Models;
 
 public class Evento
 {
- 
+
     [JsonPropertyName("id")]
     public string Id { get; set; } = string.Empty;
 
@@ -16,10 +16,10 @@ public class Evento
     public string? Cor { get; set; }
 
     [JsonPropertyName("inicio")]
-    public DateTimeOffset HoraInicio { get; set; }
+    public DateTimeOffset HoraInicio { get; }
 
     [JsonPropertyName("fim")]
-    public DateTimeOffset HoraFim { get; set; }
+    public DateTimeOffset HoraFim { get; }
 
     // Calculadas, não vêm do JSON
     [JsonIgnore]

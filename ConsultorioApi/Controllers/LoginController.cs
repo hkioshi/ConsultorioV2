@@ -1,8 +1,10 @@
-﻿using System.Net;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ConsultorioApi.Controllers;
 
@@ -14,12 +16,15 @@ public class LoginController : Controller
     [HttpGet]
     public IActionResult Login()
     {
+        Console.WriteLine($"Login chamado {DateTime.Now:HH:mm:ss.fff}");
+        Console.WriteLine(Environment.StackTrace);
         return Challenge(new AuthenticationProperties
         {
             IsPersistent = true,
             ExpiresUtc = DateTimeOffset.UtcNow.AddDays(30),
             RedirectUri = "/Login/callback" // para onde redirecionar APÓS o login
         }, "Google");
+        
     }
 
     // GET /auth/logout
@@ -104,7 +109,14 @@ public class LoginController : Controller
                        </html>
                        """;
 
-            return Redirect($"http://127.0.0.1:54321/callback?code=");
+            var code = Guid.NewGuid().ToString("N");
+
+            _loginCodes[code] = (
+                email!,
+                DateTime.UtcNow.AddMinutes(5)
+            );
+
+            return Redirect($"http://127.0.0.1:54321/callback?code={code}");
         }
     }
     
@@ -124,9 +136,30 @@ public class LoginController : Controller
         });
     }
 
- 
+    private string GerarJwt((string email, DateTime expires) user)
+    {
+        var key = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes("SUA_CHAVE_SECRETA_COM_PELO_MENOS_32_CARACTERES")
+        );
+
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.Email, user.email)
+        };
+
+        var token = new JwtSecurityToken(
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(12),
+            signingCredentials: creds
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
+    }
 }
 public class ExchangeRequest
 {
     public string Code { get; set; } = "";
 }
+

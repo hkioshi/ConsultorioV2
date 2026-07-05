@@ -27,27 +27,6 @@ public partial class SidebarControl : UserControl
     private void NavConfiguracoes_Click(object sender, RoutedEventArgs e) =>
         App.Navigation.NavegarParaInicio(new ConfigView());
 
-    private async void Button_OnClick(object? sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (!await loginService.VerificarConexao())
-            {
-                _ = loginService.IniciarListener(); // NÃO await
-
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = "https://localhost:7256/Login",
-                    UseShellExecute = true
-                });
-            }
-            else
-                MessageBox.Show("Está logado");
-        }
-        catch (Exception exception)
-        {
-            Console.WriteLine(exception);
-            throw;
-        }
-    }
+    private void Button_OnClick(object? sender, RoutedEventArgs e) =>
+        loginService.Login();
 }

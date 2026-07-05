@@ -11,9 +11,9 @@ public class CreateTratamentoDto
     public bool Vestibular { get; set; }
     public bool Mesial { get; set; }
     public bool Distal { get; set; }
-    public string Procedimento { get; set; }
-    public string Observacoes { get; set; }
-    public string Status { get; set; }
+    public required string Procedimento { get; set; }
+    public string? Observacoes { get; set; }
+    public required string Status { get; set; }
     public double Valor { get; set; }
     public int ProntuarioId { get; set; }
 }

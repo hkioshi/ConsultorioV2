@@ -1,39 +1,31 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using ConsultorioUI.Models;
-using ConsultorioUI.Views;
 
 namespace ConsultorioUI.Services;
 
 public class DatabaseService
 {
-    private static readonly HttpClient _httpClient = new HttpClient
-    {
-        BaseAddress = new Uri("https://localhost:7256/")
-    };
 
     public static async Task<Paciente?> BuscarPacientePorId(string txt) =>
-        await _httpClient.GetFromJsonAsync<Paciente>($"Paciente/BuscarPorId/{txt}");
+        await App.HttpClient.GetFromJsonAsync<Paciente>($"Paciente/BuscarPorId/{txt}");
 
     public static async Task<IEnumerable<Paciente>?> BuscarPacientePorNome(string txt) =>
-        await _httpClient.GetFromJsonAsync<List<Paciente>>($"Paciente/BuscarPorNome/{txt}");
+        await App.HttpClient.GetFromJsonAsync<List<Paciente>>($"Paciente/BuscarPorNome/{txt}");
     
     public static async Task<Paciente?> BuscarPacientePorCpf(string txt) =>
-        await _httpClient.GetFromJsonAsync<Paciente>($"Paciente/BuscarPorCPF/{txt}");
+        await App.HttpClient.GetFromJsonAsync<Paciente>($"Paciente/BuscarPorCPF/{txt}");
 
     public static async Task<bool> SalvarNovo(Paciente paciente)
     {
         const string urlPaciente = "Paciente";
         const string urlProntuario = "Prontuario";
 
-        var response = await _httpClient.PostAsync(
+        var response = await App.HttpClient.PostAsync(
             urlPaciente,
             new StringContent(JsonSerializer.Serialize(paciente), Encoding.UTF8, "application/json"));
 
@@ -41,7 +33,7 @@ public class DatabaseService
 
         var pacienteCriado = await response.Content.ReadFromJsonAsync<Paciente>();
 
-        response = await _httpClient.PostAsync(
+        response = await App.HttpClient.PostAsync(
             urlProntuario,
             new StringContent(
                 JsonSerializer.Serialize(new ProntuarioId { PacienteId = pacienteCriado!.Id }),
@@ -54,30 +46,30 @@ public class DatabaseService
     {
         const string urlPaciente = "Paciente";
 
-        var response = await _httpClient.PutAsJsonAsync(
+        var response = await App.HttpClient.PutAsJsonAsync(
             $"{urlPaciente}/{id}",
             paciente);
 
         return response.IsSuccessStatusCode;
     }
     public static async Task<int> BuscarIdProntuarioPorIdPaciente(string id) =>
-        await _httpClient.GetFromJsonAsync<int>($"Prontuario/IdProntuarioPorIdPaciente/{id}");
+        await App.HttpClient.GetFromJsonAsync<int>($"Prontuario/IdProntuarioPorIdPaciente/{id}");
 
 
     public static async Task<bool> SalvarNovoTratamento(CreateTratamentoDto novoTratamento)
     {
-        var response = await _httpClient.PostAsJsonAsync(
+        var response = await App.HttpClient.PostAsJsonAsync(
             "Tratamentos",
             novoTratamento);
 
         return response.IsSuccessStatusCode;
     }
-    public static async Task<List<Tratamento>?> ExibirTratamentos(int Id) =>
-        await _httpClient.GetFromJsonAsync<List<Tratamento>>($"Tratamentos/AcharTratametosDoPaciente/{Id}");
+    public static async Task<List<Tratamento>?> ExibirTratamentos(int id) =>
+        await App.HttpClient.GetFromJsonAsync<List<Tratamento>>($"Tratamentos/AcharTratametosDoPaciente/{id}");
     
     public static async Task<bool> SalvarAlteracaoTratamento(Tratamento tratamento, int id)
     {
-        var response = await _httpClient.PutAsJsonAsync(
+        var response = await App.HttpClient.PutAsJsonAsync(
             $"Tratamentos/{id}",
             tratamento);
 
@@ -85,10 +77,10 @@ public class DatabaseService
     }
 
     public static async Task<Tratamento?> BuscarTratamento(string? id) =>
-        await _httpClient.GetFromJsonAsync<Tratamento>($"Tratamentos/{id}");
+        await App.HttpClient.GetFromJsonAsync<Tratamento>($"Tratamentos/{id}");
     public static async Task<bool> ExcluirTratamento(int id)
     {
-        var response = await _httpClient.DeleteAsync($"/Tratamentos/{id}");
+        var response = await App.HttpClient.DeleteAsync($"/Tratamentos/{id}");
         return response.IsSuccessStatusCode;
     }
 
@@ -96,7 +88,7 @@ public class DatabaseService
     {
         
         //Todo: responsePagamentos
-        var responsePaciente = await _httpClient.DeleteAsync($"/Paciente/{id}");
+        var responsePaciente = await App.HttpClient.DeleteAsync($"/Paciente/{id}");
         
         
         bool response;

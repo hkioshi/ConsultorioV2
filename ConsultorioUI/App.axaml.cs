@@ -1,25 +1,30 @@
+using System;
+using System.Diagnostics;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
-using System.Linq;
+using System.Net.Http;
 using Avalonia.Markup.Xaml;
 using ConsultorioUI.Services;
-using ConsultorioUI.ViewModels;
 using ConsultorioUI.Views;
 
 namespace ConsultorioUI;
 
 public partial class App : Application
 {
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
     }
     public static NavigationService Navigation { get; private set; } = null!;
     public static MainWindow Window {get; private set; } = null!;
+    public static HttpClient HttpClient = new HttpClient()
+    {
+        BaseAddress = new Uri("https://localhost:7256/")
+    };
 
-    public override void OnFrameworkInitializationCompleted()
+    
+    public override async void OnFrameworkInitializationCompleted()
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
@@ -29,5 +34,6 @@ public partial class App : Application
         }
 
         base.OnFrameworkInitializationCompleted();
+    
     }
 }
