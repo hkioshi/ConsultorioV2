@@ -19,7 +19,7 @@ public partial class PacientesView : UserControl
     }
 
     private void BtnNovoPaciente_Click(object sender, RoutedEventArgs e) =>
-        App.Navigation.Navigate("NovoPaciente");        
+        App.Navigation.Navegar(new NovoPacienteView());        
     
     private async void TxtBusca_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -96,15 +96,18 @@ public partial class PacientesView : UserControl
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
         
-        App.Navigation.Navigate(
-            "Prontuario", 
-            _pacienteVm.Pacientes.FirstOrDefault(p => p.Id.ToString() == id ));
+        App.Navigation.Navegar(
+            new ProntuarioView(_pacienteVm.Pacientes.
+                FirstOrDefault(p => p.Id.ToString() == id )));
+            
     }
     
     private void BtnPerfil_Click(object? sender, RoutedEventArgs e)
     {
         var btn = sender as Button;
         var id = btn?.Tag?.ToString();
-        if (id != null) App.Navigation.Navigate("PerfilPaciente",_pacienteVm.Pacientes.FirstOrDefault(p => p.Id.ToString() == id));
+        if (id != null) 
+            App.Navigation.Navegar(new PacientePerfilView(
+                _pacienteVm.Pacientes.FirstOrDefault(p => p.Id.ToString() == id)));
     }
 }

@@ -53,7 +53,7 @@ public partial class NovoPacienteView : UserControl
             if (await _vm.SalvarNovo(pacienteSalvo))
             {
                 MessageBox.Show("Salvo com sucesso!");
-                App.Navigation.Navigate("Pacientes");
+                App.Navigation.Navegar(new PacientesView());
             }
         }
         

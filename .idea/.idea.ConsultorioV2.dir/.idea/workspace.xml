@@ -17,20 +17,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="Botao ok no MessageBox">
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/SidebarStyle.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/LoginView.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/LoginView.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Views/SideBar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/avalonia.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Models/Status.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Services/LoginService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/ConsultorioApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsultorioUI/ConsultorioUI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ConsultorioUI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/NavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/NavigationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Styles/ColorsDark.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/ColorsDark.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Styles/ColorsLight.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/ColorsLight.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Styles/MostrarPerfilStyle.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Styles/MostrarPerfilStyle.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AgendaViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AgendaViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +66,10 @@
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/EventoDto.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/PacienteUpdateDTO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/Procedimento.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/Status.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Models/Tratamento.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ConsultorioUI/Services/LoginService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Services/NavigationService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Services/Todo Repo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsultorioUI/Services/ValidacaoService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -184,7 +180,7 @@
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Desenvolvimento&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/henrique/repos/Projetos Testes/AvaloniaTreino&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/henrique/repos/Projetos Testes/MultiCoisas&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -310,7 +306,14 @@
       <workItem from="1782828894851" duration="19056000" />
       <workItem from="1782853039156" duration="1128000" />
       <workItem from="1782854397343" duration="5308000" />
-      <workItem from="1782917842865" duration="7345000" />
+      <workItem from="1782917842865" duration="8640000" />
+      <workItem from="1782933787799" duration="7427000" />
+      <workItem from="1782947355936" duration="52000" />
+      <workItem from="1782947476764" duration="2881000" />
+      <workItem from="1783113075468" duration="1920000" />
+      <workItem from="1783187106443" duration="113000" />
+      <workItem from="1783196643741" duration="87000" />
+      <workItem from="1783197211734" duration="180000" />
     </task>
     <servers />
   </component>

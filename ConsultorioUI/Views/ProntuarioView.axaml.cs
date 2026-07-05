@@ -12,7 +12,7 @@ public partial class ProntuarioView : UserControl
 {   
     private readonly Paciente _paciente;
     private  ProntuarioViewModel _viewModel;
-    public ProntuarioView(Paciente paciente)
+    public ProntuarioView(Paciente? paciente)
     {
         _paciente = paciente;
         _viewModel = new ProntuarioViewModel(paciente);

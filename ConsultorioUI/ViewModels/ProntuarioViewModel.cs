@@ -63,7 +63,7 @@ public partial class ProntuarioViewModel : ObservableObject
                     Valor = VerNumerodeFaces(prontuarioView) * ValidacaoService.ValidarDouble(prontuarioView.TratamentoValor.Text)
                 };
                 await DatabaseService.SalvarNovoTratamento(novoTratamento);
-                App.Navigation.Atualizar("Prontuario",PacienteAtual);
+                App.Navigation.Atualizar(new ProntuarioView(PacienteAtual));
                 Console.WriteLine("Tratamento Salvo com sucesso!");
             }
             catch (Exception e)
@@ -119,7 +119,7 @@ public partial class ProntuarioViewModel : ObservableObject
 
             if (alterou)
             {
-                App.Navigation.Atualizar("Prontuario", PacienteAtual);
+                App.Navigation.Atualizar(new ProntuarioView(PacienteAtual));
             }
 
         }
