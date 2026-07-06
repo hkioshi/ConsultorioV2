@@ -8,8 +8,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
        // Busca os controles pelo nome após inicializar
-        var mainContent = this.FindControl<ContentControl>("MainContent")!;
-        mainContent.Content = new InicioView();
+        MainContent.Content = new InicioView();
     }
     
 }

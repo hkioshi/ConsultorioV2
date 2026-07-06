@@ -9,7 +9,6 @@ namespace ConsultorioUI.Views;
 
 public partial class SidebarControl : UserControl
 {
-    private readonly LoginService loginService = new();
     public SidebarControl() => InitializeComponent();
     
     private void NavInicio_Click(object sender, RoutedEventArgs e) =>
@@ -26,7 +25,5 @@ public partial class SidebarControl : UserControl
     
     private void NavConfiguracoes_Click(object sender, RoutedEventArgs e) =>
         App.Navigation.NavegarParaInicio(new ConfigView());
-
-    private void Button_OnClick(object? sender, RoutedEventArgs e) =>
-        loginService.Login();
+    
 }

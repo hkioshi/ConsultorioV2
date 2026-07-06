@@ -17,14 +17,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711cae15-334f-4784-90f8-63bb5b64b87a" name="Changes" comment="Botao ok no MessageBox">
-      <change afterPath="$PROJECT_DIR$/ConsultorioUI/Models/TokenResposta.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ConsultorioV2.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioApi/Controllers/LoginController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsultorioUI/App.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/App.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Models/CreateTratamentoDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Models/CreateTratamentoDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Models/Evento.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Models/Evento.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/DatabaseService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/LoginService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/LoginService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Services/NavigationService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Services/NavigationService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AgendaViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/AgendaViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/ViewModels/PacienteViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/AgendaView.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/SideBar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ConsultorioUI/Views/SidebarControl.axaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,14 +54,22 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0605e9b3f4e848d9a5dda26cc0a71e912d600/c7/cb080d33/Console.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0e58d6dcb39241c687608f31f51b97ad1ae00/e8/b59659c8/HttpClientJsonExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65571af56f9b4d67b686cc14d6194300198e00/c8/d27e772a/HttpResponseMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/0f/45341190/RuntimeTypeHandle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/18/bb39c4c3/Exception.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/2f/6a310550/Task`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/51/45217206/TypeHandle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/7f/88b122ef/MethodBaseInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/a9/a150194a/File.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/ba/cfe7fab0/ArgumentNullException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/cb/dc9eeac4/Type.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/713e261f9376418494846576529a078cdbb200/e7/4e995343/AsyncVoidMethodBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/92acfe286036468c82a794ee9e0f8f5417cc00/96/1d76a381/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d067e726e1ce4376b07936c50c1de6aa13fe00/da/640b6129/Application.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e945b10cc82445e081b3c301c7ca28603e600/3f/a6a3ecb6/Process.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e945b10cc82445e081b3c301c7ca28603e600/7c/493b3912/ProcessStartInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/22c4b72c6259a3aaff535bf0deecc570fe7042e1fe89759e9ace6fd915a21d26/RoutedEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2cdd3f73d22712a66e178bf672da134e37184447d6059b07bbd5d9be596f/Button.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6542a588b7322987aeb89d8ecd317d8e2c5947daf2b0cf2f3457b8eb769ab148/EventRoute.cs" root0="FORCE_HIGHLIGHTING" />
@@ -175,36 +186,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.ConsultorioApi: https.executor": "Run",
-    ".NET Project.ConsultorioUI.executor": "Run",
-    ".NET Project.Unnamed.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Desenvolvimento",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/henrique/repos/Projetos Testes/MultiCoisas",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.ConsultorioApi: https.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.ConsultorioUI.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.Unnamed.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Desenvolvimento&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/henrique/repos/Projetos Testes/MultiCoisas&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Project.Unnamed">
+}</component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.ConsultorioApi: https">
     <configuration name="Unnamed" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/ConsultorioUI/bin/Debug/net10.0/ConsultorioUI" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -327,7 +338,11 @@
       <workItem from="1783187106443" duration="113000" />
       <workItem from="1783196643741" duration="87000" />
       <workItem from="1783197211734" duration="180000" />
-      <workItem from="1783197733344" duration="14097000" />
+      <workItem from="1783197733344" duration="19939000" />
+      <workItem from="1783345729231" duration="4323000" />
+      <workItem from="1783351735971" duration="1418000" />
+      <workItem from="1783353256127" duration="2996000" />
+      <workItem from="1783356366108" duration="2658000" />
     </task>
     <servers />
   </component>
@@ -379,32 +394,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConsultorioUI/Views/EditarTratamentoDialog.axaml.cs</url>
-          <line>24</line>
-          <properties documentPath="$PROJECT_DIR$/ConsultorioUI/Views/EditarTratamentoDialog.axaml.cs" containingFunctionPresentation="Method 'Excluir_click'">
-            <startOffsets>
-              <option value="679" />
-            </startOffsets>
-            <endOffsets>
-              <option value="718" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ConsultorioUI/Services/LoginService.cs</url>
-          <line>17</line>
-          <properties documentPath="$PROJECT_DIR$/ConsultorioUI/Services/LoginService.cs" containingFunctionPresentation="Method 'CarregarTokenSalvo'">
-            <startOffsets>
-              <option value="347" />
-            </startOffsets>
-            <endOffsets>
-              <option value="377" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

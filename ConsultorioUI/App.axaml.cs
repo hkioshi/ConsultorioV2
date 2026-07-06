@@ -18,21 +18,20 @@ public partial class App : Application
     }
     public static NavigationService Navigation { get; private set; } = null!;
     public static MainWindow Window {get; private set; } = null!;
-    public static HttpClient HttpClient = new HttpClient()
+    public static readonly HttpClient HttpClient = new()
     {
         BaseAddress = new Uri("https://localhost:7256/")
     };
-
     
-    public override async void OnFrameworkInitializationCompleted()
+    public override void OnFrameworkInitializationCompleted()
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            Console.WriteLine($"Main - PID {Environment.ProcessId}");
             Window = new MainWindow();
-            Navigation = new NavigationService(Window);
+            Navigation = new NavigationService();
             desktop.MainWindow = Window;
         }
-
         base.OnFrameworkInitializationCompleted();
     
     }

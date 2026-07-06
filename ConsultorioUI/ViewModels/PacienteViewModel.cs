@@ -34,7 +34,7 @@ namespace ConsultorioUI.ViewModels
         public void AdicionarPacientes(IEnumerable<Paciente?> response)
         {
             Pacientes.Clear();
-            foreach (Paciente? i in response)
+            foreach (var i in response)
                 if (i is not null)
                     Pacientes.Add(i);
         }
@@ -46,9 +46,9 @@ namespace ConsultorioUI.ViewModels
                 Pacientes.Add(paciente);
         }
 
-        public async Task<bool> ExcluirTratento(Paciente paciente)
+        public Task<bool> ExcluirTratento(Paciente paciente)
         {
-            return true;
+            return Task.FromResult(true);
         }
         
             //await DatabaseService.ExcluirPaciente(paciente.Id);

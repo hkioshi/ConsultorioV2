@@ -89,6 +89,7 @@
 
             </Border>
         </Grid>
+        <Button Click="Button_OnClick"></Button>
     </Grid>
 
 

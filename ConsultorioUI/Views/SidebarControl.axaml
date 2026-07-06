@@ -128,9 +128,6 @@
                     </RadioButton>
                 </StackPanel>
             </ScrollViewer>
-            <Button Click="Button_OnClick">
-                
-            </Button>
         </Grid>
     </Border>
 </UserControl>
