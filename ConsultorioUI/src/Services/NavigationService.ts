@@ -1,17 +1,13 @@
-export default class NavigationService {
-    private static instance: NavigationService;
+type Navegar = (pagina: React.JSX.Element) => void;
+export class NavigationService
+{
+     private static navegar: Navegar;
 
-    private constructor() {}
-
-    static get Instance() {
-        if (!NavigationService.instance) {
-            NavigationService.instance = new NavigationService();
-        }
-
-        return NavigationService.instance;
+    static inicializar(navegar: Navegar) {
+        this.navegar = navegar;
     }
 
-    navegar(nome: React.JSX.Element) {
-        console.log(nome);
+    static irPara(pagina: React.JSX.Element) : void{
+        this.navegar(pagina);
     }
 }
