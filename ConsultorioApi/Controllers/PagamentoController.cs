@@ -52,6 +52,22 @@ public class PagamentoController : ControllerBase
             return NotFound(e.Message);
         }
     }
+    
+    [HttpGet("{id}")]
+    public ActionResult ExibirPagamentoDoId(string id)
+    {
+        try
+        {
+            var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.Where(p => p.ProntuarioId == int.Parse(id)).ToList());
+            return Ok(pagamento);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+    }
 
     [HttpPut("{id}")]
     public IActionResult AtualizaPagamento(int id,

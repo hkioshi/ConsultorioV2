@@ -1,0 +1,96 @@
+/* theme.css */
+
+:root {
+     /* Background */
+    --page-bg: #F4F9FB;
+    --card-bg: #FFFFFF;
+    --card-border: #C3D4DD;
+    --table-bg: #D2DCE2;
+
+    /* Interação */
+    --row-hover: #DCEFF8;
+    --row-separator: #C9D9E2;
+
+    /* Destaques */
+    --accent-blue: #2E79C9;
+    --accent-mint: #2AA99B;
+    --accent-soft: #7BBEEA;
+    --accent-purple: #8B42B4;
+
+    /* Texto */
+    --text-primary: #1A2633;
+    --text-muted: #526977;
+    --text-on-accent: #FFFFFF;
+
+    /* Inputs */
+    --input-bg: #FFFFFF;
+    --input-border: #AFC8D4;
+    --input-focus: #2E79C9;
+    --input-placeholder: #5D7382;
+
+    /* ComboBox */
+    --combo-hover-border: #2E79C9;
+    --combo-item-foreground: #225C84;
+    --combo-item-selected: #DCEFF8;
+
+    /* Sidebar */
+    --sidebar-bg: #E1E6EA;
+    --sidebar-border: #C3CBD2;
+
+    --sidebar-item-hover: #D4DBE1;
+    --sidebar-item-pressed: #C8D1D8;
+    --sidebar-item-selected: #2E79C9;
+
+    --sidebar-text: #263238;
+    --sidebar-text-muted: #6B7782;
+    --sidebar-icon: #4F6D82;
+
+    --sidebar-separator: #B5BEC6;
+}
+
+[data-theme="dark"] {
+     /* Fundo */
+    --page-bg: #181A1D;
+    --card-bg: #23272B;
+    --card-border: #343A40;
+    --table-bg: #2A2F34;
+
+    /* Tabela */
+    --row-hover: #31363C;
+    --row-separator: #3B424A;
+
+    /* Cores de destaque */
+    --accent-blue: #5A9BD8;
+    --accent-mint: #66BFAF;
+    --accent-soft: #4B5A66;
+    --accent-purple: #9C6ADE;
+
+    /* Texto */
+    --text-primary: #ECEFF1;
+    --text-muted: #A6B0B8;
+    --text-on-accent: #FFFFFF;
+
+    /* Inputs */
+    --input-bg: #23272B;
+    --input-border: #40464D;
+    --input-focus: #5A9BD8;
+    --input-placeholder: #8A959E;
+
+    /* ComboBox */
+    --combo-hover-border: #6FA7D6;
+    --combo-item-foreground: #C9D6DF;
+    --combo-item-selected: #3A4148;
+
+    /* Sidebar */
+    --sidebar-bg: #202428;
+    --sidebar-border: #343A40;
+
+    --sidebar-item-hover: #2A2F34;
+    --sidebar-item-pressed: #383F46;
+    --sidebar-item-selected: #5A9BD8;
+
+    --sidebar-text: #ECEFF1;
+    --sidebar-text-muted: #A6B0B8;
+    --sidebar-icon: #B7C6D1;
+    --sidebar-separator: #40464D;
+}
