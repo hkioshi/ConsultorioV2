@@ -108,7 +108,7 @@ return (
                   <td>{paciente.telefone}</td>
                   <td>
                     <button onClick={()=> NavigationService.irPara(<EditarPaciente paciente={paciente}/>)} className="btn btn-secondary">Editar</button>
-                    <button className="btn btn-danger">Excluir</button>
+                    <button onClick={()=> pacienteService.Deletar(paciente)} className="btn btn-danger">Excluir</button>
                   </td>
                </tr>
             ))}

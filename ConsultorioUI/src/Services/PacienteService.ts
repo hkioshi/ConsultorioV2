@@ -3,6 +3,9 @@ import { ValidacaoService } from "./ValidacaoService";
 import { DataBaseService } from "./DataBaseService";
 
 export class PacienteService {
+  SalvarEdicao(paciente: Paciente): void {
+    alert("quaq")
+  }
   Deletar(paciente: Paciente): void {
     alert("quaq")
   }
