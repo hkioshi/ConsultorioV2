@@ -3,6 +3,7 @@ import { PacienteService } from "../Services/PacienteService";
 import type { Paciente } from "../Model/Paciente";
 import { NavigationService } from "../Services/NavigationService";
 import AdicionarPaciente from "./AdicionarPaciente";
+import EditarPaciente from "./EditarPaciente";
 
 
 function Pacientes() {
@@ -106,7 +107,7 @@ return (
                   <td>{paciente.nome}</td>
                   <td>{paciente.telefone}</td>
                   <td>
-                    <button className="btn btn-secondary">Editar</button>
+                    <button onClick={()=> NavigationService.irPara(<EditarPaciente paciente={paciente}/>)} className="btn btn-secondary">Editar</button>
                     <button className="btn btn-danger">Excluir</button>
                   </td>
                </tr>

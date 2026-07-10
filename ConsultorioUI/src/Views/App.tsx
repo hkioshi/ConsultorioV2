@@ -6,12 +6,7 @@ import '../Style/App.css'
 import { NavigationService } from '../Services/NavigationService';
 
 function App() {
-
-
   const [tela, setTela] = useState(<Home/>);
-  function MudarTela(componente: React.JSX.Element) {
-    setTela(componente);
-  }
 
   useEffect(() => {
     NavigationService.inicializar(setTela);
