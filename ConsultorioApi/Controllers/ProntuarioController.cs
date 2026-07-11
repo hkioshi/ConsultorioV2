@@ -5,12 +5,14 @@ using ConsultorioApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioApi.Controllers;
+
 [ApiController]
 [Route("[controller]")]
 public class ProntuarioController : ControllerBase
 {
-    private ConsultorioContext _context;
-    private IMapper _mapper;
+    private readonly ConsultorioContext _context;
+    private readonly IMapper _mapper;
+
     public ProntuarioController(ConsultorioContext context, IMapper mapper)
     {
         _context = context;
@@ -32,7 +34,6 @@ public class ProntuarioController : ControllerBase
         {
             return Problem(e.Message);
         }
-
     }
 
     [HttpGet]
@@ -65,7 +66,6 @@ public class ProntuarioController : ControllerBase
             Console.WriteLine($"O erro foi: {e.Message}");
             return Problem(e.Message);
         }
-
     }
 
     [HttpGet("porNome/{nome}")]
@@ -73,7 +73,8 @@ public class ProntuarioController : ControllerBase
     {
         try
         {
-            var Prontuario = _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(nome)));
+            var Prontuario =
+                _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(nome)));
             return Ok(Prontuario);
         }
         catch (Exception e)
@@ -82,14 +83,46 @@ public class ProntuarioController : ControllerBase
             Console.WriteLine($"O erro foi: {e.Message}");
             return Problem(e.Message);
         }
-
     }
 
+    [HttpGet("porIdPaciente/{id}")]
+    public IActionResult ExibirPorIdPaciente(string id)
+    {
+        try
+        {
+            var Prontuario =
+                _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.PacienteId.Equals(int.Parse(id))));
+            return Ok(Prontuario);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
+    }
+    
+    [HttpGet("IdProntuarioPorIdPaciente/{id}")]
+    public IActionResult ExibirIdProntuarioPorIdPaciente(string id)
+    {
+        try
+        {
+            var Prontuario =
+                _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.PacienteId.Equals(int.Parse(id))));
+            return Ok(Prontuario.Id);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return Problem(e.Message);
+        }
+    }
+    
     [HttpDelete("{id}")]
     public IActionResult DeletaProntuario(int id)
     {
-        var prontuario = _context.Prontuarios.FirstOrDefault(
-           prontuario => prontuario.Id == id);
+        var prontuario = _context.Prontuarios.FirstOrDefault(prontuario => prontuario.Id == id);
         if (prontuario == null) return NotFound();
         _context.Remove(prontuario);
         _context.SaveChanges();
@@ -101,15 +134,14 @@ public class ProntuarioController : ControllerBase
     {
         try
         {
-            var prontuario = _context.Prontuarios.FirstOrDefault(
-            prontuario => prontuario.Id == id);
+            var prontuario = _context.Prontuarios.FirstOrDefault(prontuario => prontuario.Id == id);
             if (prontuario == null) return NotFound();
 
 
-            var devido = prontuario.Tratamentos.Sum(d => d.Valor)  ;
+            var devido = prontuario.Tratamentos.Sum(d => d.Valor);
             var pago = prontuario.Pagamentos.Sum(p => p.Valor);
 
-            double valordevido = devido - pago;
+            var valordevido = devido - pago;
 
             return Ok(new { ValorDevido = valordevido });
         }
@@ -120,5 +152,4 @@ public class ProntuarioController : ControllerBase
             return Problem(e.Message);
         }
     }
-
 }

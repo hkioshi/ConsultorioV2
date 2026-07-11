@@ -1,18 +1,16 @@
 ﻿using AutoMapper;
 using ConsultorioApi.Data.Dtos;
 using ConsultorioApi.Models;
-namespace ConsultorioApi.Profiles
+
+namespace ConsultorioApi.Profiles;
+
+public class PacienteProfile : Profile
 {
-    public class PacienteProfile : Profile
+    public PacienteProfile()
     {
-        public PacienteProfile()
-        {
-            CreateMap<CreatePacienteDto, Paciente>();
-            CreateMap<Paciente, ReadPacienteDto>();
+        CreateMap<CreatePacienteDto, Paciente>();
+        CreateMap<Paciente, ReadPacienteDto>();
 
-            CreateMap<UpdatePacienteDto, Paciente>();
-
-
-        }
+        CreateMap<UpdatePacienteDto, Paciente>();
     }
 }

@@ -1,13 +1,7 @@
-using System;
-using AutoMapper;
 using ConsultorioApi.Data;
-using Google.Apis.Calendar.v3;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,34 +22,51 @@ var dbPath = Path.Combine(folder, "consultorio.db");
 
 builder.Services.AddDbContext<ConsultorioContext>(options =>
     options.UseLazyLoadingProxies()
-           .UseSqlite($"Data Source={dbPath}"));
+        .UseSqlite($"Data Source={dbPath}"));
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddAuthentication(options =>
+builder.Services.AddCors(options =>
 {
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-})
-.AddCookie(options =>
-{
-    options.ExpireTimeSpan = TimeSpan.FromDays(30);
-    options.SlidingExpiration = true;
-})
-.AddGoogle(options =>
-{
-    options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
-
-    options.Scope.Add("https://www.googleapis.com/auth/calendar");
-    options.SaveTokens = true;
-
+    options.AddPolicy("React", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+    })
+    .AddCookie(options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+        options.SlidingExpiration = true;
+        options.Cookie.SameSite = SameSiteMode.Lax;           // fix: correlation cookie
+        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // fix: permite HTTP em dev
+    })
+    .AddGoogle(options =>
+    {
+        options.ClientId = builder.Configuration["Authentication:Google:ClientId"] ?? throw new ArgumentNullException();
+        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"] ?? throw new ArgumentNullException();
+        
+        options.Scope.Add("https://www.googleapis.com/auth/calendar");
+        options.SaveTokens = true;
+    });
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ConsultorioContext>();
 
+    db.Database.Migrate();
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -64,11 +75,18 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    MinimumSameSitePolicy = SameSiteMode.Lax
+});
+
+app.UseCors("React");
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();

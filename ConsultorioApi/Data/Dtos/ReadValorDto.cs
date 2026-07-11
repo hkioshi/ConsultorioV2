@@ -1,7 +1,6 @@
-﻿namespace ConsultorioApi.Data.Dtos
+﻿namespace ConsultorioApi.Data.Dtos;
+
+public class ReadValorDto
 {
-    public class ReadValorDto
-    {
-        public double Valor { get; set; } 
-    }
+    public double Valor { get; set; }
 }

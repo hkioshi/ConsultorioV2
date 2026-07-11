@@ -1,7 +1,6 @@
-﻿namespace ConsultorioApi.Data.Dtos
+﻿namespace ConsultorioApi.Data.Dtos;
+
+public class CreateProntuarioDto
 {
-    public class CreateProntuarioDto
-    {
-        public int PacienteId { get; set; }
-    }
+    public int PacienteId { get; set; }
 }

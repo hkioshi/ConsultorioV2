@@ -10,13 +10,13 @@ namespace ConsultorioApi.Controllers;
 [Route("[controller]")]
 public class PacienteController : ControllerBase
 {
-    private ConsultorioContext _context;
-    private IMapper _mapper;
+    private readonly ConsultorioContext _context;
+    private readonly IMapper _mapper;
+
     public PacienteController(ConsultorioContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
-
     }
 
     [HttpGet]
@@ -47,8 +47,6 @@ public class PacienteController : ControllerBase
             Console.WriteLine($"O erro foi: {e.Message}");
             return NotFound(e.Message);
         }
-
-
     }
 
     [HttpGet("BuscarPorNome/{Nome}")]
@@ -99,15 +97,13 @@ public class PacienteController : ControllerBase
             Console.WriteLine($"O erro foi: {e.Message}");
             return NotFound(e.Message);
         }
-
     }
 
     [HttpPut("{id}")]
     public IActionResult AtualizaPaciente(int id,
-    [FromBody] UpdatePacienteDto pacienteDto)
+        [FromBody] UpdatePacienteDto pacienteDto)
     {
-        var paciente = _context.Pacientes.FirstOrDefault(
-            paciente => paciente.Id == id);
+        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.Id == id);
         if (paciente == null) return NotFound();
         _mapper.Map(pacienteDto, paciente);
         _context.SaveChanges();
@@ -117,14 +113,10 @@ public class PacienteController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeletaPaciente(int id)
     {
-        var paciente = _context.Pacientes.FirstOrDefault(
-           paciente => paciente.Id == id);
+        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.Id == id);
         if (paciente == null) return NotFound();
         _context.Remove(paciente);
         _context.SaveChanges();
         return NoContent();
     }
 }
-
-
-

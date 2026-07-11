@@ -5,12 +5,14 @@ using ConsultorioApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioApi.Controllers;
+
 [ApiController]
 [Route("[controller]")]
 public class PagamentoController : ControllerBase
 {
-    private ConsultorioContext _context;
-    private IMapper _mapper;
+    private readonly ConsultorioContext _context;
+    private readonly IMapper _mapper;
+
     public PagamentoController(ConsultorioContext context, IMapper mapper)
     {
         _context = context;
@@ -26,7 +28,6 @@ public class PagamentoController : ControllerBase
             _context.Pagamentos.Add(pagamento);
             _context.SaveChanges();
             return CreatedAtAction(nameof(AdicionarPagamento), new { id = pagamento.Id }, pagamento);
-
         }
         catch (Exception e)
         {
@@ -39,7 +40,6 @@ public class PagamentoController : ControllerBase
     [HttpGet]
     public ActionResult ExibirPagamento()
     {
-
         try
         {
             var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.ToList());
@@ -52,13 +52,28 @@ public class PagamentoController : ControllerBase
             return NotFound(e.Message);
         }
     }
+    
+    [HttpGet("{id}")]
+    public ActionResult ExibirPagamentoDoId(string id)
+    {
+        try
+        {
+            var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.Where(p => p.ProntuarioId == int.Parse(id)).ToList());
+            return Ok(pagamento);
+        }
+        catch (Exception e)
+        {
+            //Implementar Erros
+            Console.WriteLine($"O erro foi: {e.Message}");
+            return NotFound(e.Message);
+        }
+    }
 
     [HttpPut("{id}")]
     public IActionResult AtualizaPagamento(int id,
-    [FromBody] UpdatePagamentoDto pagamentoDto)
+        [FromBody] UpdatePagamentoDto pagamentoDto)
     {
-        var pagamento = _context.Pagamentos.FirstOrDefault(
-            pagamento => pagamento.Id == id);
+        var pagamento = _context.Pagamentos.FirstOrDefault(pagamento => pagamento.Id == id);
         if (pagamento == null) return NotFound();
         _mapper.Map(pagamentoDto, pagamento);
         _context.SaveChanges();
@@ -68,12 +83,10 @@ public class PagamentoController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeletaPagamento(int id)
     {
-        var pagamento = _context.Pagamentos.FirstOrDefault(
-           pagamento => pagamento.Id == id);
+        var pagamento = _context.Pagamentos.FirstOrDefault(pagamento => pagamento.Id == id);
         if (pagamento == null) return NotFound();
         _context.Remove(pagamento);
         _context.SaveChanges();
         return NoContent();
     }
-
 }

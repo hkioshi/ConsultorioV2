@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Calendar.v3;
+using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -14,64 +15,26 @@ public class CalendarioController : ControllerBase
 {
     [Authorize]
     [HttpGet("{calendario}/hoje")]
-    public async Task<IActionResult> HojeNoCalendario(string calendario)
+    public async Task<IActionResult> Hoje(string calendario)
     {
-        var accessToken = await HttpContext.GetTokenAsync("access_token");
+        var inicio = DateTimeOffset.Now.Date;
+        var fim = inicio.AddDays(1);
 
-        var service = new CalendarService(new BaseClientService.Initializer()
-        {
-            HttpClientInitializer = GoogleCredential
-                .FromAccessToken(accessToken),
-            ApplicationName = "ConsultorioCli"
-        });
+        var eventos = await BuscarEventos(calendario, inicio, fim);
 
-        var request = service.Events.List(calendario);
-        //request.TimeMaxDateTimeOffset = DateTime.Today;
-        //request.TimeMinDateTimeOffset = DateTime.Today.AddDays(7);
-        request.MaxResults = 30;
-        request.SingleEvents = true;
-        request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-        request.Fields = "items(id,summary,start,end)";
-        var events = await request.ExecuteAsync();
-
-        return Ok(events.Items.Select(e => new
-        {
-            Id = e.Id,
-            Titulo = e.Summary, 
-            Inicio = e.Start.DateTimeDateTimeOffset,
-            Fim = e.End.DateTimeDateTimeOffset
-        }));
+        return Ok(MapearEventos(eventos));
     }
 
     [Authorize]
-    [HttpGet("hoje")]
-    public async Task<IActionResult> HojeNoCalendarioPrincipal()
+    [HttpGet("{calendario}/semana")]
+    public async Task<IActionResult> Semana(string calendario)
     {
-        var accessToken = await HttpContext.GetTokenAsync("access_token");
+        var inicio = DateTimeOffset.Now.Date;
+        var fim = inicio.AddDays(7);
 
-        var service = new CalendarService(new BaseClientService.Initializer()
-        {
-            HttpClientInitializer = GoogleCredential
-                .FromAccessToken(accessToken),
-            ApplicationName = "ConsultorioCli"
-        });
+        var eventos = await BuscarEventos(calendario, inicio, fim);
 
-        var request = service.Events.List("primary");
-        request.TimeMaxDateTimeOffset = DateTime.Today;
-        request.TimeMinDateTimeOffset = DateTime.Today.AddDays(7);
-        request.MaxResults = 30;
-        request.SingleEvents = true;
-        request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
-        request.Fields = "items(id,summary,start,end)";
-        var events = await request.ExecuteAsync();
-
-        return Ok(events.Items.Select(e => new
-        {
-            Id = e.Id,
-            Titulo = e.Summary,
-            Inicio = e.Start.DateTimeDateTimeOffset,
-            Fim = e.End.DateTimeDateTimeOffset
-        }));
+        return Ok(MapearEventos(eventos));
     }
 
     [Authorize]
@@ -80,7 +43,7 @@ public class CalendarioController : ControllerBase
     {
         var accessToken = await HttpContext.GetTokenAsync("access_token");
 
-        var service = new CalendarService(new BaseClientService.Initializer()
+        var service = new CalendarService(new BaseClientService.Initializer
         {
             HttpClientInitializer = GoogleCredential.FromAccessToken(accessToken),
             ApplicationName = "ConsultorioCli"
@@ -91,8 +54,45 @@ public class CalendarioController : ControllerBase
 
         return Ok(result.Items.Select(c => new
         {
-            Nome = c.Summary,
-            Id = c.Id
+            Nome = c.Summary, c.Id
         }));
+    }
+    
+    private async Task<IList<Event>> BuscarEventos(
+        string calendario,
+        DateTimeOffset inicio,
+        DateTimeOffset fim)
+    {
+        var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+        var service = new CalendarService(new BaseClientService.Initializer
+        {
+            HttpClientInitializer = GoogleCredential.FromAccessToken(accessToken),
+            ApplicationName = "ConsultorioCli"
+        });
+
+        var request = service.Events.List(calendario);
+        request.TimeMinDateTimeOffset = inicio;
+        request.TimeMaxDateTimeOffset = fim;
+        request.MaxResults = 50;
+        request.SingleEvents = true;
+        request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
+        request.Fields = "items(id,summary,start,end,colorId)";
+
+        var events = await request.ExecuteAsync();
+
+        return events.Items;
+    }
+    
+    private static object MapearEventos(IList<Event> eventos)
+    {
+        return eventos.Select(e => new
+        {
+            e.Id,
+            Titulo = e.Summary,
+            Inicio = e.Start.DateTimeDateTimeOffset ?? DateTimeOffset.Parse(e.Start.Date),
+            Fim = e.End.DateTimeDateTimeOffset ?? DateTimeOffset.Parse(e.End.Date),
+            Cor = e.ColorId
+        });
     }
 }

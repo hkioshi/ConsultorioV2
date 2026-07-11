@@ -2,17 +2,13 @@
 using ConsultorioApi.Data.Dtos;
 using ConsultorioApi.Models;
 
-namespace ConsultorioApi.Profiles
+namespace ConsultorioApi.Profiles;
+
+public class ProntuarioProfile : Profile
 {
-    public class ProntuarioProfile : Profile
+    public ProntuarioProfile()
     {
-        public ProntuarioProfile()
-        {
-            CreateMap<CreateProntuarioDto, Prontuario>();
-            CreateMap<Prontuario, ReadProntuarioDto>();
-
-            
-
-        }
+        CreateMap<CreateProntuarioDto, Prontuario>();
+        CreateMap<Prontuario, ReadProntuarioDto>();
     }
 }

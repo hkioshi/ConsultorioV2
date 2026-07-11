@@ -16,7 +16,7 @@ namespace ConsultorioApi.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.25")
+                .HasAnnotation("ProductVersion", "10.0.8")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true);
@@ -78,7 +78,6 @@ namespace ConsultorioApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NomeConjuge")
@@ -166,6 +165,24 @@ namespace ConsultorioApi.Migrations
                     b.HasIndex("ProntuarioId");
 
                     b.ToTable("Pagamentos");
+                });
+
+            modelBuilder.Entity("ConsultorioApi.Models.Procedimento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Procedimentos");
                 });
 
             modelBuilder.Entity("ConsultorioApi.Models.Prontuario", b =>

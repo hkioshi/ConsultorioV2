@@ -1,7 +1,4 @@
-﻿using ConsultorioApi.Data;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioApi.Controllers;
 
@@ -22,9 +19,6 @@ public class ConsultorioController : ControllerBase
             Email = "celiakemi2004@gmail.com"
         });
     }
-
-    
-     
 }
 
 /*{
@@ -46,9 +40,9 @@ public FilmeController(FilmeContext contexto, IMapper mapper)
 /// <response code="201">Caso inserção seja feita com sucesso</response>
 [HttpPost] // Indica que este método responde a requisições HTTP POST
 [ProducesResponseType(StatusCodes.Status201Created)]
-public IActionResult AdicionarFilme([FromBody] CreateFilmeDTO filmeDto) // Recebe um objeto Filme do corpo da requisição 
+public IActionResult AdicionarFilme([FromBody] CreateFilmeDTO filmeDto) // Recebe um objeto Filme do corpo da requisição
 {
-    //padrao post: Retornar objeto e o caminho para ser encontrado 
+    //padrao post: Retornar objeto e o caminho para ser encontrado
 
     Filme filme = _mapper.Map<Filme>(filmeDto);
     _contexto.Filmes.Add(filme);
