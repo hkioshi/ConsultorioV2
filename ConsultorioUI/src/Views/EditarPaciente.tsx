@@ -1,4 +1,5 @@
 import type { Paciente } from "../Model/Paciente";
+import { NavigationService } from "../Services/NavigationService";
 import { PacienteService } from "../Services/PacienteService";
 import "../Style/AdiconarPaciente.css";
 
@@ -12,6 +13,8 @@ export default function EditarPaciente({ paciente }: Props) {
     return (
         <div className="Formulario">
             <div className="CabecalhoFormulario">
+                <button onClick={() => NavigationService.Voltar()} > Voltar </button>
+                
                 <div className="header-content">
                     <h1>Editar Paciente</h1>
                     <p>Altere as informações do paciente.</p>

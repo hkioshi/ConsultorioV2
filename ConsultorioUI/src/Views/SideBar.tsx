@@ -14,11 +14,11 @@ function SideBar() {
           <h4>Dra. Celia Akemi Watanabe Yamauchi</h4>
         </div>
         <ul>
-          <li className="SideBar-item" onClick={() => {NavigationService.irPara(<Home/>)}}>Home</li>
-          <li className="SideBar-item" onClick={() => {NavigationService.irPara(<Pacientes/>)}}>Pacientes</li>
-          <li className="SideBar-item" onClick={() => {NavigationService.irPara(<Agenda/>)}}>Agenda</li>
-          <li className="SideBar-item" onClick={() => {NavigationService.irPara(<Financeiro/>)}}>Financeiro</li>
-          <li className="SideBar-item" onClick={() => {NavigationService.irPara(<Configuracoes/>)}}>Configurações</li>
+          <li className="SideBar-item" onClick={() => {NavigationService.VoltarAoInicio(<Home/>)}}>Home</li>
+          <li className="SideBar-item" onClick={() => {NavigationService.VoltarAoInicio(<Pacientes/>)}}>Pacientes</li>
+          <li className="SideBar-item" onClick={() => {NavigationService.VoltarAoInicio(<Agenda/>)}}>Agenda</li>
+          <li className="SideBar-item" onClick={() => {NavigationService.VoltarAoInicio(<Financeiro/>)}}>Financeiro</li>
+          <li className="SideBar-item" onClick={() => {NavigationService.VoltarAoInicio(<Configuracoes/>)}}>Configurações</li>
         </ul>
       </div>      
   )

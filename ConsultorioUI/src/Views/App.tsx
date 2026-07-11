@@ -9,7 +9,7 @@ function App() {
   const [tela, setTela] = useState(<Home/>);
 
   useEffect(() => {
-    NavigationService.inicializar(setTela);
+    NavigationService.inicializar(setTela, tela);
   }, []);
 
   return (

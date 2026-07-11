@@ -1,3 +1,4 @@
+import { NavigationService } from '../Services/NavigationService';
 import { PacienteService } from '../Services/PacienteService';
 import '../Style/AdiconarPaciente.css'
 
@@ -5,10 +6,13 @@ const _service = new PacienteService();
 
 export default function AdicionarPaciente()
 {
+    
+
     return (
     
     <div className="Formulario">
         <div className="CabecalhoFormulario">
+            <button onClick={() => NavigationService.Voltar()} > Voltar </button>
             <div className="header-content">
                       <h1>Pacientes</h1>
                       <p>Gerencie seus pacientes aqui.</p>

@@ -4,6 +4,7 @@ import type { Paciente } from "../Model/Paciente";
 import { NavigationService } from "../Services/NavigationService";
 import AdicionarPaciente from "./AdicionarPaciente";
 import EditarPaciente from "./EditarPaciente";
+import Prontuario from "./Prontuario";
 
 
 function Pacientes() {
@@ -109,6 +110,7 @@ return (
                   <td>
                     <button onClick={()=> NavigationService.irPara(<EditarPaciente paciente={paciente}/>)} className="btn btn-secondary">Editar</button>
                     <button onClick={()=> pacienteService.Deletar(paciente)} className="btn btn-danger">Excluir</button>
+                    <button onClick={()=> NavigationService.irPara(<Prontuario paciente={paciente}/>)} className="btn btn-danger"> Prontuario </button>
                   </td>
                </tr>
             ))}
