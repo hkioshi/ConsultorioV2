@@ -19,4 +19,10 @@ public class PacienteService
 
     public async Task<GetPacienteDto> GetById(int id) =>
         await _repos.GetById(id);
+
+    public async Task Delete(int id) =>
+        await _repos.Delete(id);
+
+    public async Task Modify(int id, ModifyPacienteDto obj) =>
+        await _repos.Modify(id, obj);
 }

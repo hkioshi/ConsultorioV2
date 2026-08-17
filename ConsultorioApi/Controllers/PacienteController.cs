@@ -1,4 +1,4 @@
-using ConsultorioApi.Controllers.Interfaces;
+﻿using ConsultorioApi.Controllers.Interfaces;
 using ConsultorioApi.Data.Dtos.Pacientes;
 using ConsultorioApi.Models;
 using ConsultorioApi.Services;
@@ -32,9 +32,18 @@ public class PacienteController : ControllerBase, IController<Paciente, GetPacie
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public Task<ActionResult> Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _service.Delete(id);
+            return NoContent();
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
     }
 
     [HttpGet]
@@ -49,17 +58,41 @@ public class PacienteController : ControllerBase, IController<Paciente, GetPacie
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<GetPacienteDto>> GetById(int id)
     {
-        return Ok(await _service.GetById(id));
+        try
+        {
+            return Ok(await _service.GetById(id));
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
     }
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-    public Task<ActionResult> Modify(int id, [FromBody] ModifyPacienteDto obj)
+    public async Task<ActionResult> Modify(int id, ModifyPacienteDto obj)
     {
-        throw new NotImplementedException();
-    }
+         Console.WriteLine($"ID: {id}");
+        Console.WriteLine($"DTO: {obj}");
 
-    
+        if (!ModelState.IsValid)
+        {
+            foreach (var error in ModelState)
+            {
+                Console.WriteLine($"Campo: {error.Key}");
+
+                foreach (var e in error.Value!.Errors)
+                    Console.WriteLine($"Erro: {e.ErrorMessage}");
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        await _service.Modify(id, obj);
+
+        return NoContent();
+    }
 }
 
