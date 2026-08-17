@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ConsultorioApi.Models;
-public class Pagamentos
+public class Pagamento
 {
     [Key] [Required] public int Id { get; set; }
 

@@ -14,5 +14,5 @@ public class ConsultorioContext : DbContext
     public DbSet<Prontuario> Prontuarios { get; set; }
     public DbSet<Tratamento> Tratamentos { get; set; }
     public DbSet<Procedimento> Procedimentos { get; set; }
-    public DbSet<Pagamentos> Pagamentos { get; set; }
+    public DbSet<Pagamento> Pagamentos { get; set; }
 }

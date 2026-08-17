@@ -39,7 +39,13 @@ public class PacienteRepository
 
         return await paciente.ToGetDto();
     }
+    public async Task<Paciente> GetByIdInternal(int id)
+    {
+        Paciente? paciente = await _context.Pacientes.FirstOrDefaultAsync(x => x.Id == id);
+        if (paciente is null) throw new NotFoundException();
 
+        return paciente;
+    }
     internal async Task Delete(int id)
     {
         var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.Id == id);

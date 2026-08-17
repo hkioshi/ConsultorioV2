@@ -6,35 +6,49 @@ using ConsultorioApi.Data.Dtos.ProntuarioDto;
 
 namespace ConsultorioApi.Controllers;
 
-public class ProntuarioController : ControllerBase, IController<Prontuario,GetProntuarioDto, AddProntuarioDto, ModifyProntuarioDto>
+[ApiController]
+[Route("[controller]")]
+public class ProntuarioController : ControllerBase
 {
     ProntuarioService _service;
     public ProntuarioController(ProntuarioService service)
     {
         _service = service;
     }
-    public Task<ActionResult<Prontuario>> Add(AddProntuarioDto obj)
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Prontuario>> Add([FromBody] AddProntuarioDto obj)
     {
-        throw new NotImplementedException();
+        var prontuario = await _service.Add(obj);
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = prontuario.Id },
+            prontuario
+        );
     }
 
-    public Task<ActionResult> Delete(int id)
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetProntuarioDto>>> GetAll()
     {
-        throw new NotImplementedException();
+        return Ok(await _service.GetAll());
     }
 
-    public Task<ActionResult<IEnumerable<GetProntuarioDto>>> GetAll()
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetProntuarioDto>> GetById(int id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<ActionResult<GetProntuarioDto>> GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<ActionResult> Modify(int id, ModifyProntuarioDto obj)
-    {
-        throw new NotImplementedException();
+        try
+        {
+            return Ok(await _service.GetById(id));
+        }
+        catch
+        {
+            return BadRequest();
+        }
     }
 }

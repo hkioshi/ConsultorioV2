@@ -23,12 +23,19 @@ builder.Services.AddDbContext<ConsultorioContext>(options =>
         .UseLazyLoadingProxies()
         .UseSqlite($"Data Source={dbPath}"));
 
-// Repositories
-builder.Services.AddScoped<PacienteRepository>();
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Repositories
+builder.Services.AddScoped<PacienteRepository>();
+builder.Services.AddScoped<ProntuarioRepository>();
+
+
 // Services
 builder.Services.AddScoped<PacienteService>();
+builder.Services.AddScoped<ProntuarioService>();
+
 
 var app = builder.Build();
 
