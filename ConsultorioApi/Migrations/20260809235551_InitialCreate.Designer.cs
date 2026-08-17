@@ -11,15 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioApi.Migrations
 {
     [DbContext(typeof(ConsultorioContext))]
-    [Migration("20260616185035_Teste")]
-    partial class Teste
+    [Migration("20260809235551_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.8")
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true);
@@ -31,27 +31,19 @@ namespace ConsultorioApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Bairro")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Cep")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Cidade")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Complemento")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ConheceuPor")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Convenio")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Cpf")
                         .IsRequired()
@@ -65,67 +57,42 @@ namespace ConsultorioApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Estado")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("EstadoCivil")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Genero")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Logradouro")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NomeConjuge")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NomeMae")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NomePai")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NumeroConvenio")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Observacoes")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PessoaResponsavelId")
+                    b.Property<int?>("PessoaResponsavelId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PreferenciaHorario")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Profissao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("QueroReceberLembretes")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RecomendadoPorId")
+                    b.Property<int?>("RecomendadoPorId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Rg")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefone")
@@ -147,11 +114,9 @@ namespace ConsultorioApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Observacoes")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ProntuarioId")
@@ -168,6 +133,24 @@ namespace ConsultorioApi.Migrations
                     b.HasIndex("ProntuarioId");
 
                     b.ToTable("Pagamentos");
+                });
+
+            modelBuilder.Entity("ConsultorioApi.Models.Procedimento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Procedimentos");
                 });
 
             modelBuilder.Entity("ConsultorioApi.Models.Prontuario", b =>
@@ -209,21 +192,18 @@ namespace ConsultorioApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Observacoes")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("OclusalIncisal")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Procedimento")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ProntuarioId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Valor")
@@ -274,8 +254,7 @@ namespace ConsultorioApi.Migrations
 
             modelBuilder.Entity("ConsultorioApi.Models.Paciente", b =>
                 {
-                    b.Navigation("Prontuario")
-                        .IsRequired();
+                    b.Navigation("Prontuario");
                 });
 
             modelBuilder.Entity("ConsultorioApi.Models.Prontuario", b =>

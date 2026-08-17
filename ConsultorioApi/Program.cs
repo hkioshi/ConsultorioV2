@@ -1,19 +1,17 @@
 using ConsultorioApi.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
+using ConsultorioApi.Repositories;
+using ConsultorioApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Controllers
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
+// Banco
+var appData = Environment.GetFolderPath(
+    Environment.SpecialFolder.ApplicationData);
 
-var appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 var folder = Path.Combine(appData, "Consultorio");
 
 Directory.CreateDirectory(folder);
@@ -21,72 +19,40 @@ Directory.CreateDirectory(folder);
 var dbPath = Path.Combine(folder, "consultorio.db");
 
 builder.Services.AddDbContext<ConsultorioContext>(options =>
-    options.UseLazyLoadingProxies()
+    options
+        .UseLazyLoadingProxies()
         .UseSqlite($"Data Source={dbPath}"));
 
-
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("React", policy =>
-    {
-        policy
-            .AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
-});
-
-builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-    })
-    .AddCookie(options =>
-    {
-        options.ExpireTimeSpan = TimeSpan.FromDays(30);
-        options.SlidingExpiration = true;
-        options.Cookie.SameSite = SameSiteMode.Lax;           // fix: correlation cookie
-        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest; // fix: permite HTTP em dev
-    })
-    .AddGoogle(options =>
-    {
-        options.ClientId = builder.Configuration["Authentication:Google:ClientId"] ?? throw new ArgumentNullException();
-        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"] ?? throw new ArgumentNullException();
-        
-        options.Scope.Add("https://www.googleapis.com/auth/calendar");
-        options.SaveTokens = true;
-    });
+// Repositories
+builder.Services.AddScoped<PacienteRepository>();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+// Services
+builder.Services.AddScoped<PacienteService>();
 
 var app = builder.Build();
 
+// Database
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<ConsultorioContext>();
+    var db = scope.ServiceProvider
+        .GetRequiredService<ConsultorioContext>();
 
     db.Database.Migrate();
 }
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+
+
+// HTTP pipeline
 app.UseHttpsRedirection();
-app.UseCookiePolicy(new CookiePolicyOptions
-{
-    MinimumSameSitePolicy = SameSiteMode.Lax
-});
 
-app.UseCors("React");
-
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-
 
 app.Run();

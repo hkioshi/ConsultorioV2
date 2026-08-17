@@ -1,6 +1,0 @@
-@ConsultorioApi_HostAddress = http://localhost:7256
-
-GET {{ConsultorioApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

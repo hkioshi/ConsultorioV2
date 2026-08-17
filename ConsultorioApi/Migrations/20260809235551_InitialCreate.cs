@@ -17,37 +17,46 @@ namespace ConsultorioApi.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(type: "TEXT", nullable: false),
+                    Nome = table.Column<string>(type: "TEXT", nullable: true),
                     Cpf = table.Column<string>(type: "TEXT", nullable: false),
-                    Rg = table.Column<string>(type: "TEXT", nullable: false),
+                    Rg = table.Column<string>(type: "TEXT", nullable: true),
                     DataNascimento = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Genero = table.Column<string>(type: "TEXT", nullable: false),
-                    EstadoCivil = table.Column<string>(type: "TEXT", nullable: false),
-                    PessoaResponsavelId = table.Column<int>(type: "INTEGER", nullable: false),
-                    RecomendadoPorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Cep = table.Column<string>(type: "TEXT", nullable: false),
-                    Logradouro = table.Column<string>(type: "TEXT", nullable: false),
-                    Numero = table.Column<string>(type: "TEXT", nullable: false),
-                    Complemento = table.Column<string>(type: "TEXT", nullable: false),
-                    Bairro = table.Column<string>(type: "TEXT", nullable: false),
-                    Cidade = table.Column<string>(type: "TEXT", nullable: false),
-                    Estado = table.Column<string>(type: "TEXT", nullable: false),
+                    Genero = table.Column<string>(type: "TEXT", nullable: true),
+                    EstadoCivil = table.Column<string>(type: "TEXT", nullable: true),
+                    PessoaResponsavelId = table.Column<int>(type: "INTEGER", nullable: true),
+                    RecomendadoPorId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Cep = table.Column<string>(type: "TEXT", nullable: true),
+                    Logradouro = table.Column<string>(type: "TEXT", nullable: true),
+                    Numero = table.Column<string>(type: "TEXT", nullable: true),
+                    Complemento = table.Column<string>(type: "TEXT", nullable: true),
+                    Bairro = table.Column<string>(type: "TEXT", nullable: true),
+                    Cidade = table.Column<string>(type: "TEXT", nullable: true),
+                    Estado = table.Column<string>(type: "TEXT", nullable: true),
                     Telefone = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
-                    NomePai = table.Column<string>(type: "TEXT", nullable: false),
-                    NomeMae = table.Column<string>(type: "TEXT", nullable: false),
-                    NomeConjuge = table.Column<string>(type: "TEXT", nullable: false),
-                    Profissao = table.Column<string>(type: "TEXT", nullable: false),
+                    Profissao = table.Column<string>(type: "TEXT", nullable: true),
                     ConheceuPor = table.Column<int>(type: "INTEGER", nullable: false),
-                    Observacoes = table.Column<string>(type: "TEXT", nullable: false),
-                    Convenio = table.Column<string>(type: "TEXT", nullable: false),
-                    NumeroConvenio = table.Column<string>(type: "TEXT", nullable: false),
-                    PreferenciaHorario = table.Column<string>(type: "TEXT", nullable: false),
+                    Observacoes = table.Column<string>(type: "TEXT", nullable: true),
+                    PreferenciaHorario = table.Column<string>(type: "TEXT", nullable: true),
                     QueroReceberLembretes = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pacientes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Procedimentos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nome = table.Column<string>(type: "TEXT", nullable: false),
+                    Valor = table.Column<double>(type: "REAL", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Procedimentos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,8 +85,8 @@ namespace ConsultorioApi.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Valor = table.Column<double>(type: "REAL", nullable: false),
-                    Descricao = table.Column<string>(type: "TEXT", nullable: false),
-                    Observacoes = table.Column<string>(type: "TEXT", nullable: false),
+                    Descricao = table.Column<string>(type: "TEXT", nullable: true),
+                    Observacoes = table.Column<string>(type: "TEXT", nullable: true),
                     Tipo = table.Column<int>(type: "INTEGER", nullable: false),
                     DataPagamento = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ProntuarioId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -106,9 +115,9 @@ namespace ConsultorioApi.Migrations
                     Vestibular = table.Column<bool>(type: "INTEGER", nullable: false),
                     Mesial = table.Column<bool>(type: "INTEGER", nullable: false),
                     Distal = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Procedimento = table.Column<string>(type: "TEXT", nullable: false),
-                    Observacoes = table.Column<string>(type: "TEXT", nullable: false),
-                    Status = table.Column<string>(type: "TEXT", nullable: false),
+                    Procedimento = table.Column<string>(type: "TEXT", nullable: true),
+                    Observacoes = table.Column<string>(type: "TEXT", nullable: true),
+                    Status = table.Column<string>(type: "TEXT", nullable: true),
                     Valor = table.Column<double>(type: "REAL", nullable: false),
                     ProntuarioId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -145,6 +154,9 @@ namespace ConsultorioApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Pagamentos");
+
+            migrationBuilder.DropTable(
+                name: "Procedimentos");
 
             migrationBuilder.DropTable(
                 name: "Tratamentos");

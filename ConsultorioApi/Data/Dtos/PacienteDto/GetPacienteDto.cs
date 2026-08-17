@@ -1,13 +1,9 @@
-using System.ComponentModel.DataAnnotations;
+using ConsultorioApi.Models;
+namespace ConsultorioApi.Data.Dtos.Pacientes;
 
-namespace ConsultorioApi.Models;
-
-public class Paciente
+public class GetPacienteDto
 {
-    [Key] 
-    [Required] 
     public int Id { get; set; }
-
     public string? Nome { get; set; }
     public required string Cpf { get; set; }
     public string? Rg { get; set; }
@@ -28,9 +24,6 @@ public class Paciente
     public required string Telefone { get; set; }
 
     public required string Email { get; set; }
-
-    //Prontuario
-    public virtual Prontuario? Prontuario { get; set; }
 
     //Extra
     public string? Profissao { get; set; }
