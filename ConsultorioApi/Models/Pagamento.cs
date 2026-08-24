@@ -11,5 +11,7 @@ public class Pagamento
     public int Tipo { get; set; }
     public DateTime DataPagamento { get; set; }
     public int ProntuarioId { get; set; }
-    public virtual required Prontuario Prontuario { get; set; }
+    public virtual Prontuario? Prontuario { get; set; }
+
+   
 }

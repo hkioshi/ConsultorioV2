@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using ConsultorioApi.Data.Dtos.TratamentoDto;
 
 namespace ConsultorioApi.Models;
 
@@ -17,5 +18,7 @@ public class Tratamento
     public string? Status { get; set; }
     public double Valor { get; set; }
     public int ProntuarioId { get; set; }
-    public virtual required Prontuario Prontuario { get; set; }
+    public virtual Prontuario? Prontuario { get; set; }
+
+    
 }

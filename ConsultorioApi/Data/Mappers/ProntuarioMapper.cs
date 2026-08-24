@@ -14,12 +14,12 @@ public static class ProntuarioMapper
         };
 
    public static async Task<Prontuario> ToProntuario(this AddProntuarioDto model)
+    {
+        return new Prontuario()
         {
-            return new Prontuario()
-            {
-                PacienteId = model.PacienteId,
-                Pagamentos = [],
-                Tratamentos = [],
-            };
-        }
+            PacienteId = model.PacienteId,
+            Pagamentos = [],
+            Tratamentos = [],
+        };
+    }
 }

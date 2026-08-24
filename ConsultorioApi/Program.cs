@@ -30,12 +30,16 @@ builder.Services.AddSwaggerGen();
 // Repositories
 builder.Services.AddScoped<PacienteRepository>();
 builder.Services.AddScoped<ProntuarioRepository>();
-
+builder.Services.AddScoped<PagamentoRepository>();
+builder.Services.AddScoped<TratamentoRepository>();
+builder.Services.AddScoped<ProcedimentoRepository>();
 
 // Services
 builder.Services.AddScoped<PacienteService>();
 builder.Services.AddScoped<ProntuarioService>();
-
+builder.Services.AddScoped<PagamentoService>();
+builder.Services.AddScoped<TratamentoService>();
+builder.Services.AddScoped<ProcedimentoService>();
 
 var app = builder.Build();
 

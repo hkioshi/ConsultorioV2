@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ConsultorioApi.Controllers.Interfaces;
 using ConsultorioApi.Models;
 using ConsultorioApi.Services;
 using ConsultorioApi.Data.Dtos.ProntuarioDto;

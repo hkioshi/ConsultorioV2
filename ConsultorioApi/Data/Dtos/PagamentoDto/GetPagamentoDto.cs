@@ -1,12 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace ConsultorioApi.Data.Dtos.PagamentoDto;
 
-namespace ConsultorioApi.Data.Dtos.PagamentoDto
+public class GetPagamentoDto
 {
-    public class GetPagamentoDto
-    {
-        
-    }
+    public int Id { get; set; }
+    public double Valor { get; set; }
+    public string? Descricao { get; set; }
+    public string? Observacoes { get; set; }
+    public int Tipo { get; set; }
+    public DateTime DataPagamento { get; set; }
+
+    public int ProntuarioId { get; set; }
 }

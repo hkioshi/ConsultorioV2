@@ -88,9 +88,6 @@ public static class PacienteMapper
         model.PreferenciaHorario = dto.PreferenciaHorario;
         model.QueroReceberLembretes = dto.QueroReceberLembretes;
     }
-        
-       
-    
 }
 
 
