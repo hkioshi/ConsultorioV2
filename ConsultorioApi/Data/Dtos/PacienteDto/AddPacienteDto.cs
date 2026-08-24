@@ -7,8 +7,8 @@ public class AddPacienteDto
     public DateTime DataNascimento { get; set; }
     public string? Genero { get; set; }
     public string? EstadoCivil { get; set; }
-    public int? PessoaResponsavelId { get; set; }
-    public int? RecomendadoPorId { get; set; }
+    public int PessoaResponsavelId { get; set; }
+    public int RecomendadoPorId { get; set; }
 
     //Contato
     public string? Cep { get; set; }

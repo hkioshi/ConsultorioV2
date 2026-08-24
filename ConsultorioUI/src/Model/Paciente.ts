@@ -1,34 +1,29 @@
 export interface Paciente {
-    id: number;
-    nome: string;
-    cpf: string;
-    rg: string;
-    dataNascimento: string; // DateTime vira string no JSON
-    genero: string;
-    estadoCivil: string;
-    pessoaResponsavelId: number;
-    recomendadoPorId: number;
+  id: number;
+  nome: string | null;
+  cpf: string;
+  rg: string | null;
+  dataNascimento: string;
+  genero: string | null;
+  estadoCivil: string | null;
+  pessoaResponsavelId: number | null;
+  recomendadoPorId: number | null;
 
-    // Contato
-    cep: string;
-    logradouro: string;
-    numero: string;
-    complemento: string;
-    bairro: string;
-    cidade: string;
-    estado: string;
-    telefone: string;
-    email: string;
+  // Contato
+  cep: string | null;
+  logradouro: string | null;
+  numero: string | null;
+  complemento: string | null;
+  bairro: string | null;
+  cidade: string | null;
+  estado: string | null;
+  telefone: string;
+  email: string;
 
-    // Extra
-    nomePai: string;
-    nomeMae: string;
-    nomeConjuge: string;
-    profissao: string;
-    conheceuPor: number;
-    observacoes: string;
-    convenio: string;
-    numeroConvenio: string;
-    preferenciaHorario: string;
-    queroReceberLembretes: boolean;
+  // Extra
+  profissao: string | null;
+  conheceuPor: number;
+  observacoes: string | null;
+  preferenciaHorario: string | null;
+  queroReceberLembretes: boolean;
 }

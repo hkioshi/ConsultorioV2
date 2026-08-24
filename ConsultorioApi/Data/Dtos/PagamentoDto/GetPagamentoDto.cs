@@ -8,6 +8,5 @@ public class GetPagamentoDto
     public string? Observacoes { get; set; }
     public int Tipo { get; set; }
     public DateTime DataPagamento { get; set; }
-
     public int ProntuarioId { get; set; }
 }

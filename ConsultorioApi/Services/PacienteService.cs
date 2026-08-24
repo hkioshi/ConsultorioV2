@@ -25,4 +25,11 @@ public class PacienteService
 
     public async Task Modify(int id, ModifyPacienteDto obj) =>
         await _repos.Modify(id, obj);
+
+    internal async Task<IEnumerable<GetPacienteDto>> GetByName(string name) =>
+        await _repos.GetByName(name);
+
+
+    internal async Task<GetPacienteDto?> GetByCpf(string cpf)=>
+        await _repos.GetByCpf( cpf);
 }

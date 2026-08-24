@@ -20,9 +20,19 @@ public class ProntuarioRepository
 
     public async Task<Prontuario> Add(AddProntuarioDto dto)
     {
+        var existente = await _context.Prontuarios
+            .FirstOrDefaultAsync(x => x.PacienteId == dto.PacienteId);
+
+        if (existente is not null)
+            throw new InvalidOperationException(
+                "Este paciente já possui um prontuário."
+            );
+
         var prontuario = await dto.ToProntuario();
+
         await _context.Prontuarios.AddAsync(prontuario);
         await _context.SaveChangesAsync();
+
         return prontuario;
     }
 
@@ -44,15 +54,15 @@ public class ProntuarioRepository
     internal async Task SetProntuario(Prontuario prontuario)
     {
         int id = prontuario.PacienteId;
-        Paciente? paciente = await _context.Pacientes.FirstOrDefaultAsync(x => x.Id == id);
-        if(paciente is not null)
-        {
-            paciente.Prontuario = prontuario;
-            await _context.SaveChangesAsync();
-            
-        }
-        
-        throw new NotFoundException();
 
+        Paciente? paciente = await _context.Pacientes
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (paciente is null)
+            throw new NotFoundException();
+
+        paciente.Prontuario = prontuario;
+
+        await _context.SaveChangesAsync();
     }
 }

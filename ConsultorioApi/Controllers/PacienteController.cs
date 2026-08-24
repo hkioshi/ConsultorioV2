@@ -53,7 +53,38 @@ public class PacienteController : ControllerBase, IController<Paciente, GetPacie
        Ok(await _service.GetAll());
     
 
-    [HttpGet("{id}")]
+    [HttpGet("byCpf/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetPacienteDto>> GetByCpf(string cpf)
+    {
+        try
+        {
+            return Ok(await _service.GetByCpf(cpf));
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
+    }
+    [HttpGet("byName/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetPacienteDto>>> GetByName(string name)
+    {
+        try
+        {
+            return Ok(await _service.GetByName(name));
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
+    }
+
+    [HttpGet("by{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<GetPacienteDto>> GetById(int id)
