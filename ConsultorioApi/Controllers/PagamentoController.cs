@@ -1,92 +1,100 @@
-﻿using AutoMapper;
-using ConsultorioApi.Data;
-using ConsultorioApi.Data.Dtos;
+﻿using ConsultorioApi.Controllers.Interfaces;
+using ConsultorioApi.Data.Dtos.PagamentoDto;
 using ConsultorioApi.Models;
+using ConsultorioApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PagamentoController : ControllerBase
+public class PagamentoController : ControllerBase,
+    IController<Pagamento, GetPagamentoDto, AddPagamentoDto, ModifyPagamentoDto>
 {
-    private readonly ConsultorioContext _context;
-    private readonly IMapper _mapper;
+    private readonly PagamentoService _service;
 
-    public PagamentoController(ConsultorioContext context, IMapper mapper)
+    public PagamentoController(PagamentoService service)
     {
-        _context = context;
-        _mapper = mapper;
+        _service = service;
     }
 
     [HttpPost]
-    public ActionResult AdicionarPagamento([FromBody] CreatePagamentoDto pagamentoDto)
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Pagamento>> Add(
+        [FromBody] AddPagamentoDto obj)
+    {
+        var pagamento = await _service.Add(obj);
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = pagamento.Id },
+            pagamento
+        );
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Delete(int id)
     {
         try
         {
-            var pagamento = _mapper.Map<Pagamentos>(pagamentoDto);
-            _context.Pagamentos.Add(pagamento);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarPagamento), new { id = pagamento.Id }, pagamento);
+            await _service.Delete(id);
+            return NoContent();
         }
-        catch (Exception e)
+        catch (NotFoundException)
         {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
+            return BadRequest();
         }
     }
 
     [HttpGet]
-    public ActionResult ExibirPagamento()
-    {
-        try
-        {
-            var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.ToList());
-            return Ok(pagamento);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-    
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetPagamentoDto>>> GetAll() =>
+        Ok(await _service.GetAll());
+
     [HttpGet("{id}")]
-    public ActionResult ExibirPagamentoDoId(string id)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetPagamentoDto>> GetById(int id)
     {
         try
         {
-            var pagamento = _mapper.Map<List<ReadPagamentosDto>>(_context.Pagamentos.Where(p => p.ProntuarioId == int.Parse(id)).ToList());
-            return Ok(pagamento);
+            return Ok(await _service.GetById(id));
         }
-        catch (Exception e)
+        catch (NotFoundException)
         {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
+            return BadRequest();
         }
     }
 
     [HttpPut("{id}")]
-    public IActionResult AtualizaPagamento(int id,
-        [FromBody] UpdatePagamentoDto pagamentoDto)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Modify(
+        int id,
+        [FromBody] ModifyPagamentoDto obj)
     {
-        var pagamento = _context.Pagamentos.FirstOrDefault(pagamento => pagamento.Id == id);
-        if (pagamento == null) return NotFound();
-        _mapper.Map(pagamentoDto, pagamento);
-        _context.SaveChanges();
-        return NoContent();
-    }
+        Console.WriteLine($"ID: {id}");
+        Console.WriteLine($"DTO: {obj}");
 
-    [HttpDelete("{id}")]
-    public IActionResult DeletaPagamento(int id)
-    {
-        var pagamento = _context.Pagamentos.FirstOrDefault(pagamento => pagamento.Id == id);
-        if (pagamento == null) return NotFound();
-        _context.Remove(pagamento);
-        _context.SaveChanges();
+        if (!ModelState.IsValid)
+        {
+            foreach (var error in ModelState)
+            {
+                Console.WriteLine($"Campo: {error.Key}");
+
+                foreach (var e in error.Value!.Errors)
+                    Console.WriteLine($"Erro: {e.ErrorMessage}");
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        await _service.Modify(id, obj);
+
         return NoContent();
     }
 }

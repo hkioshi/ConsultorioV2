@@ -7,7 +7,7 @@ const api = axios.create({
 
 export class DataBaseService {
     static pesquisarPorCpf(value: string): Promise<Paciente[]> {
-        return api.get(`Paciente/BuscarPorCpf/${value}`)
+        return api.get(`Paciente/byCpf/${value}`)
             .then(response => {
                 alert(response.status)
                 return response.data;
@@ -20,7 +20,7 @@ export class DataBaseService {
     }
     static pesquisarPorId(value: string): Promise<Paciente[]> {
         
-        return api.get(`/Paciente/BuscarPorId/${value}`)
+        return api.get(`/Paciente/${value}`)
             .then(response => {
                 return response.data;
             })
@@ -30,7 +30,7 @@ export class DataBaseService {
             });
     }
     static pesquisarPorNome(value: string): Promise<Paciente[]> {
-        return api.get(`/Paciente/BuscarPorNome/${value}`)
+        return api.get(`/Paciente/byName/${value}`)
             .then(response => {
                 return response.data;
             })

@@ -1,122 +1,129 @@
-﻿using AutoMapper;
-using ConsultorioApi.Data;
-using ConsultorioApi.Data.Dtos;
+﻿using ConsultorioApi.Controllers.Interfaces;
+using ConsultorioApi.Data.Dtos.Pacientes;
 using ConsultorioApi.Models;
+using ConsultorioApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PacienteController : ControllerBase
+public class PacienteController : ControllerBase, IController<Paciente, GetPacienteDto, AddPacienteDto, ModifyPacienteDto>
 {
-    private readonly ConsultorioContext _context;
-    private readonly IMapper _mapper;
-
-    public PacienteController(ConsultorioContext context, IMapper mapper)
+    PacienteService _service;
+    public PacienteController(PacienteService service)
     {
-        _context = context;
-        _mapper = mapper;
+        _service = service;
     }
-
-    [HttpGet]
-    public IActionResult ExibirTodosPacientes()
-    {
-        try
-        {
-            return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.ToList()));
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-
-    [HttpGet("BuscarPorId/{id}")]
-    public IActionResult PacientePorId(int id)
-    {
-        try
-        {
-            return Ok(_mapper.Map<ReadPacienteDto>(_context.Pacientes.FirstOrDefault(i => i.Id.Equals(id))));
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-
-    [HttpGet("BuscarPorNome/{Nome}")]
-    public IActionResult AcharPorNome(string Nome)
-    {
-        try
-        {
-            return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.Where(i => i.Nome.Contains(Nome))));
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-
-    [HttpGet("BuscarPorCPF/{CPF}")]
-    public IActionResult AcharPorCPF(string CPF)
-    {
-        try
-        {
-            return Ok(_mapper.Map<List<ReadPacienteDto>>(_context.Pacientes.Where(i => i.Cpf.Contains(CPF))));
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-
     [HttpPost]
-    public IActionResult AdicionarPaciente([FromBody] CreatePacienteDto pacienteDto)
-    {
-        try
-        {
-            var paciente = _mapper.Map<Paciente>(pacienteDto);
-            _context.Pacientes.Add(paciente);
-            Console.WriteLine(paciente.Id);
-
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(ExibirTodosPacientes), new { id = paciente.Id }, paciente);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-
-    [HttpPut("{id}")]
-    public IActionResult AtualizaPaciente(int id,
-        [FromBody] UpdatePacienteDto pacienteDto)
-    {
-        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.Id == id);
-        if (paciente == null) return NotFound();
-        _mapper.Map(pacienteDto, paciente);
-        _context.SaveChanges();
-        return NoContent();
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Paciente>> Add([FromBody] AddPacienteDto obj) 
+    {   
+        var paciente = await _service.Add(obj);
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = paciente.Id },
+            paciente
+        );
+        
     }
 
     [HttpDelete("{id}")]
-    public IActionResult DeletaPaciente(int id)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Delete(int id)
     {
-        var paciente = _context.Pacientes.FirstOrDefault(paciente => paciente.Id == id);
-        if (paciente == null) return NotFound();
-        _context.Remove(paciente);
-        _context.SaveChanges();
+        try
+        {
+            await _service.Delete(id);
+            return NoContent();
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetPacienteDto>>> GetAll() =>
+       Ok(await _service.GetAll());
+    
+
+    [HttpGet("byCpf/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetPacienteDto>> GetByCpf(string cpf)
+    {
+        try
+        {
+            return Ok(await _service.GetByCpf(cpf));
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
+    }
+    [HttpGet("byName/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetPacienteDto>>> GetByName(string name)
+    {
+        try
+        {
+            return Ok(await _service.GetByName(name));
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
+    }
+
+    [HttpGet("by{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetPacienteDto>> GetById(int id)
+    {
+        try
+        {
+            return Ok(await _service.GetById(id));
+        }
+        catch(NotFoundException)
+        {
+            return BadRequest();
+        }
+        
+    }
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+
+    public async Task<ActionResult> Modify(int id, ModifyPacienteDto obj)
+    {
+         Console.WriteLine($"ID: {id}");
+        Console.WriteLine($"DTO: {obj}");
+
+        if (!ModelState.IsValid)
+        {
+            foreach (var error in ModelState)
+            {
+                Console.WriteLine($"Campo: {error.Key}");
+
+                foreach (var e in error.Value!.Errors)
+                    Console.WriteLine($"Erro: {e.ErrorMessage}");
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        await _service.Modify(id, obj);
+
         return NoContent();
     }
 }
+

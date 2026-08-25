@@ -1,11 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-using ConsultorioApi.Data.Dtos.TratamentoDto;
+namespace ConsultorioApi.Data.Dtos.TratamentoDto;
 
-namespace ConsultorioApi.Models;
-
-public class Tratamento
+public class ModifyTratamentoDto
 {
-    [Key] [Required] public int Id { get; set; }
     public DateTime Data { get; set; }
     public int Dente { get; set; }
     public bool OclusalIncisal { get; set; }
@@ -17,8 +13,4 @@ public class Tratamento
     public string? Observacoes { get; set; }
     public string? Status { get; set; }
     public double Valor { get; set; }
-    public int ProntuarioId { get; set; }
-    public virtual Prontuario? Prontuario { get; set; }
-
-    
 }

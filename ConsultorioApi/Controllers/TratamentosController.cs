@@ -1,108 +1,101 @@
-﻿using AutoMapper;
-using ConsultorioApi.Data;
-using ConsultorioApi.Data.Dtos;
+﻿using ConsultorioApi.Controllers.Interfaces;
+using ConsultorioApi.Data.Dtos.TratamentoDto;
+
 using ConsultorioApi.Models;
+using ConsultorioApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class TratamentosController : ControllerBase
+public class TratamentoController : ControllerBase,
+    IController<Tratamento, GetTratamentoDto, AddTratamentoDto, ModifyTratamentoDto>
 {
-    private readonly ConsultorioContext _context;
-    private readonly IMapper _mapper;
+    private readonly TratamentoService _service;
 
-    public TratamentosController(ConsultorioContext context, IMapper mapper)
+    public TratamentoController(TratamentoService service)
     {
-        _context = context;
-        _mapper = mapper;
+        _service = service;
     }
 
     [HttpPost]
-    public ActionResult AdicionarTratamento([FromBody] CreateTratamentoDto tratamentoDto)
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Tratamento>> Add(
+        [FromBody] AddTratamentoDto obj)
     {
-        try
-        {
-            var tratamento = _mapper.Map<Tratamento>(tratamentoDto);
-            _context.Tratamentos.Add(tratamento);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarTratamento), new { id = tratamento.Id }, tratamento);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
+        var tratamento = await _service.Add(obj);
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = tratamento.Id },
+            tratamento
+        );
     }
-    
-    [HttpGet("AcharTratametosDoPaciente/{id}")]
-    public IActionResult TratamentosPorIdPaciente(int id)
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Delete(int id)
     {
         try
         {
-            return Ok(_mapper.Map<List<ReadTratamentosDto>>(_context.Tratamentos.Where(i => i.ProntuarioId.Equals(id)).ToList()));
+            await _service.Delete(id);
+            return NoContent();
         }
-        catch (Exception e)
+        catch (NotFoundException)
         {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
+            return BadRequest();
         }
     }
 
-    [HttpGet("{id}")]
-    public IActionResult TratamentosPorId(int id)
-    {
-        try
-        {
-            return Ok(_mapper.Map<ReadTratamentosDto>(_context.Tratamentos.FirstOrDefault(i => i.Id.Equals(id))));
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-    }
-    
     [HttpGet]
-    public ActionResult ExibirTratamentos()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetTratamentoDto>>> GetAll() =>
+        Ok(await _service.GetAll());
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetTratamentoDto>> GetById(int id)
     {
         try
         {
-            var tratamentos = _mapper.Map<List<ReadTratamentosDto>>(
-                _context.Tratamentos.ToList()
-            );
-            return Ok(tratamentos);
+            return Ok(await _service.GetById(id));
         }
-        catch (Exception e)
+        catch (NotFoundException)
         {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
+            return BadRequest();
         }
     }
 
     [HttpPut("{id}")]
-    public IActionResult AtualizaTratamento(int id,
-        [FromBody] UpdateTratamentoDto tratamentoDto)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Modify(
+        int id,
+        [FromBody] ModifyTratamentoDto obj)
     {
-        var tratamento = _context.Tratamentos.FirstOrDefault(tratamento => tratamento.Id == id);
-        if (tratamento == null) return NotFound();
-        _mapper.Map(tratamentoDto, tratamento);
-        _context.SaveChanges();
-        return NoContent();
-    }
+        Console.WriteLine($"ID: {id}");
+        Console.WriteLine($"DTO: {obj}");
 
-    [HttpDelete("{id}")]
-    public IActionResult DeletaTratamento(int id)
-    {
-        var tratamento = _context.Tratamentos.FirstOrDefault(tr => tr.Id == id);
-        if (tratamento == null) return NotFound();
-        _context.Remove(tratamento);
-        _context.SaveChanges();
+        if (!ModelState.IsValid)
+        {
+            foreach (var error in ModelState)
+            {
+                Console.WriteLine($"Campo: {error.Key}");
+
+                foreach (var e in error.Value!.Errors)
+                    Console.WriteLine($"Erro: {e.ErrorMessage}");
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        await _service.Modify(id, obj);
+
         return NoContent();
     }
 }

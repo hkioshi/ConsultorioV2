@@ -1,68 +1,100 @@
-using AutoMapper;
-using ConsultorioApi.Data;
-using ConsultorioApi.Data.Dtos;
+using ConsultorioApi.Controllers.Interfaces;
+using ConsultorioApi.Data.Dtos.ProcedimentosDto;
 using ConsultorioApi.Models;
+using ConsultorioApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConsultorioApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ProcedimentoController : ControllerBase
+public class ProcedimentoController : ControllerBase,
+    IController<Procedimento, GetProcedimentoDto, AddProcedimentoDto, ModifyProcedimentoDto>
 {
-    private readonly ConsultorioContext _context;
-    private readonly IMapper _mapper;
-    
-    public ProcedimentoController(ConsultorioContext context, IMapper mapper)
-    {
-        _context = context;
-        _mapper = mapper;
-        
-    }
-    
-    [HttpGet]
-    public IActionResult ExibirTodosProcedimentos()
-    {
-        try
-        {
-            return Ok(_mapper.Map<List<ReadProcedimentoDto>>(_context.Procedimentos.ToList()));
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-        
-    }
-    [HttpPost]
-    public IActionResult AdicionarProcedimento([FromBody] CreateProcedimentoDto procedimentoDto)
-    {
-        try
-        {
-            var procedimento = _mapper.Map<Procedimento>(procedimentoDto);
-            _context.Procedimentos.Add(procedimento);
-            Console.WriteLine(procedimento.Id);
+    private readonly ProcedimentoService _service;
 
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(ExibirTodosProcedimentos), new { id = procedimento.Id }, procedimento);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return NotFound(e.Message);
-        }
-        
-        
-    }
-    [HttpDelete("{id}")]
-    public IActionResult DeletaProcedimento(int id)
+    public ProcedimentoController(ProcedimentoService service)
     {
-        var procedimento = _context.Procedimentos.FirstOrDefault(procedimento => procedimento.Id == id);
-        if (procedimento == null) return NotFound();
-        _context.Remove(procedimento);
-        _context.SaveChanges();
+        _service = service;
+    }
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Procedimento>> Add(
+        [FromBody] AddProcedimentoDto obj)
+    {
+        var procedimento = await _service.Add(obj);
+
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = procedimento.Id },
+            procedimento
+        );
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Delete(int id)
+    {
+        try
+        {
+            await _service.Delete(id);
+            return NoContent();
+        }
+        catch (NotFoundException)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetProcedimentoDto>>> GetAll() =>
+        Ok(await _service.GetAll());
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetProcedimentoDto>> GetById(int id)
+    {
+        try
+        {
+            return Ok(await _service.GetById(id));
+        }
+        catch (NotFoundException)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> Modify(
+        int id,
+        [FromBody] ModifyProcedimentoDto obj)
+    {
+        Console.WriteLine($"ID: {id}");
+        Console.WriteLine($"DTO: {obj}");
+
+        if (!ModelState.IsValid)
+        {
+            foreach (var error in ModelState)
+            {
+                Console.WriteLine($"Campo: {error.Key}");
+
+                foreach (var e in error.Value!.Errors)
+                    Console.WriteLine($"Erro: {e.ErrorMessage}");
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        await _service.Modify(id, obj);
+
         return NoContent();
     }
 }

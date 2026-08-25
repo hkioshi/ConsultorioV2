@@ -3,6 +3,7 @@ using System;
 using ConsultorioApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,13 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsultorioApi.Migrations
 {
     [DbContext(typeof(ConsultorioContext))]
-    partial class ConsultorioContextModelSnapshot : ModelSnapshot
+    [Migration("20260809235551_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.11")
+                .HasAnnotation("ProductVersion", "10.0.10")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true);
@@ -74,7 +77,7 @@ namespace ConsultorioApi.Migrations
                     b.Property<string>("Observacoes")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PessoaResponsavelId")
+                    b.Property<int?>("PessoaResponsavelId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PreferenciaHorario")
@@ -86,7 +89,7 @@ namespace ConsultorioApi.Migrations
                     b.Property<bool>("QueroReceberLembretes")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RecomendadoPorId")
+                    b.Property<int?>("RecomendadoPorId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Rg")
@@ -101,7 +104,7 @@ namespace ConsultorioApi.Migrations
                     b.ToTable("Pacientes");
                 });
 
-            modelBuilder.Entity("ConsultorioApi.Models.Pagamento", b =>
+            modelBuilder.Entity("ConsultorioApi.Models.Pagamentos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -216,7 +219,7 @@ namespace ConsultorioApi.Migrations
                     b.ToTable("Tratamentos");
                 });
 
-            modelBuilder.Entity("ConsultorioApi.Models.Pagamento", b =>
+            modelBuilder.Entity("ConsultorioApi.Models.Pagamentos", b =>
                 {
                     b.HasOne("ConsultorioApi.Models.Prontuario", "Prontuario")
                         .WithMany("Pagamentos")

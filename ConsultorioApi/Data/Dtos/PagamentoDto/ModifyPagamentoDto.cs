@@ -1,0 +1,10 @@
+namespace ConsultorioApi.Data.Dtos.PagamentoDto;
+
+public class ModifyPagamentoDto
+{
+    public double Valor { get; set; }
+    public string? Descricao { get; set; }
+    public string? Observacoes { get; set; }
+    public int Tipo { get; set; }
+    public DateTime DataPagamento { get; set; }
+}

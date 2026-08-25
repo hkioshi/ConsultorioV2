@@ -1,8 +1,7 @@
-﻿using AutoMapper;
-using ConsultorioApi.Data;
-using ConsultorioApi.Data.Dtos;
-using ConsultorioApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using ConsultorioApi.Models;
+using ConsultorioApi.Services;
+using ConsultorioApi.Data.Dtos.ProntuarioDto;
 
 namespace ConsultorioApi.Controllers;
 
@@ -10,146 +9,45 @@ namespace ConsultorioApi.Controllers;
 [Route("[controller]")]
 public class ProntuarioController : ControllerBase
 {
-    private readonly ConsultorioContext _context;
-    private readonly IMapper _mapper;
-
-    public ProntuarioController(ConsultorioContext context, IMapper mapper)
+    ProntuarioService _service;
+    public ProntuarioController(ProntuarioService service)
     {
-        _context = context;
-        _mapper = mapper;
+        _service = service;
     }
 
-
     [HttpPost]
-    public IActionResult AdicionarProntuario([FromBody] CreateProntuarioDto ProntuarioDto)
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Prontuario>> Add([FromBody] AddProntuarioDto obj)
     {
-        try
-        {
-            var prontuario = _mapper.Map<Prontuario>(ProntuarioDto);
-            _context.Prontuarios.Add(prontuario);
-            _context.SaveChanges();
-            return CreatedAtAction(nameof(AdicionarProntuario), new { id = prontuario.Id }, prontuario);
-        }
-        catch (Exception e)
-        {
-            return Problem(e.Message);
-        }
+        var prontuario = await _service.Add(obj);
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = prontuario.Id },
+            prontuario
+        );
     }
 
     [HttpGet]
-    public IActionResult ExibirProntuario()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<GetProntuarioDto>>> GetAll()
+    {
+        return Ok(await _service.GetAll());
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<GetProntuarioDto>> GetById(int id)
     {
         try
         {
-            var Prontuario = _mapper.Map<List<ReadProntuarioDto>>(_context.Prontuarios.ToList());
-            return Ok(Prontuario);
+            return Ok(await _service.GetById(id));
         }
-        catch (Exception e)
+        catch
         {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-
-    [HttpGet("porId/{id}")]
-    public IActionResult ExibirProntuarioPorId(int id)
-    {
-        try
-        {
-            var Prontuario = _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(id)));
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-
-    [HttpGet("porNome/{nome}")]
-    public IActionResult ExibirProntuarioPorNome(string nome)
-    {
-        try
-        {
-            var Prontuario =
-                _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.Id.Equals(nome)));
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-
-    [HttpGet("porIdPaciente/{id}")]
-    public IActionResult ExibirPorIdPaciente(string id)
-    {
-        try
-        {
-            var Prontuario =
-                _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.PacienteId.Equals(int.Parse(id))));
-            return Ok(Prontuario);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-    
-    [HttpGet("IdProntuarioPorIdPaciente/{id}")]
-    public IActionResult ExibirIdProntuarioPorIdPaciente(string id)
-    {
-        try
-        {
-            var Prontuario =
-                _mapper.Map<ReadProntuarioDto>(_context.Prontuarios.FirstOrDefault(p => p.PacienteId.Equals(int.Parse(id))));
-            return Ok(Prontuario.Id);
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
-        }
-    }
-    
-    [HttpDelete("{id}")]
-    public IActionResult DeletaProntuario(int id)
-    {
-        var prontuario = _context.Prontuarios.FirstOrDefault(prontuario => prontuario.Id == id);
-        if (prontuario == null) return NotFound();
-        _context.Remove(prontuario);
-        _context.SaveChanges();
-        return NoContent();
-    }
-
-    [HttpGet("valorDevido/{id}")]
-    public IActionResult ExibirValorDevido(int id)
-    {
-        try
-        {
-            var prontuario = _context.Prontuarios.FirstOrDefault(prontuario => prontuario.Id == id);
-            if (prontuario == null) return NotFound();
-
-
-            var devido = prontuario.Tratamentos.Sum(d => d.Valor);
-            var pago = prontuario.Pagamentos.Sum(p => p.Valor);
-
-            var valordevido = devido - pago;
-
-            return Ok(new { ValorDevido = valordevido });
-        }
-        catch (Exception e)
-        {
-            //Implementar Erros
-            Console.WriteLine($"O erro foi: {e.Message}");
-            return Problem(e.Message);
+            return BadRequest();
         }
     }
 }
