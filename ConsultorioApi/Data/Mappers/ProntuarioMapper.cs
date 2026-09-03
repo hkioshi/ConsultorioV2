@@ -11,6 +11,8 @@ public static class ProntuarioMapper
         return new GetProntuarioDto
         {
             Id = model.Id,
+            PacienteId = model.PacienteId, // ← ADICIONA ISSO!
+
             Tratamentos = await Task.WhenAll(model.Tratamentos.Select(async x => await x.ToGetDto())),
             Pagamentos = await Task.WhenAll(model.Pagamentos.Select(async x => await x.ToGetDto()))
         };

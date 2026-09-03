@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using ConsultorioApi.Models;
 using ConsultorioApi.Services;
 using ConsultorioApi.Data.Dtos.ProntuarioDto;
+using ConsultorioApi.Data.Mappers;
 
 namespace ConsultorioApi.Controllers;
 
@@ -18,13 +19,15 @@ public class ProntuarioController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Prontuario>> Add([FromBody] AddProntuarioDto obj)
+    public async Task<ActionResult<GetProntuarioDto>> Add([FromBody] AddProntuarioDto obj)
     {
         var prontuario = await _service.Add(obj);
+        var dto = await prontuario.ToGetDto();
+
         return CreatedAtAction(
             nameof(GetById),
-            new { id = prontuario.Id },
-            prontuario
+            new { id = dto.Id },
+            dto
         );
     }
 

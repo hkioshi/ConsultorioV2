@@ -54,6 +54,7 @@ public static class PacienteMapper
             Estado = model.Estado,
             Telefone = model.Telefone,
             Email = model.Email,
+            Prontuario = model.Prontuario != null ? await model.Prontuario.ToGetDto() : null,
 
             Profissao = model.Profissao,
             Observacoes = model.Observacoes,

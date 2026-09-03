@@ -25,6 +25,8 @@ public class GetPacienteDto
     public string? Email { get; set; }
     //Extra
 
+    public virtual GetProntuarioDto? Prontuario { get; set; }
+
     public string? Profissao { get; set; }
     public int ConheceuPor { get; set; }
     public string? Observacoes { get; set; }

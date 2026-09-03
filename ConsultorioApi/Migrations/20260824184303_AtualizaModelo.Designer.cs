@@ -167,6 +167,11 @@ namespace ConsultorioApi.Migrations
                     b.HasIndex("PacienteId")
                         .IsUnique();
 
+                    b.HasOne("ConsultorioApi.Models.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .IsRequired();
+
                     b.ToTable("Prontuarios");
                 });
 

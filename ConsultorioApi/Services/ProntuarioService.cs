@@ -18,7 +18,8 @@ public class ProntuarioService
     public async Task<Prontuario> Add(AddProntuarioDto dto)
     {
         var prontuario = await _repos.Add(dto);
-        await _repos.SetProntuario(prontuario); 
+
+
         return prontuario;
     }
 
